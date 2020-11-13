@@ -1,4 +1,4 @@
-<div id="bandeau">
+<nav id="bandeau">
 <!-- Images En-t�te -->
 <!--<img src="images/menuGauche.gif"	alt="Choisir" title="Choisir"/>-->
 <!--  Menu haut-->
@@ -10,4 +10,4 @@
 		<li><a href="index.php?uc=praticiens&ucp=rechercheVisiteurs"> Recherche visiteurs </a></li>
 		<li><a href="index.php?uc=praticiens&ucp=recherchePraticiens"> Recherche praticiens </a></li>
 	</ul>
-</div>
+</nav>

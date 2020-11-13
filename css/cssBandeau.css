@@ -1,0 +1,24 @@
+#bandeau #menu {
+    display: block;
+    background-color: lightblue;
+    margin: unset;
+    padding: unset;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+#bandeau #menu li {
+    float: left;
+}
+
+#bandeau #menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    background-color: lightblue;
+    padding: 5px;
+}
+
+#bandeau #menu li a:hover {
+    background-color: aqua;
+}
