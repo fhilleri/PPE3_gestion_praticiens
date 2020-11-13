@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("util/fonctions.inc.php");
-require_once("util/class.pdoS???????????.inc.php");
+require_once("util/class.pdolbc.inc.php");
 include("vues/v_entete.php") ;
 include("vues/v_bandeau.php") ;
 
