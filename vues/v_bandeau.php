@@ -9,5 +9,13 @@
 		<li><a href="index.php?uc=praticiens&ucp=specialite&action=afficher"> Specialités </a></li>
 		<li><a href="index.php?uc=praticiens&ucp=rechercheVisiteurs"> Recherche visiteurs </a></li>
 		<li><a href="index.php?uc=praticiens&ucp=recherchePraticiens"> Recherche praticiens </a></li>
+
+		<?php
+			if (isset($_SESSION["loginClient"]))
+			{
+				echo '<li><a href="index.php?uc=praticiens&ucp=deconnexion"> Déconnexion </a></li>';
+			}
+			else echo '<li><a href="index.php?uc=praticiens&ucp=connexion"> Connexion </a></li>';
+		?>
 	</ul>
 </nav>
