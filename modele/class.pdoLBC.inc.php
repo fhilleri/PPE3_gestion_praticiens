@@ -39,12 +39,11 @@ class Pdolbc
 */
 	public function getLesPraticiens()
 	{
-		$req = "select * from praticiens";
+		$req = "select * from praticien";
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
 
-	
 }
 ?>
