@@ -23,7 +23,7 @@ $pdo = Pdolbc::getPdolbc();
 switch($uc)
 {
 	case 'accueil':
-		{include("vues/v_accueil.php");break;}
+		{include("controleurs/c_accueil.php");break;}
 	case 'echantillons' :
 		{include("controleurs/c_echantillons.php");break;}
 	case 'praticiens' :
