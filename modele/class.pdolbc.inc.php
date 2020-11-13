@@ -45,6 +45,14 @@ class Pdolbc
 		return $lesLignes;
 	}
 
+	public function getLePraticien()
+	{
+		$req = "select * from praticien";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetch();
+		return $lesLignes;
+	}
+
 	/* Affiche le portefeuille du Responsabele */
 
 	public function getPorteFeuilleRes() {
@@ -61,6 +69,22 @@ class Pdolbc
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
+	}
+
+	public function modifierPraticien($nom,$prenom,$specialite,$notoriete,$ville,$num)
+	{
+		$res = PdoTransNat::$monPdo->prepare('UPDATE praticien 
+			SET  nom = :nom, prenom = :prenom, idspecialite = :specialite, note = :notoriete, ville = :ville 
+ 			WHERE idPraticien = :num');
+		
+		$res->bindValue('nom',$nom, PDO::PARAM_STR);
+		$res->bindValue('prenom', $prenom, PDO::PARAM_STR);   
+		$res->bindValue('specialite', $specialite, PDO::PARAM_STR);
+		$res->bindValue('notoriete', $notoriete, PDO::PARAM_INT);
+		$res->bindValue('ville', $ville, PDO::PARAM_STR);
+		$res->bindValue('num',$num, PDO::PARAM_INT);
+		$res->execute();
+		//print_r($res->errorInfo());
 	}
 
 }

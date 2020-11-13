@@ -4,7 +4,7 @@
     width: 100%;
 }
 
-.tableauVisiteur #td, #tableauVisiteur #th {
+#tableauVisiteur #td, #tableauVisiteur #th {
     border: 1px solid #ddd;
     padding: 8px;
 }

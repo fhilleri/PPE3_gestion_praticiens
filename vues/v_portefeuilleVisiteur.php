@@ -1,4 +1,3 @@
-<div id="tableauVisiteur">
 <!doctype html>
 <html>
 
@@ -9,7 +8,7 @@
 </head>
 <body>
     <center>
-    <form action="" method="post">
+    <form action="index.php?" method="post" id="tableauVisiteur">
         <p><H1>Liste de vos praticiens</H1><br>
 
         <table border=3 cellspacing=1 >
@@ -19,8 +18,8 @@
             <th>Ville </th>
             </tr> 
         <?php
-
-        foreach( $lesPraticiens as $unPraticien)
+        
+        foreach((array)$lesPraticiens as $unPraticien)
         {
             $num = $unPraticien['idPraticien'];
             $nom = $unPraticien['nom'];
@@ -28,7 +27,7 @@
             $specialite = $unPraticien['idspecialite'];
             $notoriete = $unPraticien['note'];
             $ville = $unPraticien['ville'];
-
+        
             ?>
             <tr>
                 <td width=150><?php echo $nom ?></td>
@@ -39,16 +38,17 @@
                 <?php 
 
                 ?>
-				<td width=30><a href=index.php?uc=modifierPraticien&action=modificationPraticien&num=<?php echo $num ?>><img src="images/modifier.png" title="Modif"></a></td>
-                <td width=30><a href=index.php?uc=afficherPortefeuille&action=affichagePortefeuille&num=<?php echo $num ?>>Afficher le portefeuille</a></td>
+				<td width=30><a href=index.php?ucp=modifierPraticien&action=modificationPraticien&num=<?php echo $num ?>><img src="images/modifier.png" title="Modif"></a></td>
+                <td width=30><a href=index.php?ucp=afficherPortefeuille&action=affichagePortefeuille&num=<?php echo $num ?>>Afficher le portefeuille</a></td>
             </tr>
             <?php 
-        }
+        } 
+
         ?>
         </table>
         </br>
 
-        <input type="" value="">
+        <input type="Submit" value="OUI">
     </form>
     </center>
     </div>

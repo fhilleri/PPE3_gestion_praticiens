@@ -11,7 +11,7 @@ if (isset($_REQUEST["ucp"]))
             break;}
         
         case "portefeuilleVisiteur" :
-            {include("controleurs/c_portefeuilleVisiteur.php"); 
+            {include("vues/v_portefeuilleVisiteur.php"); 
             break;}
     }
 }
