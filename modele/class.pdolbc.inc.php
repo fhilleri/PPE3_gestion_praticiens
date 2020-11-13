@@ -37,6 +37,18 @@ class Pdolbc
  *
  * @return le tableau associatif des clients
 */
+	public function getProfilConnexion($login, $mdp)
+	{
+		$req = 'SELECT *
+		FROM profil
+		WHERE profil.login = :login AND profil.mdp = :mdp';
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(":login", $login);
+		$res->bindValue(":mdp", $mdp);
+		$res->execute();
+		return $res->fetch();
+	}
+
 	public function getLesPraticiens()
 	{
 		$req = "select * from praticiens";

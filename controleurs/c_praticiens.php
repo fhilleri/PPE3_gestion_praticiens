@@ -12,6 +12,12 @@ switch($ucp)
     case "accueil":
         include("c_accueil.php");
     break;
+    case "connexion":
+        include("c_connexion.php");
+    break;
+    case "deconnexion":
+        include("c_deconnexion.php");
+    break;
 }
 
 
