@@ -36,6 +36,12 @@ switch($uc)
 		{ include("controleurs/c_frais.php");break; }
 	case 'administration' :
 		{ include("controleurs/c_administration.php");break; }
+	case 'portefeuilleResponsable' :
+		{ include("controleurs/c_portefeuilleResponsable.php");break; }
+	case 'portefeuilleVisiteur' :
+		{ include("controleurs/c_portefeuilleVisiteur.php");break;}
+	case 'listeVisiteurPraticiens' :
+		{ include("controleurs/c_listeVisiteurPraticiens.php");break; }	
 }
 include("vues/v_pied.php") ;
 ?>

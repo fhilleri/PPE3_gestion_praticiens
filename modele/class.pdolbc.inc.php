@@ -74,7 +74,7 @@ class Pdolbc
 		return $lesLignes;
 	}
 
-	/* Affiche Portefeuille lié au visiteur*/	
+	/* Affiche le portefeuille lié au visiteur*/	
 
 	public function getPorteFeuilleVis() {
 		$req = "select * from portefeuille";
@@ -99,5 +99,12 @@ class Pdolbc
 		//print_r($res->errorInfo());
 	}
 
+	/* Supprimer les praticiens */
+	public function getSupprimerPraticien() {
+		$req = "Delete from portefeuille where idpraticien=????";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
 }
 ?>
