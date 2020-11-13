@@ -5,7 +5,7 @@ class Pdolbc
       	private static $serveur='mysql:host=localhost';
       	private static $bdd='dbname=lbc';   		
       	private static $user='root' ;    		
-      	private static $mdp='' ;	
+      	private static $mdp='root' ;	
 		private static $monPdo;
 		private static $monPdolbc = null;
 			
@@ -45,6 +45,23 @@ class Pdolbc
 		return $lesLignes;
 	}
 
-	
+	/* Affiche le portefeuille du Responsabele */
+
+	public function getPorteFeuilleRes() {
+		$req = "select * from portefeuille";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
+	/* Affiche Portefeuille lié au visiteur*/	
+
+	public function getPorteFeuilleVis() {
+		$req = "select * from portefeuille";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
 }
 ?>
