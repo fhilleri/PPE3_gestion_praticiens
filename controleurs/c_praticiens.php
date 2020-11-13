@@ -14,8 +14,6 @@ if (isset($_REQUEST["ucp"]))
             {include("controleurs/c_portefeuilleVisiteur.php"); 
             break;}
     }
-
 }
-
 
 ?>
