@@ -1,23 +1,11 @@
 <?php
 session_start();
-//require_once("util/fonctions.inc.php");
-require_once("util/class.pdolbc.inc.php");
-//include("vues/v_entete.php") ;
-//include("vues/v_bandeau.php") ;
+require_once("modele/class.pdolbc.inc.php");
 
 if(!isset($_REQUEST['uc']))
      $uc = 'accueil';
 else
 	$uc = $_REQUEST['uc'];
-
-if(!isset($_SESSION['idClient']))
-{
-	include("vues/v_champConnexion.php");
-}
-else
-{
-	include("vues/v_informationsConnexion.php");
-}
 
 $pdo = Pdolbc::getPdolbc();	 
 switch($uc)
