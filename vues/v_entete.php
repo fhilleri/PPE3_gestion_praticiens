@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./css/cssBandeau.css">
     <link rel="stylesheet" href="./css/cssGeneral.css">
     <title><?= $title ?></title>
+    <script> </script>
 </head>
 <body>
     
