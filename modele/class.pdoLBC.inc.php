@@ -37,14 +37,74 @@ class Pdolbc
  *
  * @return le tableau associatif des clients
 */
+	public function getProfilConnexion($login, $mdp)
+	{
+		$req = 'SELECT *
+		FROM profil
+		WHERE profil.login = :login AND profil.mdp = :mdp';
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(":login", $login);
+		$res->bindValue(":mdp", $mdp);
+		$res->execute();
+		return $res->fetch();
+	}
+
 	public function getLesPraticiens()
 	{
-		$req = "select * from praticiens";
+		$req = "select * from praticien";
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
 
-	
+	public function getLePraticien()
+	{
+		$req = "select * from praticien";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetch();
+		return $lesLignes;
+	}
+
+	/* Affiche le portefeuille du Responsabele */
+
+	public function getPorteFeuilleRes() {
+		$req = "select * from portefeuille";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
+	/* Affiche le portefeuille lié au visiteur*/	
+
+	public function getPorteFeuilleVis() {
+		$req = "select * from portefeuille";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
+	public function modifierPraticien($nom,$prenom,$specialite,$notoriete,$ville,$num)
+	{
+		$res = PdoTransNat::$monPdo->prepare('UPDATE praticien 
+			SET  nom = :nom, prenom = :prenom, idspecialite = :specialite, note = :notoriete, ville = :ville 
+ 			WHERE idPraticien = :num');
+		
+		$res->bindValue('nom',$nom, PDO::PARAM_STR);
+		$res->bindValue('prenom', $prenom, PDO::PARAM_STR);   
+		$res->bindValue('specialite', $specialite, PDO::PARAM_STR);
+		$res->bindValue('notoriete', $notoriete, PDO::PARAM_INT);
+		$res->bindValue('ville', $ville, PDO::PARAM_STR);
+		$res->bindValue('num',$num, PDO::PARAM_INT);
+		$res->execute();
+		//print_r($res->errorInfo());
+	}
+
+	/* Supprimer les praticiens */
+	public function getSupprimerPraticien() {
+		$req = "Delete from portefeuille where idpraticien=????";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
 }
 ?>

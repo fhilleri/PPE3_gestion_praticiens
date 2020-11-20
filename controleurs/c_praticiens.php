@@ -3,13 +3,25 @@
 if (isset($_REQUEST["ucp"]))
 {
     $ucp = $_REQUEST["ucp"];
-    $pdo = PdoSallesCommunales::getPdoSallesCommunales();	 
-    switch($ucp)
-    {
-        case "accueil":
-            include("./c_accueil.php");
+}
+else $ucp = "accueil";
+
+$pdo = Pdolbc::getPdolbc();	 
+switch($ucp)
+{
+    case "accueil":
+        include("c_accueil.php");
+    break;
+    case "connexion":
+        include("c_connexion.php");
+    break;
+    case "deconnexion":
+        include("c_deconnexion.php");
+    break;
+    case "portefeuilleVisiteur" :
+        include("controleurs/c_portefeuilleVisiteur.php"); 
         break;
-    }
+}
 
 
 ?>
