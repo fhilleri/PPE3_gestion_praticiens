@@ -85,7 +85,7 @@ class Pdolbc
 
 	public function modifierPraticien($nom,$prenom,$specialite,$notoriete,$ville,$num)
 	{
-		$res = PdoTransNat::$monPdo->prepare('UPDATE praticien 
+		$res = Pdolbc::$monPdo->prepare('UPDATE praticien 
 			SET  nom = :nom, prenom = :prenom, idspecialite = :specialite, note = :notoriete, ville = :ville 
  			WHERE idPraticien = :num');
 		
@@ -97,6 +97,38 @@ class Pdolbc
 		$res->bindValue('num',$num, PDO::PARAM_INT);
 		$res->execute();
 		//print_r($res->errorInfo());
+	}
+
+	public function getMaxPraticienIndex()
+	{
+		$req = "SELECT MAX(idPraticien) as max FROM praticien";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->execute();
+		return $res->fetch();
+	}
+
+	public function ajouterPraticien($idSpecialite, $idPraticien, $note, $nom, $prenom, $rue, $codePostal, $ville, $longitude, $latitude)
+	{
+		$req = "INSERT INTO `praticien` (`idspecialite`, `idPraticien`, `note`, `nom`, `prenom`, `rue`, `codePostal`, `ville`, `longitude`, `latitude`) 
+		VALUES (':idspecialite', ':idPraticien', ':note', ':nom', ':prenom', ':rue', ':codePostal', ':ville', ':longitude', ':latitude')";
+		$res = Pdolbc::$monPdo->prepare($req);
+
+		var_dump($idSpecialite);
+		var_dump($idPraticien);
+
+		$res->bindValue(':idspecialite', $idSpecialite, PDO::PARAM_INT);
+		$res->bindValue(':idPraticien', $idPraticien, PDO::PARAM_INT);
+		$res->bindValue(':note', $note);
+		$res->bindValue(':nom', $nom);
+		$res->bindValue(':prenom', $prenom);
+		$res->bindValue(':rue', $rue);
+		$res->bindValue(':codePostal', $codePostal);
+		$res->bindValue(':ville', $ville);
+		$res->bindValue(':longitude', $longitude);
+		$res->bindValue(':latitude', $latitude);
+		$res->execute();
+		
+		var_dump($res->ErrorInfo());
 	}
 
 	/* Supprimer les praticiens */
