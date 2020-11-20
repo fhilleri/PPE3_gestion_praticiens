@@ -21,7 +21,8 @@
 			}
 		case 'afficherPraticien':
 			{
-				include("vues/v")
+				include("vues/v");
+			break;
 			}
         case 'supprimerVisite':
             {

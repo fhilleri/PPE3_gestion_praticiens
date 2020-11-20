@@ -7,7 +7,7 @@
     </head>
    <body>
     <div class="form-style-6">
-	<form action="index.php?ucpraticien=portefeuilleResponsable&action=connecter" method="post">
+	<form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=connecter" method="post">
 
 	
 		<input type="submit" value="Valider">
