@@ -107,4 +107,21 @@ class Pdolbc
 		return $lesLignes;
 	}
 }
+
+public function getPraticiens($numVisiteur,$numSecteur) {
+	$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,
+	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+	from praticien
+	inner join visite on praticien.idPraticien = visite.idPraticien 
+	inner join visiteur on visite.matricule = visiteur.matricule 
+	group by visite.dateVisite
+	having visite.matricule = numVisiteur and visiteur.sec_num=1
+	ORDER by visite.dateVisite DESC 
+	LIMIT 1";
+	$res = Pdolbc::$monPdo->query($req);
+	$lesLignes = $res->fetchAll();
+	return $lesLignes;
+}
+
+
 ?>
