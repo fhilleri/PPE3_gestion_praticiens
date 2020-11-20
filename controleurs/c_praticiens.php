@@ -24,6 +24,9 @@ switch($ucp)
     case "modifierPraticiens" :
         include("controleurs/c_modifierPraticiens.php"); 
         break;
+        case "recherchePraticiens" :
+            include("controleurs/c_recherchePraticiens.php"); 
+            break;
 }
 
 
