@@ -24,5 +24,15 @@
 			include("vues/v_portefeuilleVisiteur.php");	
 			break;
 		}
+
+		case 'ajout':
+			$title = "Ajouter praticien";
+			include("./vues/v_entete.php");
+			include("./vues/v_bandeau.php");
+
+			include("./vues/v_ajouterPraticien.php");
+			include("./vues/v_pied.php");
+
+		break;
 	}
 ?>

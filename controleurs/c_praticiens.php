@@ -21,6 +21,9 @@ switch($ucp)
     case "portefeuilleVisiteur" :
         include("controleurs/c_portefeuilleVisiteur.php"); 
         break;
+    case "modifierPraticiens" :
+        include("controleurs/c_modifierPraticiens.php"); 
+        break;
 }
 
 
