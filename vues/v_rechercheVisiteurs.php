@@ -1,3 +1,4 @@
+<nav id="recherche">
 <!doctype html>
 <html>
 
@@ -8,12 +9,14 @@
 </head>
 <body>
     <center>
-    <form action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post" id="tableauVisiteur">
+    <form action="index.php?" method="post" id="tableauVisiteur">
            
-        <p><H1><br>Recherche des visiteur</H1><br>
-
-			<tr><td>Nom praticiens</td><td>
+        <p><H1><br>Recherche des visiteurs</H1><br>
+            <div id="select">
+			<tr><td>Noms praticiens</td><td>
+               
 			<select name="idPraticien">
+            
 			<?php 
 			 foreach($Praticiens as $Praticiens)
 				{ 
@@ -29,7 +32,10 @@
 					echo "<option value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
 				}
            ?>
+
+            
         </select>
+            </div>
        
         <table border=3 cellspacing=1 >
             <tr>
@@ -59,9 +65,10 @@
         </table>
         </br>
 
-        <input type="Submit" value="OUI"></a></td> 
+        <input type="Submit" value="ACCUEIL"></a></td> 
     </form>
     </center>
     </div>
 </body>
 </html>
+</nav>

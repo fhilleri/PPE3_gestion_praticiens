@@ -1,3 +1,4 @@
+<nav id="recherche">
 <!doctype html>
 <html>
 
@@ -8,10 +9,10 @@
 </head>
 <body>
     <center>
-    <form action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post" id="tableauVisiteur">
+    <form action="index.php?" method="post" id="tableauVisiteur">
            
         <p><H1><br>Recherche de praticiens</H1><br>
-
+        <div id="select">
 			<tr><td>Matricule visiteur</td><td>
 			<select name="numVisiteur">
 			<?php 
@@ -30,9 +31,11 @@
 				}
            ?>
         </select>
-      
-        <a href=index.php?uc=praticiens&ucp=modifierPraticiens&action=ajout>Ajouter un praticiens</a>
-       
+            
+        </div>
+        
+        
+
         <table border=3 cellspacing=1 >
             <tr>
             <th>Nom </th><th>Prénom </th>
@@ -69,10 +72,11 @@
         ?>
         </table>
         </br>
-
-        <input type="Submit" value="OUI"></a></td> 
+        <a href=index.php?uc=praticiens&ucp=modifierPraticiens&action=ajout id="ajout">Ajouter un praticien</a>
+        <input type="Submit" value="ACCUEIL"></a></td> 
     </form>
     </center>
     </div>
 </body>
 </html>
+</nav>

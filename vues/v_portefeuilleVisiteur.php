@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 
@@ -7,9 +8,12 @@
         
 </head>
 <body>
+
     <center>
     <form action="index.php?" method="post" id="tableauVisiteur">
-        <p><H1>Liste de vos praticiens</H1><br>
+        <br>
+        <br>
+        <p><H1>Liste de vos praticiens</H1>
 
         <table border=3 cellspacing=1 >
             <tr>
@@ -54,3 +58,4 @@
     </div>
 </body>
 </html>
+
