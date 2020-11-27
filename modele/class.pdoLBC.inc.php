@@ -99,11 +99,10 @@ class Pdolbc
 		//print_r($res->errorInfo());
 	}
 
-	public function getMaxPraticienIndexParSpe($specialite)
+	public function getMaxPraticienIndex()
 	{
-		$req = "SELECT MAX(idPraticien) as max FROM praticien WHERE idspecialite = :specialite";
+		$req = "SELECT MAX(idPraticien) as max FROM praticien";
 		$res = Pdolbc::$monPdo->prepare($req);
-		$res->bindValue('specialite', $specialite);
 		$res->execute();
 		return $res->fetch();
 	}
@@ -111,7 +110,7 @@ class Pdolbc
 	public function ajouterPraticien($idSpecialite, $idPraticien, $note, $nom, $prenom, $rue, $codePostal, $ville, $longitude, $latitude)
 	{
 		$req = "INSERT INTO `praticien` (`idspecialite`, `idPraticien`, `note`, `nom`, `prenom`, `rue`, `codePostal`, `ville`, `longitude`, `latitude`) 
-		VALUES (:idspecialite, :idPraticien, :note, :nom, :prenom, :rue, :codePostal, :ville, :longitude, :latitude)";
+		VALUES (':idspecialite', ':idPraticien', ':note', ':nom', ':prenom', ':rue', ':codePostal', ':ville', ':longitude', ':latitude')";
 		$res = Pdolbc::$monPdo->prepare($req);
 
 		var_dump($idSpecialite);
@@ -140,12 +139,6 @@ class Pdolbc
 		return $lesLignes;
 	}
 
-	public function getSpecialites() {
-		$req = "SELECT * FROM specialite";
-		$res = Pdolbc::$monPdo->prepare($req);
-		$res->execute();
-		return $res->fetchAll();
-	}
 
 	public function getPraticiens($numVisiteur,$numSecteur) {
 		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,
@@ -163,6 +156,26 @@ class Pdolbc
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 }
+
+public function getVisiteur($numPraticien,$numSecteur) {
+	$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
+	from visiteur
+	inner join visite on visiteur.matricule = visite.matricule 
+	inner join praticien on visite.idPraticien = praticien.idPraticien
+	where visite.dateVisite = (SELECT visite.dateVisite FROM visite p2
+	 where visite.matricule = p2.matricule
+	 ORDER by visite.dateVisite DESC
+LIMIT 1)
+	and visite.idPraticien =$numPraticien and visiteur.sec_num=$numSecteur
+	group by visite.matricule";
+	$res = Pdolbc::$monPdo->query($req);
+	$lesLignes = $res->fetchAll();
+	return $lesLignes;
+}
+
+
+
+
 	public function getLesVisiteur()
 		{
 			$req = "select * from visiteur";
@@ -170,6 +183,7 @@ class Pdolbc
 			$lesLignes = $res->fetchAll();
 			return $lesLignes;
 		}
+		
 
 	public function getLesRegion()
 		{
