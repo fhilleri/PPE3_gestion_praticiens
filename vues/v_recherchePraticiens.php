@@ -8,9 +8,28 @@
 </head>
 <body>
     <center>
-    <form action="index.php?" method="post" id="tableauVisiteur">
+    <form action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post" id="tableauVisiteur">
         <p><H1>Recherche de praticiens</H1><br>
 
+			<tr><td>Matricule visiteur</td><td>
+			<select name="numVisiteur">
+			<?php 
+			 foreach($Praticiens as $Praticiens)
+				{ 
+					echo "<option value='" . $Praticiens["matricule"] . "'>" .$Praticiens["matricule"] ."</option>";
+				}
+           ?>
+            </select>
+            <tr><td>Region</td><td>
+			<select name="numSecteur">
+			<?php 
+			 foreach($Region as $Region)
+				{ 
+					echo "<option value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
+				}
+           ?>
+        </select>
+       
         <table border=3 cellspacing=1 >
             <tr>
             <th>Nom </th><th>Prénom </th>
@@ -40,8 +59,7 @@
                 <?php 
 
                 ?>
-				<td width=30><a href=index.php?ucp=modifierPraticien&action=modificationPraticien&num=<?php echo $num ?>><img src="images/modifier.png" title="Modif"></a></td>
-            </tr>
+<td width=30><a href=index.php?ucp=modifierPraticien&action=modificationPraticien&num=<?php echo $num ?>><img src="images/modifier.png" title="Modif"></a></td>            </tr>
             <?php 
         } 
 
@@ -49,7 +67,7 @@
         </table>
         </br>
 
-        <input type="Submit" value="OUI">
+        <input type="Submit" value="OUI"></a></td> 
     </form>
     </center>
     </div>

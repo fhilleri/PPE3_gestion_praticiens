@@ -146,5 +146,38 @@ class Pdolbc
 		$res->execute();
 		return $res->fetchAll();
 	}
+
+	public function getPraticiens($numVisiteur,$numSecteur) {
+		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,
+		praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+		from praticien
+		inner join visite on praticien.idPraticien = visite.idPraticien 
+		inner join visiteur on visite.matricule = visiteur.matricule 
+        where visite.dateVisite = (SELECT visite.dateVisite FROM visite p2
+         where visite.idpraticien = p2.idpraticien
+         ORDER by visite.dateVisite DESC
+    LIMIT 1)
+		and visite.matricule = $numVisiteur and visiteur.sec_num=$numSecteur
+        group by visite.idPraticien";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
 }
+	public function getLesVisiteur()
+		{
+			$req = "select * from visiteur";
+			$res = Pdolbc::$monPdo->query($req);
+			$lesLignes = $res->fetchAll();
+			return $lesLignes;
+		}
+
+	public function getLesRegion()
+		{
+			$req = "select * from region";
+			$res = Pdolbc::$monPdo->query($req);
+			$lesLignes = $res->fetchAll();
+			return $lesLignes;
+		}
+}
+
 ?>
