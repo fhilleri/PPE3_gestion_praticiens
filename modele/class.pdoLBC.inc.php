@@ -149,18 +149,21 @@ class Pdolbc
 
 
 	public function getPraticiens($numVisiteur,$numSecteur) {
-		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,
-		praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
 		from praticien
 		inner join visite on praticien.idPraticien = visite.idPraticien 
 		inner join visiteur on visite.matricule = visiteur.matricule 
-        where visite.dateVisite = (SELECT visite.dateVisite FROM visite p2
-         where visite.idpraticien = p2.idpraticien
-         ORDER by visite.dateVisite DESC
-    LIMIT 1)
-		and visite.matricule = $numVisiteur and visiteur.sec_num=$numSecteur
-        group by visite.idPraticien";
-		$res = Pdolbc::$monPdo->query($req);
+		where visite.dateVisite = 
+	(SELECT p2.dateVisite FROM visite p2
+	 where praticien.idPraticien = p2.idpraticien and p2.dateVisite < now()  
+			GROUP by p2.dateVisite DESC LIMIT 1)
+		and visite.matricule =:numVisiteur and visiteur.sec_num=:numSecteur
+		group by visite.idPraticien";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':numVisiteur', $numVisiteur);
+		$res->bindValue(':numSecteur', $numSecteur);
+		$res->execute();
+		
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
@@ -170,13 +173,17 @@ class Pdolbc
 		from visiteur
 		inner join visite on visiteur.matricule = visite.matricule 
 		inner join praticien on visite.idPraticien = praticien.idPraticien
-		where visite.dateVisite = (SELECT visite.dateVisite FROM visite p2
-		where visite.matricule = p2.matricule
-		ORDER by visite.dateVisite DESC
-	LIMIT 1)
-		and visite.idPraticien =$numPraticien and visiteur.sec_num=$numSecteur
-		group by visite.matricule";
-		$res = Pdolbc::$monPdo->query($req);
+		where visite.dateVisite = (SELECT p2.dateVisite FROM visite p2
+		where visiteur.matricule = p2.matricule and p2.dateVisite < now()
+		ORDER by p2.dateVisite DESC
+	    LIMIT 1)
+		and visite.idPraticien =:numPraticien and visiteur.sec_num=:numSecteur";
+
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':numPraticien', $numPraticien);
+		$res->bindValue(':numSecteur', $numSecteur);
+		$res->execute();
+
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
