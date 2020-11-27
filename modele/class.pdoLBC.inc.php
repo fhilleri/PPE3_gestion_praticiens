@@ -78,6 +78,17 @@ class Pdolbc
 
 	public function getPorteFeuilleVis() {
 		$req = "select * from portefeuille";
+	
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
+	/* praticien par visiteur */
+
+	public function getPraticiensV($id)
+	{
+		$req = "select * from praticien";
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
@@ -131,13 +142,6 @@ class Pdolbc
 		var_dump($res->ErrorInfo());
 	}
 
-	/* Supprimer les praticiens */
-	public function getSupprimerPraticien() {
-		$req = "Delete from portefeuille where idpraticien=????";
-		$res = Pdolbc::$monPdo->query($req);
-		$lesLignes = $res->fetchAll();
-		return $lesLignes;
-	}
 
 
 	public function getPraticiens($numVisiteur,$numSecteur) {

@@ -21,7 +21,7 @@
 			}
 		case 'afficherPraticien':
 			{
-				include("vues/v");
+				include("vues/v_portefeuilleResponsable.php");
 			break;
 			}
         case 'supprimerVisite':
