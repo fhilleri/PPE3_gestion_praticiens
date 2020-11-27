@@ -48,7 +48,12 @@ class Pdolbc
 		$res->execute();
 		return $res->fetch();
 	}
-
+	public function getSpecialites() {
+		$req = "SELECT * FROM specialite";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->execute();
+		return $res->fetchAll();
+	}
 	public function getLesPraticiens()
 	{
 		$req = "select * from praticien";
