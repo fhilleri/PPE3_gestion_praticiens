@@ -57,10 +57,13 @@ class Pdolbc
 		return $lesLignes;
 	}
 
-	public function getLePraticien()
+	public function getLePraticien($idPraticien, $idSpecialite)
 	{
-		$req = "select * from praticien";
-		$res = Pdolbc::$monPdo->query($req);
+		$req = "select * from praticien WHERE idSpecialite = :idSpecialite AND idPraticien = :idPraticien";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':idPraticien', $idPraticien);
+		$res->bindValue(':idSpecialite', $idSpecialite);
+		$res->execute();
 		$lesLignes = $res->fetch();
 		return $lesLignes;
 	}
