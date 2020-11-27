@@ -10,7 +10,7 @@ switch($action)
         include("./vues/v_entete.php");
         include("./vues/v_bandeau.php");
         
-        
+        $specialites = $pdo->getSpecialites();
 
         include("./vues/v_pied.php");
     break;
