@@ -3,12 +3,19 @@
 	
 	switch($action)
 	{
-		case 'afficherPraticien':
+		case 'afficherPortefeuille':
 			{
+				$leportefeuille = $pdo->getPorteFeuilleRes();
 				include("vues/v_portefeuilleResponsable.php");
 			break;
 			}
-        case 'supprimerVisite':
+		case 'modifierPortefeuille':
+			{
+				$modifP = $pdo->getmodifPortefeuille();
+				include("vues/v_modificationPortefeuille.php");
+			break; 
+			}
+        case 'supprimerPortefeuille':
             {
                
             }

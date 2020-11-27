@@ -76,10 +76,29 @@ class Pdolbc
 	/* Affiche le portefeuille du Responsabele */
 
 	public function getPorteFeuilleRes() {
-		$req = "select * from portefeuille";
+		$req = "select visiteur.matricule, nom, reg_code
+		from portefeuille
+		inner join praticien
+		on praticien.idpraticien = portefeuille.idpraticien
+		inner join visiteur
+		on visiteur.matricule = portefeuille.matricule
+		inner join region
+		on region.sec_num = visiteur.sec_num";
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
+	}
+
+	/* Modifier le porte feuille */
+
+	public function getmodifPortefeuille(){
+		$req=("UPDATE portefeuille SET matricule = :matricule, idspecialite= :idspecialite, idpraticien = :idpraticien 
+		where matricule = :num");
+		$res->bindValue('matricule',$matricule, PDO::PARAM_STR);
+		$res->bindValue('idspecialite', $idspecialite, PDO::PARAM_STR);   
+		$res->bindValue('idpraticien', $idPraticien, PDO::PARAM_STR);
+		$res->bindvalue('num',$num, PDO::PARAM_STR);
+		$res->execute();
 	}
 
 	/* Affiche le portefeuille lié au visiteur*/	
@@ -211,13 +230,7 @@ class Pdolbc
 		return $lesLignes;
 	}
 
-	public function getSpecialites()
-	{
-		$req = "select * from specialite";
-		$res = Pdolbc::$monPdo->query($req);
-		$lesLignes = $res->fetchAll();
-		return $lesLignes;
-	}
+	
 }
 
 ?>

@@ -24,12 +24,15 @@ switch($ucp)
     case "portefeuilleVisiteur" :
         include("controleurs/c_portefeuilleVisiteur.php"); 
         break;
+    case "modifierPortefeuille" : 
+        include("controleurs/c_portefeuilleResponsable.php");
+        break;
     case "modifierPraticiens" :
         include("controleurs/c_modifierPraticiens.php"); 
         break;
-        case "recherchePraticiens" :
-            include("controleurs/c_recherchePraticiens.php"); 
-            break;
+     case "recherchePraticiens" :
+        include("controleurs/c_recherchePraticiens.php"); 
+        break;
     
 }
 
