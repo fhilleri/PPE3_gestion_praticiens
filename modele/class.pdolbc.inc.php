@@ -101,6 +101,12 @@ class Pdolbc
 		$res->execute();
 	}
 
+	/* Supprimer le portefeuille */
+
+	public function getsuprrPortefeuille(){
+		$req=('DELETE ');
+	}
+
 	/* Affiche le portefeuille lié au visiteur*/	
 
 	public function getPorteFeuilleVis() {
