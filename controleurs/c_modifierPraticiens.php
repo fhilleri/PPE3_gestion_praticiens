@@ -37,6 +37,8 @@
 			include("./vues/v_entete.php");
 			include("./vues/v_bandeau.php");
 
+			$specialites = $pdo->getSpecialites();
+
 			include("./vues/v_ajouterPraticien.php");
 			include("./vues/v_pied.php");
 
@@ -45,7 +47,8 @@
 		case 'confirmAjout' :
 
 			$idSpecialite = intval($_REQUEST['TSpecialite']);
-			$idPraticien = $pdo->getMaxPraticienIndex()["max"] +1;
+			var_dump($idSpecialite);
+			$idPraticien = $pdo->getMaxPraticienIndexParSpe($idSpecialite)["max"] +1;
 			$note = $_REQUEST['TNote'];
 			$nom = $_REQUEST['TNom'];
 			$prenom = $_REQUEST['TPrenom'];

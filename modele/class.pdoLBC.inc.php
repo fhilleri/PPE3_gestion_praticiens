@@ -99,10 +99,11 @@ class Pdolbc
 		//print_r($res->errorInfo());
 	}
 
-	public function getMaxPraticienIndex()
+	public function getMaxPraticienIndexParSpe($specialite)
 	{
-		$req = "SELECT MAX(idPraticien) as max FROM praticien";
+		$req = "SELECT MAX(idPraticien) as max FROM praticien WHERE idspecialite = :specialite";
 		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue('specialite', $specialite);
 		$res->execute();
 		return $res->fetch();
 	}
@@ -110,7 +111,7 @@ class Pdolbc
 	public function ajouterPraticien($idSpecialite, $idPraticien, $note, $nom, $prenom, $rue, $codePostal, $ville, $longitude, $latitude)
 	{
 		$req = "INSERT INTO `praticien` (`idspecialite`, `idPraticien`, `note`, `nom`, `prenom`, `rue`, `codePostal`, `ville`, `longitude`, `latitude`) 
-		VALUES (':idspecialite', ':idPraticien', ':note', ':nom', ':prenom', ':rue', ':codePostal', ':ville', ':longitude', ':latitude')";
+		VALUES (:idspecialite, :idPraticien, :note, :nom, :prenom, :rue, :codePostal, :ville, :longitude, :latitude)";
 		$res = Pdolbc::$monPdo->prepare($req);
 
 		var_dump($idSpecialite);
@@ -137,6 +138,13 @@ class Pdolbc
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
+	}
+
+	public function getSpecialites() {
+		$req = "SELECT * FROM specialite";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->execute();
+		return $res->fetchAll();
 	}
 }
 ?>
