@@ -30,8 +30,8 @@
 				}
            ?>
         </select>
-     
-        <input type="Submit" value="Ajouter un praticiens" href="index.php?uc=praticiens&ucp=modifierPraticiens&action=ajout"></a></td> 
+      
+        <a href=index.php?uc=praticiens&ucp=modifierPraticiens&action=ajout>Ajouter un praticiens</a>
        
         <table border=3 cellspacing=1 >
             <tr>
