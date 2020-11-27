@@ -38,8 +38,8 @@
                 <?php 
 
                 ?>
-				<td width=30><a href=index.php?ucp=modifierPraticien&action=modificationPraticien&num=<?php echo $num ?>><img src="images/modifier.png" title="Modif"></a></td>
-                <td width=30><a href=index.php?ucp=afficherPortefeuille&action=affichagePortefeuille&num=<?php echo $num ?>>Afficher le portefeuille</a></td>
+				<td width=30><a href=index.php?ucp=modifierPraticien&action=modificationPraticien&num=<?php echo $num ?>><img src="images/modification.png" weight="50px" height="50px" title="Modif"></a></td>
+                <td width=30><a href=index.php?ucp=afficherPortefeuille&action=affichagePortefeuille&num=<?php echo $num ?>><img src="images/portefeuille.jpg" weight="50px" height="50px" title="Portefeuille"></a></td>
             </tr>
             <?php 
         } 
@@ -48,7 +48,7 @@
         </table>
         </br>
 
-        <input type="Submit" value="OUI">
+        <input type="Submit" value="ACCUEIL">
     </form>
     </center>
     </div>
