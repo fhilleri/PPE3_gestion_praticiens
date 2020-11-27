@@ -9,7 +9,8 @@
 <body>
     <center>
     <form action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post" id="tableauVisiteur">
-        <p><H1>Recherche de praticiens</H1><br>
+           
+        <p><H1><br>Recherche de praticiens</H1><br>
 
 			<tr><td>Matricule visiteur</td><td>
 			<select name="numVisiteur">
@@ -29,6 +30,8 @@
 				}
            ?>
         </select>
+     
+        <input type="Submit" value="Ajouter un praticiens" href="index.php?uc=praticiens&ucp=modifierPraticiens&action=ajout"></a></td> 
        
         <table border=3 cellspacing=1 >
             <tr>
