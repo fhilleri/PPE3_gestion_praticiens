@@ -1,13 +1,4 @@
-<!doctype html>
-<html>
-
-<head>
-	<title>MODIFIER PRATICIEN</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
-</head>
-
-<body>
+<main>
 
    <p><h1>MODIFICATION DU PRATICIEN :</h1></p><BR/>
 	<form action="index.php?uc=modifierPraticien&action=confirmModifPraticien" method="post">
@@ -29,5 +20,4 @@
 	</form>
  
 	
-	</body>
-</html>
+</main>

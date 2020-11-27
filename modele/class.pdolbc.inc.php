@@ -85,7 +85,7 @@ class Pdolbc
 
 	public function modifierPraticien($nom,$prenom,$specialite,$notoriete,$ville,$num)
 	{
-		$res = PdoTransNat::$monPdo->prepare('UPDATE praticien 
+		$res = Pdolbc::$monPdo->prepare('UPDATE praticien 
 			SET  nom = :nom, prenom = :prenom, idspecialite = :specialite, note = :notoriete, ville = :ville 
  			WHERE idPraticien = :num');
 		
@@ -99,6 +99,78 @@ class Pdolbc
 		//print_r($res->errorInfo());
 	}
 
-	
+	public function getMaxPraticienIndex()
+	{
+		$req = "SELECT MAX(idPraticien) as max FROM praticien";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->execute();
+		return $res->fetch();
+	}
+
+	public function ajouterPraticien($idSpecialite, $idPraticien, $note, $nom, $prenom, $rue, $codePostal, $ville, $longitude, $latitude)
+	{
+		$req = "INSERT INTO `praticien` (`idspecialite`, `idPraticien`, `note`, `nom`, `prenom`, `rue`, `codePostal`, `ville`, `longitude`, `latitude`) 
+		VALUES (':idspecialite', ':idPraticien', ':note', ':nom', ':prenom', ':rue', ':codePostal', ':ville', ':longitude', ':latitude')";
+		$res = Pdolbc::$monPdo->prepare($req);
+
+		var_dump($idSpecialite);
+		var_dump($idPraticien);
+
+		$res->bindValue(':idspecialite', $idSpecialite, PDO::PARAM_INT);
+		$res->bindValue(':idPraticien', $idPraticien, PDO::PARAM_INT);
+		$res->bindValue(':note', $note);
+		$res->bindValue(':nom', $nom);
+		$res->bindValue(':prenom', $prenom);
+		$res->bindValue(':rue', $rue);
+		$res->bindValue(':codePostal', $codePostal);
+		$res->bindValue(':ville', $ville);
+		$res->bindValue(':longitude', $longitude);
+		$res->bindValue(':latitude', $latitude);
+		$res->execute();
+		
+		var_dump($res->ErrorInfo());
+	}
+
+	/* Supprimer les praticiens */
+	public function getSupprimerPraticien() {
+		$req = "Delete from portefeuille where idpraticien=????";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
+
+	public function getPraticiens($numVisiteur,$numSecteur) {
+		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,
+		praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+		from praticien
+		inner join visite on praticien.idPraticien = visite.idPraticien 
+		inner join visiteur on visite.matricule = visiteur.matricule 
+        where visite.dateVisite = (SELECT visite.dateVisite FROM visite p2
+         where visite.idpraticien = p2.idpraticien
+         ORDER by visite.dateVisite DESC
+    LIMIT 1)
+		and visite.matricule = $numVisiteur and visiteur.sec_num=$numSecteur
+        group by visite.idPraticien";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
 }
+	public function getLesVisiteur()
+		{
+			$req = "select * from visiteur";
+			$res = Pdolbc::$monPdo->query($req);
+			$lesLignes = $res->fetchAll();
+			return $lesLignes;
+		}
+
+	public function getLesRegion()
+		{
+			$req = "select * from region";
+			$res = Pdolbc::$monPdo->query($req);
+			$lesLignes = $res->fetchAll();
+			return $lesLignes;
+		}
+}
+
 ?>

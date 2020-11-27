@@ -1,5 +1,20 @@
 <?php
+         
+         
+        if (!isset ($_REQUEST['numVisiteur']) or !isset($_REQUEST['numSecteur'])){ 
+            $numVisiteur =1;
+            $numSecteur=1;}
+        else{
+            $numVisiteur =$_REQUEST['numVisiteur'];
+            $numSecteur=$_REQUEST['numSecteur'];
+        }
 
-	$lesPraticiens = $pdo->getLesPraticiens();
-	include("vues/v_recherchePraticiens.php");	
-?>
+       $Region = $pdo->getLesRegion();
+       $Praticiens = $pdo->getLesVisiteur();
+       $lesPraticiens = $pdo->getPraticiens($numVisiteur,$numSecteur);
+       include("vues/v_recherchePraticiens.php");	
+           
+            
+            
+        ?>  
+
