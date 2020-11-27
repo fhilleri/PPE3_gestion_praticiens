@@ -197,13 +197,7 @@ class Pdolbc
 		return $lesLignes;
 	}
 
-	public function getSpecialites()
-	{
-		$req = "select * from specialite";
-		$res = Pdolbc::$monPdo->query($req);
-		$lesLignes = $res->fetchAll();
-		return $lesLignes;
-	}
+
 }
 
 ?>
