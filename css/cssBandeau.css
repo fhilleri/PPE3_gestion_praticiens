@@ -1,3 +1,9 @@
+#bandeau {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
 #bandeau #menu {
     display: block;
     background-color: lightblue;
@@ -11,14 +17,21 @@
     float: left;
 }
 
+#bandeau #menu li:last-child {
+    float: right;
+}
+
 #bandeau #menu li a {
     text-decoration: none;
     color: black;
     display: block;
     background-color: lightblue;
-    padding: 5px;
+    padding: 10px 10px;
+    font-size: 15px;
+    transition: padding 0.5s, background-color 0.5s;
 }
 
 #bandeau #menu li a:hover {
     background-color: aqua;
+    padding: 10px 20px;
 }

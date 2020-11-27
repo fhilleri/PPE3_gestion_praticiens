@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/cssGeneral.css">
     <link rel="stylesheet" href="./css/cssConnexion.css">
     <title><?= $title ?></title>
+    <script> </script>
 </head>
 <body>
     
