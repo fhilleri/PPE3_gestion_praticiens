@@ -18,6 +18,9 @@ switch($ucp)
     case "deconnexion":
         include("c_deconnexion.php");
     break;
+    case "portefeuilleResponsable":
+        include("controleurs/c_portefeuilleResponsable.php");
+         break;
     case "portefeuilleVisiteur" :
         include("controleurs/c_portefeuilleVisiteur.php"); 
         break;
@@ -27,6 +30,7 @@ switch($ucp)
         case "recherchePraticiens" :
             include("controleurs/c_recherchePraticiens.php"); 
             break;
+    
 }
 
 

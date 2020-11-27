@@ -1,20 +1,21 @@
 <?php
-	$action=$_REQUEST['action'];
+	
+	if(isset ($id)) {
 
-	$id = $_GET['matricule'];
+		$action=$_REQUEST['action'];
+		$id = $_GET['matricule'];
 
-	switch($action)
-	{
-		case 'PraticienParVisiteur' : 
-			$lesPraticiens = $pdo->getPraticiensV($id);
-			include("vues/v_portefeuilleVisiteur.php");	
-		break;
-		case 'VisiteurParPraticien':
-			if(isset ($id)) {
+		switch($action)
+		{
+			case 'VisiteurParPraticien':
+				$lesVisiteurs = $pdo->getVisiteurP($id);
+				include("vues/v_portefeuilleVisiteur.php");
+			break;
+		}
 
+	}else {
 
-			}else {
-
-			}
+		"Vous n'êtes pas connecté"
 	}
+
 ?>

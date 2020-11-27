@@ -9,8 +9,10 @@
     <div class="form-style-6">
 	<form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=connecter" method="post">
 
+
+
 	
-		<input type="submit" value="Valider">
+	<input type="submit" value="Valider">
 	</form>
  	</div>
 	

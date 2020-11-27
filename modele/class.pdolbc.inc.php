@@ -88,7 +88,17 @@ class Pdolbc
 
 	public function getPraticiensV($id)
 	{
-		$req = "select * from praticien";
+		$req = "select idPraticien from portefeuille";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
+	/* visiteur par praticien */
+
+	public function getVisiteurP($id)
+	{
+		$req = "select matricule from portefeuille ";
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
