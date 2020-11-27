@@ -163,43 +163,47 @@ class Pdolbc
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
-}
+	}
 
-public function getVisiteur($numPraticien,$numSecteur) {
-	$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
-	from visiteur
-	inner join visite on visiteur.matricule = visite.matricule 
-	inner join praticien on visite.idPraticien = praticien.idPraticien
-	where visite.dateVisite = (SELECT visite.dateVisite FROM visite p2
-	 where visite.matricule = p2.matricule
-	 ORDER by visite.dateVisite DESC
-LIMIT 1)
-	and visite.idPraticien =$numPraticien and visiteur.sec_num=$numSecteur
-	group by visite.matricule";
-	$res = Pdolbc::$monPdo->query($req);
-	$lesLignes = $res->fetchAll();
-	return $lesLignes;
-}
-
-
-
+	public function getVisiteur($numPraticien,$numSecteur) {
+		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
+		from visiteur
+		inner join visite on visiteur.matricule = visite.matricule 
+		inner join praticien on visite.idPraticien = praticien.idPraticien
+		where visite.dateVisite = (SELECT visite.dateVisite FROM visite p2
+		where visite.matricule = p2.matricule
+		ORDER by visite.dateVisite DESC
+	LIMIT 1)
+		and visite.idPraticien =$numPraticien and visiteur.sec_num=$numSecteur
+		group by visite.matricule";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
 
 	public function getLesVisiteur()
-		{
-			$req = "select * from visiteur";
-			$res = Pdolbc::$monPdo->query($req);
-			$lesLignes = $res->fetchAll();
-			return $lesLignes;
-		}
-		
+	{
+		$req = "select * from visiteur";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}	
 
 	public function getLesRegion()
-		{
-			$req = "select * from region";
-			$res = Pdolbc::$monPdo->query($req);
-			$lesLignes = $res->fetchAll();
-			return $lesLignes;
-		}
+	{
+		$req = "select * from region";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
+	public function getSpecialites()
+	{
+		$req = "select * from specialite";
+		$res = Pdolbc::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
 }
 
 ?>

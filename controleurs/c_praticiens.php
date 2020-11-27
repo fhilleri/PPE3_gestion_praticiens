@@ -24,13 +24,17 @@ switch($ucp)
     case "modifierPraticiens" :
         include("controleurs/c_modifierPraticiens.php"); 
         break;
-     case "recherchePraticiens" :
-            include("controleurs/c_recherchePraticiens.php"); 
-            break;
+    case "recherchePraticiens" :
+        include("controleurs/c_recherchePraticiens.php"); 
+    break;
         
-     case "rechercheVisiteurs" :
-            include("controleurs/c_rechercheVisiteurs.php"); 
-            break;
-        }
+    case "rechercheVisiteurs" :
+        include("controleurs/c_rechercheVisiteurs.php"); 
+    break;
+    
+    case "specialite":
+        include("controleurs/c_specialites.php"); 
+    break;
+}
 
 ?>
