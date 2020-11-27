@@ -8,8 +8,9 @@
 			include("./vues/v_entete.php");
 			include("./vues/v_bandeau.php");
 
-			$num = $_REQUEST['idPraticien'];
-			$praticien = $pdo->getLePraticien($num);
+			$idPraticien = $_REQUEST['idPraticien'];
+			$idSpecialite = $_REQUEST['idSpecialite'];
+			$praticien = $pdo->getLePraticien($idPraticien, $idSpecialite);
 			include("vues/v_modifierPraticien.php");
 			
 			include("./vues/v_pied.php");

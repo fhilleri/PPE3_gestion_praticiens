@@ -1,5 +1,9 @@
+<nav id="connexion">
 <main>
-    <form method="POST" action="index.php?uc=praticiens&ucp=connexion&action=validerConnexion">
+    <div id="loginbox">
+        <img src="/PPE3_GESTION_PRATICIENS/images/avatar.png" id="avatar">
+        <h1>Connexion</h1>
+        <form method="POST" action="index.php?uc=praticiens&ucp=connexion&action=validerConnexion">
         <table>
             <tr>
                 <td><label for="login">Login :</label></td>
@@ -13,4 +17,6 @@
 
         <input type="submit" value="Connexion">
     </form>
+</div>
 </main>
+</nav>
