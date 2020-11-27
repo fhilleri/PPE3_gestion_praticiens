@@ -1,5 +1,6 @@
 <?php
-         
+         include("./vues/v_entete.php");
+         include("./vues/v_bandeau.php");
          
         if (!isset ($_REQUEST['numVisiteur']) or !isset($_REQUEST['numSecteur'])){ 
             $numVisiteur =1;
