@@ -244,8 +244,6 @@ class Pdolbc
 		return $lesLignes;
 	}
 
-	
-
 	public function getIdMaxSpecialite()
 	{
 		$req = "select MAX(idSpecialite) as max from specialite";
