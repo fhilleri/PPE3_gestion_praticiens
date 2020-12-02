@@ -5,7 +5,8 @@
 <head>
 	<title>Liste de vos Praticiens</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
 </head>
 <body>
 
@@ -52,9 +53,29 @@
         </table>
         </br>
 
+
         <input type="Submit" value="ACCUEIL">
     </form>
     </center>
+    <h2>Map :</h2>
+    <div id="map" class="map"></div>
+    <div id="mapMarkers" style="display:hidden">
+        [
+        <?php
+            for ($i=0; $i < count($lesPraticiens); $i++) { 
+                $praticien = $lesPraticiens[$i];
+                $nom = $praticien["prenom"] . " " . $praticien["nom"];
+                $longitude = $praticien["longitude"];
+                $latitude = $praticien["latitude"];
+                echo '{"nom" : "' . $nom . '",';
+                echo '"longitude" : "' . $longitude . '",';
+                echo '"latitude" : "' . $latitude . '"}';
+                if ($i != count($lesPraticiens) -1) echo ",";
+            }
+        ?>
+        ]
+    </div>
+    <script src="./js/map.js"></script>
     </div>
 </body>
 </html>
