@@ -11,8 +11,22 @@ class Pdolbc
 			
 	private function __construct()
 	{
-    		Pdolbc::$monPdo = new PDO(Pdolbc::$serveur.';'.Pdolbc::$bdd, Pdolbc::$user, Pdolbc::$mdp); 
-			Pdolbc::$monPdo->query("SET CHARACTER SET utf8");
+		try{
+			if ($_SERVER['SERVER_NAME'] == 'localhost')
+			{
+				Pdolbc::$monPdo= new PDO ('mysql:host=localhost;dbname=lbc', 'root','');
+				Pdolbc::$monPdo->query("SET CHARACTER SET utf8");
+			}
+			else
+			{
+				Pdolbc::$monPdo = new PDO ('mysql:host=db718503023.db.1and1.com;dbname=db718503023','dbo718503023','BMw1234*');
+				Pdolbc::$monPdo->query("SET CHARACTER SET utf8");
+			}
+		}
+		catch(Exception $e)
+		{
+			die('erreur :'.$e->getMessage()); 
+		}
 	}
 	public function _destruct(){
 		Pdolbc::$monPdo = null;

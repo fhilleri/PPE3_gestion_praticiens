@@ -59,7 +59,7 @@
     </center>
     <h2>Map :</h2>
     <div id="map" class="map"></div>
-    <div id="mapMarkers" style="display:hidden">
+    <div id="mapMarkers" style="display:none">
         [
         <?php
             for ($i=0; $i < count($lesPraticiens); $i++) { 
