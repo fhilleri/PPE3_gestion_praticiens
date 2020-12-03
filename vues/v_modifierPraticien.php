@@ -1,7 +1,7 @@
 <main>
 
    <p><h1>MODIFICATION DU PRATICIEN :</h1></p><BR/>
-	<form action="index.php?uc=modifierPraticien&action=confirmModifPraticien" method="post">
+	<form action="index.php?uc=praticiens&ucp=modifierPraticien&action=confirmModifPraticien" method="post">
    
 		<table>
 		<tbody>

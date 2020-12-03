@@ -43,8 +43,8 @@
                 <?php 
 
                 ?>
-				<td width=30><a href=index.php?ucp=modifierPraticien&action=modificationPraticien&num=<?php echo $num ?>><img src="images/modification.png" weight="50px" height="50px" title="Modif"></a></td>
-                <td width=30><a href=index.php?ucp=afficherPortefeuille&action=affichagePortefeuille&num=<?php echo $num ?>><img src="images/portefeuille.jpg" weight="50px" height="50px" title="Portefeuille"></a></td>
+				<td width=30><a href="index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?= $num ?>&idSpecialite=<?= $specialite ?>"><img src="images/modification.png" weight="50px" height="50px" title="Modif"></a></td>
+                <td width=30><a href="index.php?uc=praticiens&ucp=afficherPortefeuille&action=affichagePortefeuille&num=<?php echo $num ?>"><img src="images/portefeuille.jpg" weight="50px" height="50px" title="Portefeuille"></a></td>
             </tr>
             <?php 
         } 

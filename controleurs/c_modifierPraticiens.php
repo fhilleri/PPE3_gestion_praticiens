@@ -18,6 +18,8 @@
 		}
 		case 'confirmModifPraticien':
 		{
+			//echo("confirmModifPraticien");
+
 			$num = $_REQUEST['TNum'];
 			$nom = $_REQUEST['TNom'];
 			$prenom = $_REQUEST['TPrenom'];
@@ -25,11 +27,11 @@
 			$notoriete = $_REQUEST['TNotoriete'];
 			$ville = $_REQUEST['TVille'];
 
-			$pdo->modifierClient($nom,$prenom,$specialite,$notoriete,$ville,$num);
+			$pdo->modifierPraticien($nom,$prenom,$specialite,$notoriete,$ville,$num);
 			
 			//soit ce code :
-			$lesPraticiens = $pdo->getLesPraticiens();
-			include("vues/v_portefeuilleVisiteur.php");	
+			/*$lesPraticiens = $pdo->getLesPraticiens();
+			include("vues/v_portefeuilleVisiteur.php");	*/
 			break;
 		}
 
@@ -60,6 +62,7 @@
 			$latitude = $_REQUEST['TLatitude'];
 
 			$pdo->ajouterPraticien($idSpecialite, $idPraticien, $note, $nom, $prenom, $rue, $codePostal, $ville, $longitude, $latitude);
+			header("location: index.php?uc=praticiens&ucp=recherchePraticiens");
 		break;
 	}
 ?>
