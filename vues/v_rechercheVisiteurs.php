@@ -9,7 +9,7 @@
 </head>
 <body>
     <center>
-    <form action="index.php?" method="post" id="tableauVisiteur">
+    <form action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post" id="tableauVisiteur">
            
         <p><H1><br>Recherche des visiteurs</H1><br>
             <div id="select">
@@ -65,7 +65,7 @@
         </table>
         </br>
 
-        <input type="Submit" value="ACCUEIL"></a></td> 
+        <input class='bouton' type="Submit" value="Valider"></a></td> 
     </form>
     </center>
     </div>

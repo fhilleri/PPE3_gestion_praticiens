@@ -9,7 +9,7 @@
 </head>
 <body>
     <center>
-    <form action="index.php?" method="post" id="tableauVisiteur">
+    <form action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post" id="tableauVisiteur">
            
         <p><H1><br>Recherche de praticiens</H1><br>
         <div id="select">
@@ -73,7 +73,7 @@
         </table>
         </br>
         <a href=index.php?uc=praticiens&ucp=modifierPraticiens&action=ajout id="ajout">Ajouter un praticien</a>
-        <input type="Submit" value="ACCUEIL"></a></td> 
+        <input class='bouton' type="Submit" value="Valider"></a></td> 
     </form>
     </center>
     </div>
