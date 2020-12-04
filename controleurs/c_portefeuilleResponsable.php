@@ -11,9 +11,18 @@
 			}
 		case 'modifierPortefeuille':
 			{
-				$modifP = $pdo->getmodifPortefeuille();
+				$matricule = $_REQUEST['matricule'];
+				$idspecialite = $_REQUEST['idspecalte'];
+				$idPraticien = $_REQUEST['idPraticien'];
+				
+				$modifP = $pdo->getmodifPortefeuille($matricule, $idspecialite, $idPraticien, $num, $nvmatricule, $nvidspecialite, $nvidpraticien);
 				include("vues/v_modificationPortefeuille.php");
 			break; 
+			}
+		case 'confirmerModif':
+			{
+				include("vues/v_modificationPortefeuille.php");
+			break;
 			}
         case 'supprimerPortefeuille':
             {

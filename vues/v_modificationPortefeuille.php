@@ -9,7 +9,7 @@
 
    <body>
     <div class="form-style-6">
-	<form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=modifierPortefeuille" method="post">
+	<form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerModif" method="post">
         <table>
             <tbody>
                 <tr><td>matricule </td><td><input name="matricule" value= <?php echo $praticien['matricule'] ?> size=20></td></tr>

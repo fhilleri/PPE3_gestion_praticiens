@@ -84,20 +84,24 @@ class Pdolbc
 		on visiteur.matricule = portefeuille.matricule
 		inner join region
 		on region.sec_num = visiteur.sec_num";
-		$res = Pdolbc::$monPdo->query($req);
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->execute();
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
 
 	/* Modifier le porte feuille */
 
-	public function getmodifPortefeuille(){
+	public function getmodifPortefeuille($matricule, $idspecialite, $idPraticien, $num,  $nvmatricule, $nvidspecialite,  $nvidpraticien){
 		$req=("UPDATE portefeuille SET matricule = :matricule, idspecialite= :idspecialite, idpraticien = :idpraticien 
-		where matricule = :num");
+		where matricule = :nvmatricule, idspecialite= :nvidspecialite, idpraticien = :nvidpraticien");
+		$res = Pdolbc::$monPdo->prepare($req);
 		$res->bindValue('matricule',$matricule, PDO::PARAM_STR);
 		$res->bindValue('idspecialite', $idspecialite, PDO::PARAM_STR);   
 		$res->bindValue('idpraticien', $idPraticien, PDO::PARAM_STR);
-		$res->bindvalue('num',$num, PDO::PARAM_STR);
+		$res->bindValue('nvmatricule', $nvmatricule, PDO::PARAM_STR);
+		$res->bindValue('nvidspecialite', $nvidspecialite, PDO::PARAM_STR);
+		$res->bindValue('nvidpraticien', $nvidpraticien, PDO::PARAM_STR);
 		$res->execute();
 	}
 
