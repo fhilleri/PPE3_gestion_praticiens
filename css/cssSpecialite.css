@@ -1,0 +1,28 @@
+table.specialite {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+table.specialite img {
+    height: 20px;
+}
+
+table.specialite tr img {
+    visibility: hidden;
+}
+
+table.specialite tr {
+    border-top: 1px solid black;
+}
+
+table.specialite tr:hover img {
+    visibility: visible;
+}
+
+table.specialite td:first-child {
+    padding: 5px;
+}
+
+table.specialite th {
+    background-color: #58c1e4;
+}

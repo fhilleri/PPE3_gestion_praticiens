@@ -23,7 +23,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
+    background-color: #58c1e4;
     color: white;
   }
 * {
@@ -34,7 +34,7 @@
     border:none;
     outline: none;
     height: 40px;
-    background : #4CAF50 ;
+    background : #58c1e4 ;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
@@ -42,6 +42,27 @@
 }
 
 #tableauVisiteur input[type="submit"]:hover {
+    cursor: pointer;
+    background: #565656;
+    border-bottom-left-radius: 3pc;
+    border-bottom-right-radius: 3pc;
+}
+
+.bouton {
+    display: block;;
+    border:none;
+    outline: none;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px 0;
+    width: max-content;
+    background : #58c1e4 ;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.bouton:hover {
     cursor: pointer;
     background: #565656;
     border-bottom-left-radius: 3pc;
@@ -69,4 +90,9 @@ main {
 .map {
     height: 400px;
     width: 100%;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
 }
