@@ -22,8 +22,8 @@
                 <td width=150><?php echo $nom ?></td>
                 <td width=300><?php echo $region ?></td>
                
-               	<td width=30><a href=index.php?uc=praticiens&ucp=portefeuilleResponsable&action=ajouterPortefeuille&matricule=<?php echo $matricule ?>><img src="images/modifier.gif" title="Ajout"></a></td>
-                <td width=30><a href=index.php?uc=praticiens&ucp=portefeuilleResponsable&action=supprimerPortefeuille&matricule=<?php echo $matricule ?>><img src="images/supp.png" title="Suppr"></a></td>
+               	<td width=30><a href=index.php?uc=praticiens&ucp=portefeuilleResponsable&action=ajouterPortefeuille&matricule=<?php echo $matricule ?>><img class="bouton_image" src="./images/modification.png" title="Ajout"></a></td>
+                <td width=30><a href=index.php?uc=praticiens&ucp=portefeuilleResponsable&action=supprimerPortefeuille&matricule=<?php echo $matricule ?>><img class="bouton_image" src="./images/delete.png" title="Suppr"></a></td>
             </tr>
             <?php 
         }

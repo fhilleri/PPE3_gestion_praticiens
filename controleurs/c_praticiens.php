@@ -15,6 +15,9 @@ switch($ucp)
     case "connexion":
         include("c_connexion.php");
     break;
+    case "portefeuilleResponsable":
+        include("c_portefeuilleResponsable.php");
+    break;
     case "deconnexion":
         include("c_deconnexion.php");
     break;

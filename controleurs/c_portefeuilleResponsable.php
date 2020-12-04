@@ -13,9 +13,9 @@
 			}
 		case 'ajouterPortefeuille':
 			{
-				$matricule = $_REQUEST[':matricule'];
-				$idspecialite = $_REQUEST[':idspecialite'];
-				$idPraticien = $_REQUEST[':idpraticien'];
+				$matricule = $_REQUEST['matricule'];
+				$idspecialite = $_REQUEST['idspecialite'];
+				$idPraticien = $_REQUEST['idpraticien'];
 				
 				$ajoutP = $pdo->getAjoutPortefeuille($matricule, $idspecialite, $idPraticien);
 				include("vues/v_modificationPortefeuille.php");
