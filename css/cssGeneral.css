@@ -2,21 +2,21 @@
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
 }
 
-#tableauVisiteur #td, #tableauVisiteur #th {
+#tableauVisiteur #td,
+#tableauVisiteur #th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#tableauVisiteur tr:nth-child(even){
+#tableauVisiteur tr:nth-child(even) {
     background-color: #f2f2f2;
-
 }
 
 #tableauVisiteur tr:hover {
     background-color: #ddd;
-
 }
 
 #tableauVisiteur th {
@@ -25,20 +25,21 @@
     text-align: left;
     background-color: #58c1e4;
     color: white;
-  }
+}
+
 * {
     font-family: "Open Sans", sans-serif;
 }
 
 #tableauVisiteur input[type="submit"] {
-    border:none;
+    border: none;
     outline: none;
     height: 40px;
-    background : #58c1e4 ;
+    background: #58c1e4;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
-    width:120px;
+    width: 120px;
 }
 
 #tableauVisiteur input[type="submit"]:hover {
@@ -49,14 +50,15 @@
 }
 
 .bouton {
-    display: block;;
-    border:none;
+    display: block;
+    ;
+    border: none;
     outline: none;
     text-decoration: none;
     padding: 10px;
     margin: 10px 0;
     width: max-content;
-    background : #58c1e4 ;
+    background: #58c1e4;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
@@ -95,4 +97,8 @@ main {
 .centered {
     margin-left: auto;
     margin-right: auto;
+}
+
+.bouton_image {
+    height: 30px;
 }

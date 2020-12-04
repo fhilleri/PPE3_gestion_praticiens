@@ -3,10 +3,6 @@ table.specialite {
     border-collapse: collapse;
 }
 
-table.specialite img {
-    height: 20px;
-}
-
 table.specialite tr img {
     visibility: hidden;
 }

@@ -11,16 +11,18 @@
 <body>
 
     <center>
-    <form action="index.php?" method="post" id="tableauVisiteur">
+    <form action="index.php?" method="post">
         <br>
         <br>
         <p><H1>Liste de vos praticiens</H1>
 
-        <table border=3 cellspacing=1 >
+        <table border=3 cellspacing=1 id="tableauVisiteur">
             <tr>
             <th>Nom </th><th>Prénom </th>
             <th>Spécialité </th><th>Notoriété </th>
             <th>Ville </th>
+            <th></th>
+            <th></th>
             </tr> 
         <?php
         
