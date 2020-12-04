@@ -5,6 +5,8 @@
 <head>
 	<title>Recherche de praticiens</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
         
 </head>
 <body>
@@ -65,7 +67,7 @@
                 <?php 
 
                 ?>
-<td width=30><a href=/PPE3_gestion_praticiens/index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?php echo $num ?>&idSpecialite=<?php echo $specialite ?> ><img src="images/modifier.png" title="Modif"></a></td>            </tr>
+                <td width=30><a href=/PPE3_gestion_praticiens/index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?php echo $num ?>&idSpecialite=<?php echo $specialite ?> ><img src="images/modifier.png" title="Modif"></a></td>            </tr>
             <?php 
         } 
 
@@ -76,6 +78,25 @@
         <input class='bouton' type="Submit" value="Valider"></a></td> 
     </form>
     </center>
+    <h2>Map :</h2>
+    <div id="map" class="map"></div>
+    <div id="mapMarkers" style="display:none">
+        [
+        <?php
+            for ($i=0; $i < count($lesPraticiens); $i++) { 
+                $praticien = $lesPraticiens[$i];
+                $nom = $praticien["prenom"] . " " . $praticien["nom"];
+                $longitude = $praticien["longitude"];
+                $latitude = $praticien["latitude"];
+                echo '{"nom" : "' . $nom . '",';
+                echo '"longitude" : "' . $longitude . '",';
+                echo '"latitude" : "' . $latitude . '"}';
+                if ($i != count($lesPraticiens) -1) echo ",";
+            }
+        ?>
+        ]
+    </div>
+    <script src="./js/map.js"></script>
     </div>
 </body>
 </html>

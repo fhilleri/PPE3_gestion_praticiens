@@ -6,7 +6,7 @@
 
 #bandeau #menu {
     display: block;
-    background-color: lightblue;
+    background-color: #58c1e4;
     margin: unset;
     padding: unset;
     list-style-type: none;
@@ -28,10 +28,84 @@
     background-color: lightblue;
     padding: 10px 10px;
     font-size: 15px;
-    transition: padding 0.5s, background-color 0.5s;
+    transition: background-color 0.5s;
 }
 
 #bandeau #menu li a:hover {
     background-color: aqua;
-    padding: 10px 20px;
+}
+
+#bandeau #menu .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+/* The subnavigation menu */
+
+#bandeau #menu .subnav {
+    float: left;
+    overflow: hidden;
+}
+
+
+/* Subnav button */
+
+#bandeau #menu .subnav .subnavbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+
+/* Add a red background color to navigation links on hover */
+
+#bandeau #menu .navbar a:hover,
+.subnav:hover .subnavbtn {
+    background-color: rgb(0, 217, 255);
+}
+
+
+/* Style the subnav content - positioned absolute */
+
+#bandeau #menu .subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: rgb(0 175 205);
+    width: 100%;
+    z-index: 1;
+}
+
+
+/* Style the subnav links */
+
+#bandeau #menu .subnav-content a {
+    float: left;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Add a grey background color on hover */
+
+#bandeau #menu .subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+}
+
+
+/* When you move the mouse over the subnav container, open the subnav content */
+
+#bandeau #menu .subnav:hover .subnav-content {
+    display: block;
 }
