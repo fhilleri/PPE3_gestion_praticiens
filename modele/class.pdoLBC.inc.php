@@ -129,26 +129,28 @@ class Pdolbc
 
 	/* Supprimer le portefeuille */
 
-	public function getsuprrPortefeuille(){
-		$req=('DELETE ');
+	public function getsuprrPortefeuille($matricule, $idspecialite, $idpraticien){
+		$req=('DELETE FROM portefeuille WHERE matricule = :matricule, 
+		idspecialite = :idspecialite, idpraticien= :idpraticien ');
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->bindValue(':idspecialite', $idspecialite, PDO::PARAM_INT);
+		$res->bindValue(':idpraticien', $idpraticien, PDO::PARAM_INT);
+		$res->execute();
 	}
 
-	/* Affiche le portefeuille lié au visiteur*/	
-
-	public function getPorteFeuilleVis() {
-		$req = "select * from portefeuille";
 	
-		$res = Pdolbc::$monPdo->query($req);
-		$lesLignes = $res->fetchAll();
-		return $lesLignes;
-	}
-
 	/* praticien par visiteur */
 
 	public function getPraticiensV($id)
 	{
-		$req = "select idPraticien from portefeuille";
-		$res = Pdolbc::$monPdo->query($req);
+		$req = ("select visiteur.matricule, nom, 
+		from portefeuille
+		inner join praticien
+		on praticien.idpraticien = portefeuille.idpraticien
+		inner join visiteur
+		on visiteur.matricule = portefeuille.matricule");
+		$res = Pdolbc::$monPdo->prepare($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
