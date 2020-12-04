@@ -18,7 +18,7 @@
 
                         <tr>
                             <td><?=$nomSpecialite?></td>
-                            <td><a href="index.php?uc=praticiens&ucp=specialite&action=modifier"><button>Modifier</button></a></td>
+                            <td><a href="index.php?uc=praticiens&ucp=specialite&action=modifier&idSpecialite=<?= $idSpecialite ?>"><button>Modifier</button></a></td>
                             <td><a href="index.php?uc=praticiens&ucp=specialite&action=confirmSupprimer&idSpecialite=<?= $idSpecialite ?>"><button>Supprimer</button></a></td>
                         </tr>
 

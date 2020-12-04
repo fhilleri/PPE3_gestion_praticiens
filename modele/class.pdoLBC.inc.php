@@ -11,8 +11,22 @@ class Pdolbc
 			
 	private function __construct()
 	{
-    		Pdolbc::$monPdo = new PDO(Pdolbc::$serveur.';'.Pdolbc::$bdd, Pdolbc::$user, Pdolbc::$mdp); 
-			Pdolbc::$monPdo->query("SET CHARACTER SET utf8");
+		try{
+			if ($_SERVER['SERVER_NAME'] == 'localhost')
+			{
+				Pdolbc::$monPdo= new PDO ('mysql:host=localhost;dbname=lbc', 'root','');
+				Pdolbc::$monPdo->query("SET CHARACTER SET utf8");
+			}
+			else
+			{
+				Pdolbc::$monPdo = new PDO ('mysql:host=db718503023.db.1and1.com;dbname=db718503023','dbo718503023','BMw1234*');
+				Pdolbc::$monPdo->query("SET CHARACTER SET utf8");
+			}
+		}
+		catch(Exception $e)
+		{
+			die('erreur :'.$e->getMessage()); 
+		}
 	}
 	public function _destruct(){
 		Pdolbc::$monPdo = null;
@@ -54,6 +68,15 @@ class Pdolbc
 		$res->execute();
 		return $res->fetchAll();
 	}
+
+	public function getSpecialite($id) {
+		$req = "SELECT * FROM specialite WHERE idspecialite = :id";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':id', $id);
+		$res->execute();
+		return $res->fetch();
+	}
+
 	public function getLesPraticiens()
 	{
 		$req = "select * from praticien";
@@ -266,11 +289,20 @@ class Pdolbc
 		$res->execute();
 	}
 
+	public function modifierSpecialite($idSpecialite, $nomSpecialite)
+	{
+		$req = "UPDATE `specialite` SET `nomspecialite` = :nomSpecialite WHERE `specialite`.`idspecialite` = :idSpecialite;";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':nomSpecialite', $nomSpecialite);
+		$res->bindValue(':idSpecialite', $idSpecialite);
+		$res->execute();
+	}
+
 	public function supprimerSpecialite($idSpecialite)
 	{
-		$req = "DELETE FROM `specialite` WHERE `specialite`.`idspecialite` = :idSpecialite";
+		$req = "DELETE FROM specialite WHERE specialite.idspecialite = :idspecialite";
 		$res = Pdolbc::$monPdo->prepare($req);
-		$res->bindValue(':idspecialite', $idSpecialite);
+		$res->bindValue(':idspecialite', $idSpecialite, PDO::PARAM_INT);
 		$res->execute();
 	}
 }

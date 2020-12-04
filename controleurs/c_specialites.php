@@ -25,10 +25,22 @@ switch($action)
 
         include("./vues/v_pied.php");
     break;
+    
+    case "modifier":
+        $idSpecialite = $_REQUEST["idSpecialite"];
+        $specialite = $pdo->getSpecialite($idSpecialite);
+
+        $title = "Spécialités";
+        include("./vues/v_entete.php");
+        include("./vues/v_bandeau.php");
+
+        include("./vues/v_specialiteModification.php");
+
+        include("./vues/v_pied.php");
+    break;
 
     case "comfirmAjouter":
         $nomSpecialite = $_REQUEST["Fnom"];
-        
         $pdo->ajouterSpecialite($nomSpecialite);
         header("location: index.php?uc=praticiens&ucp=specialite");
         
@@ -37,6 +49,14 @@ switch($action)
     case "confirmSupprimer":
         $idSpecialite = $_REQUEST["idSpecialite"];
         $pdo->supprimerSpecialite($idSpecialite);
+        header("location: index.php?uc=praticiens&ucp=specialite");
+    break;
+
+    case "comfirmModifier":
+        $nomSpecialite = $_REQUEST["Fnom"];
+        $idSpecialite = $_REQUEST["Fid"];
+        $pdo->modifierSpecialite($idSpecialite, $nomSpecialite);
+        header("location: index.php?uc=praticiens&ucp=specialite");
     break;
 }
 
