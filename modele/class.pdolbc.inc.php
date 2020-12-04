@@ -115,17 +115,16 @@ class Pdolbc
 
 	/* Modifier le porte feuille */
 
-	public function getmodifPortefeuille($matricule, $idspecialite, $idPraticien, $num,  $nvmatricule, $nvidspecialite,  $nvidpraticien){
-		$req=("UPDATE portefeuille SET matricule = :matricule, idspecialite= :idspecialite, idpraticien = :idpraticien 
-		where matricule = :nvmatricule, idspecialite= :nvidspecialite, idpraticien = :nvidpraticien");
+	public function getAjoutPortefeuille($matricule, $idspecialite, $idPraticien){
+		$req=("INSERT INTO portefeuille (matricule, idspecialite, idpraticien)
+		VALUES (:matricule, :idspecialite, :idpraticien )");
 		$res = Pdolbc::$monPdo->prepare($req);
-		$res->bindValue('matricule',$matricule, PDO::PARAM_STR);
-		$res->bindValue('idspecialite', $idspecialite, PDO::PARAM_STR);   
-		$res->bindValue('idpraticien', $idPraticien, PDO::PARAM_STR);
-		$res->bindValue('nvmatricule', $nvmatricule, PDO::PARAM_STR);
-		$res->bindValue('nvidspecialite', $nvidspecialite, PDO::PARAM_STR);
-		$res->bindValue('nvidpraticien', $nvidpraticien, PDO::PARAM_STR);
+		
+		$res->bindValue(':matricule',$matricule, PDO::PARAM_STR);
+		$res->bindValue(':idspecialite', $idspecialite, PDO::PARAM_STR);   
+		$res->bindValue(':idpraticien', $idPraticien, PDO::PARAM_STR);
 		$res->execute();
+		
 	}
 
 	/* Supprimer le portefeuille */
