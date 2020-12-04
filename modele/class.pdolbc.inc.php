@@ -99,16 +99,67 @@ class Pdolbc
 	/* Affiche le portefeuille du Responsabele */
 
 	public function getPorteFeuilleRes() {
-		$req = "select * from portefeuille";
-		$res = Pdolbc::$monPdo->query($req);
+		$req = "select visiteur.matricule, nom, reg_code
+		from portefeuille
+		inner join praticien
+		on praticien.idpraticien = portefeuille.idpraticien
+		inner join visiteur
+		on visiteur.matricule = portefeuille.matricule
+		inner join region
+		on region.sec_num = visiteur.sec_num";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->execute();
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
 
-	/* Affiche le portefeuille lié au visiteur*/	
+	/* Modifier le porte feuille */
 
-	public function getPorteFeuilleVis() {
-		$req = "select * from portefeuille";
+	public function getAjoutPortefeuille($matricule, $idspecialite, $idPraticien){
+		$req=("INSERT INTO portefeuille (matricule, idspecialite, idpraticien)
+		VALUES (:matricule, :idspecialite, :idpraticien )");
+		$res = Pdolbc::$monPdo->prepare($req);
+		
+		$res->bindValue(':matricule',$matricule, PDO::PARAM_STR);
+		$res->bindValue(':idspecialite', $idspecialite, PDO::PARAM_STR);   
+		$res->bindValue(':idpraticien', $idPraticien, PDO::PARAM_STR);
+		$res->execute();
+		
+	}
+
+	/* Supprimer le portefeuille */
+
+	public function getsuprrPortefeuille($matricule, $idspecialite, $idpraticien){
+		$req=('DELETE FROM portefeuille WHERE matricule = :matricule, 
+		idspecialite = :idspecialite, idpraticien= :idpraticien ');
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->bindValue(':idspecialite', $idspecialite, PDO::PARAM_INT);
+		$res->bindValue(':idpraticien', $idpraticien, PDO::PARAM_INT);
+		$res->execute();
+	}
+
+	
+	/* praticien par visiteur */
+
+	public function getPraticiensV($id)
+	{
+		$req = ("select visiteur.matricule, nom, 
+		from portefeuille
+		inner join praticien
+		on praticien.idpraticien = portefeuille.idpraticien
+		inner join visiteur
+		on visiteur.matricule = portefeuille.matricule");
+		$res = Pdolbc::$monPdo->prepare($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+
+	/* visiteur par praticien */
+
+	public function getVisiteurP($id)
+	{
+		$req = "select matricule from portefeuille ";
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
@@ -163,13 +214,6 @@ class Pdolbc
 		var_dump($res->ErrorInfo());
 	}
 
-	/* Supprimer les praticiens */
-	public function getSupprimerPraticien() {
-		$req = "Delete from portefeuille where idpraticien=????";
-		$res = Pdolbc::$monPdo->query($req);
-		$lesLignes = $res->fetchAll();
-		return $lesLignes;
-	}
 
 
 	public function getPraticiens($numVisiteur,$numSecteur) {

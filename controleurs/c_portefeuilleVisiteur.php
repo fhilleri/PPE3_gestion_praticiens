@@ -1,4 +1,13 @@
 <?php
+	
+	$action=$_REQUEST['action'];
+	switch($action){
+			case 'VisiteurParPraticien':
+				$lesVisiteurs = $pdo->getVisiteurP($id);
+				include("vues/v_portefeuilleVisiteur.php");
+			break;
+		}
+
 	include("./vues/v_entete.php");
 	include("./vues/v_bandeau.php");
 	$lesPraticiens = $pdo->getLesPraticiens();

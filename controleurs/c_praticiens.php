@@ -18,23 +18,19 @@ switch($ucp)
     case "deconnexion":
         include("c_deconnexion.php");
     break;
+    case "portefeuilleResponsable":
+        include("controleurs/c_portefeuilleResponsable.php");
+         break;
     case "portefeuilleVisiteur" :
         include("controleurs/c_portefeuilleVisiteur.php"); 
-    break;
+        break;
     case "modifierPraticiens" :
         include("controleurs/c_modifierPraticiens.php"); 
         break;
-    case "recherchePraticiens" :
+     case "recherchePraticiens" :
         include("controleurs/c_recherchePraticiens.php"); 
-    break;
-        
-    case "rechercheVisiteurs" :
-        include("controleurs/c_rechercheVisiteurs.php"); 
-    break;
+        break;
     
-    case "specialite":
-        include("controleurs/c_specialites.php"); 
-    break;
 }
 
 ?>
