@@ -33,8 +33,8 @@
 			}
         case 'supprimerPortefeuille':
             {
-			   $suppr = $pdo->getsuprrPortefeuille();
-			   include("vues/v_portefeuilleResponsable.php");
+				$suppr = $pdo->getsuprrPortefeuille();
+				include("vues/v_portefeuilleResponsable.php");
 			break;
             }
 	}
