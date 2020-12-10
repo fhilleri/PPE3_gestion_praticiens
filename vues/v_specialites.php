@@ -18,8 +18,8 @@
 
                         <tr>
                             <td><?=$nomSpecialite?></td>
-                            <td><a href="index.php?uc=praticiens&ucp=specialite&action=modifier&idSpecialite=<?= $idSpecialite ?>"><img src="./images/modification.png" alt="Modifier"></a></td>
-                            <td><a href="index.php?uc=praticiens&ucp=specialite&action=confirmSupprimer&idSpecialite=<?= $idSpecialite ?>"><img src="./images/delete.png" alt="Supprimer"></a></td>
+                            <td><a href="index.php?uc=praticiens&ucp=specialite&action=modifier&idSpecialite=<?= $idSpecialite ?>"><img class="bouton_image" src="./images/modification.png" alt="Modifier"></a></td>
+                            <td><a href="index.php?uc=praticiens&ucp=specialite&action=confirmSupprimer&idSpecialite=<?= $idSpecialite ?>"><img class="bouton_image" src="./images/delete.png" alt="Supprimer"></a></td>
                         </tr>
 
                     <?php

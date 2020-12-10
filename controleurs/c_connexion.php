@@ -18,20 +18,17 @@ switch ($action) {
 
         $profil = $pdo->getProfilConnexion($login, $mdp);
 
-        var_dump($profil);
-
         if ($profil !== false) 
         {
-            echo "Bonjour " . $profil["nom"];
 
             $_SESSION['loginClient'] = $profil["login"];
             $_SESSION['typeprofilClient'] = $profil["typeprofil"];
 
-            header("location: http://localhost/PPE3_gestion_praticiens/index.php?uc=praticiens&ucp=accueil");
+            header("location: index.php?uc=praticiens&ucp=accueil");
         }
         else
         {
-            echo("Erreur");
+            header("location: index.php?uc=praticiens&ucp=connexion");
         }
 
         break;

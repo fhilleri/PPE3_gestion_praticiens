@@ -3,10 +3,6 @@ table.specialite {
     border-collapse: collapse;
 }
 
-table.specialite img {
-    height: 20px;
-}
-
 table.specialite tr img {
     visibility: hidden;
 }
@@ -14,6 +10,11 @@ table.specialite tr img {
 table.specialite tr {
     border-top: 1px solid black;
 }
+
+table.specialite tr:nth-child(even) {
+    background-color: rgb(228, 228, 228);
+}
+
 
 table.specialite tr:hover img {
     visibility: visible;
