@@ -7,7 +7,10 @@
 	{
 		case 'afficherPortefeuille':
 			{
-				$leportefeuille = $pdo->getPorteFeuilleRes();
+
+		
+
+				$leportefeuille = $pdo->getPorteFeuilleRes($matricule,$idspecialite,$idPraticien);
 				include("vues/v_portefeuilleResponsable.php");
 			break;
 			}

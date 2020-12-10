@@ -98,15 +98,15 @@ class Pdolbc
 
 	/* Affiche le portefeuille du Responsabele */
 
-	public function getPorteFeuilleRes() {
-		$req = "select visiteur.matricule, nom, reg_code
+	public function getPorteFeuilleRes($matricule,$idspecialite,$idPraticien) {
+		$req = ("select visiteur.matricule, nom, reg_code
 		from portefeuille
 		inner join praticien
 		on praticien.idpraticien = portefeuille.idpraticien
 		inner join visiteur
 		on visiteur.matricule = portefeuille.matricule
 		inner join region
-		on region.sec_num = visiteur.sec_num";
+		on region.sec_num = visiteur.sec_num");
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->execute();
 		$lesLignes = $res->fetchAll();
