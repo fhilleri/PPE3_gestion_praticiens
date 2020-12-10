@@ -169,7 +169,7 @@ class Pdolbc
 	{
 		$res = Pdolbc::$monPdo->prepare('UPDATE praticien 
 			SET  nom = :nom, prenom = :prenom, idspecialite = :specialite, note = :notoriete, ville = :ville 
- 			WHERE idPraticien = :num');
+ 			WHERE idPraticien = :num AND idspecialite = :specialite');
 		
 		$res->bindValue('nom',$nom, PDO::PARAM_STR);
 		$res->bindValue('prenom', $prenom, PDO::PARAM_STR);   
@@ -178,6 +178,7 @@ class Pdolbc
 		$res->bindValue('ville', $ville, PDO::PARAM_STR);
 		$res->bindValue('num',$num, PDO::PARAM_INT);
 		$res->execute();
+		var_dump($res->errorInfo());
 		//print_r($res->errorInfo());
 	}
 

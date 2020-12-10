@@ -29,6 +29,10 @@
 
 			$pdo->modifierPraticien($nom,$prenom,$specialite,$notoriete,$ville,$num);
 			
+			$typeprofil = $_SESSION['typeprofilClient'];
+			if ($typeprofil == 'V') header("location: index.php?uc=praticiens&ucp=portefeuilleVisiteur&action=modification");
+			else header("location: index.php?uc=praticiens&ucp=recherchePraticiens");
+
 			//soit ce code :
 			/*$lesPraticiens = $pdo->getLesPraticiens();
 			include("vues/v_portefeuilleVisiteur.php");	*/
