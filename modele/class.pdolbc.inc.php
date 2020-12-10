@@ -165,21 +165,6 @@ class Pdolbc
 		return $lesLignes;
 	}
 
-/*
-
-	$num = $_REQUEST['TNum'];
-	$specialite = $_REQUEST['TSpecialite'];
-	$nom = $_REQUEST['TNom'];
-	$prenom = $_REQUEST['TPrenom'];
-	$note = $_REQUEST['TNote'];
-	$code = $_REQUEST['TCodePostal'];
-	$ville = $_REQUEST['TVille'];
-	$rue = $_REQUEST['TRue'];
-	$longitude = $_REQUEST['TLongitude'];
-	$latitude = $_REQUEST['TLatitude'];
-
-*/
-	//public function modifierPraticien($nom,$prenom,$specialite,$notoriete,$ville,$num)
 	public function modifierPraticien($num, $specialite, $nom, $prenom, $note, $code, $ville, $rue, $longitude, $latitude)
 	{
 		$res = Pdolbc::$monPdo->prepare('UPDATE praticien 
@@ -197,7 +182,6 @@ class Pdolbc
 		$res->bindValue('longitude', $longitude, PDO::PARAM_STR);
 		$res->bindValue('latitude', $latitude, PDO::PARAM_STR);
 		$res->execute();
-		var_dump($res->errorInfo());
 		//print_r($res->errorInfo());
 	}
 
@@ -216,9 +200,6 @@ class Pdolbc
 		VALUES (:idspecialite, :idPraticien, :note, :nom, :prenom, :rue, :codePostal, :ville, :longitude, :latitude)";
 		$res = Pdolbc::$monPdo->prepare($req);
 
-		var_dump($idSpecialite);
-		var_dump($idPraticien);
-
 		$res->bindValue(':idspecialite', $idSpecialite, PDO::PARAM_INT);
 		$res->bindValue(':idPraticien', $idPraticien, PDO::PARAM_INT);
 		$res->bindValue(':note', $note);
@@ -230,8 +211,6 @@ class Pdolbc
 		$res->bindValue(':longitude', $longitude);
 		$res->bindValue(':latitude', $latitude);
 		$res->execute();
-		
-		var_dump($res->ErrorInfo());
 	}
 
 

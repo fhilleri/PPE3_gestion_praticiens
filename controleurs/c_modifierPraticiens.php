@@ -58,7 +58,6 @@
 		case 'confirmAjout' :
 
 			$idSpecialite = intval($_REQUEST['TSpecialite']);
-			var_dump($idSpecialite);
 			$idPraticien = $pdo->getMaxPraticienIndexParSpe($idSpecialite)["max"] +1;
 			$note = $_REQUEST['TNote'];
 			$nom = $_REQUEST['TNom'];
