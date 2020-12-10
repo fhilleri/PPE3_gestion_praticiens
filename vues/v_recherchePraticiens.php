@@ -67,7 +67,7 @@
                 <?php 
 
                 ?>
-                <td width=30><a href=/PPE3_gestion_praticiens/index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?php echo $num ?>&idSpecialite=<?php echo $specialite ?> ><img class="bouton_image" src="./images/modification.png" title="Modif"></a></td>
+                <td width=30><a href=index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?php echo $num ?>&idSpecialite=<?php echo $specialite ?> ><img class="bouton_image" src="./images/modification.png" title="Modif"></a></td>
             </tr>
             <?php 
         } 
