@@ -13,11 +13,21 @@
       <div class="subnav">
         <button class="subnavbtn">Praticiens<i class="fa fa-caret-down"></i></button>
         <div class="subnav-content">
-          <a href="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille">Gestion Portefeuille</a>
-          <a href="index.php?uc=praticiens&ucp=portefeuilleVisiteur&action=modification">Praticiens par visiteur</a>
-          <a href="index.php?uc=praticiens&ucp=specialite&action=afficher">Specialités</a>
-          <a href="index.php?uc=praticiens&ucp=rechercheVisiteurs">Recherche visiteurs</a>
-          <a href="index.php?uc=praticiens&ucp=recherchePraticiens">Recherche praticiens</a>
+          <?php 
+            if (isset($_SESSION['typeprofilClient']))
+            {
+              $typeProfil = $_SESSION['typeprofilClient'];
+              if ($typeProfil == 'V') echo ('<a href="index.php?uc=praticiens&ucp=portefeuilleVisiteur&action=modification">Praticiens par visiteur</a>');
+              else if ($typeProfil == 'R' || $typeProfil == 'S')
+              {
+                echo ('<a href="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille">Gestion Portefeuille</a>
+                <a href="index.php?uc=praticiens&ucp=specialite&action=afficher">Specialités</a>
+                <a href="index.php?uc=praticiens&ucp=rechercheVisiteurs">Recherche visiteurs</a>
+                <a href="index.php?uc=praticiens&ucp=recherchePraticiens">Recherche praticiens</a>');
+              }
+            }
+          ?>
+          
         </div>
       </div>
       <div class="subnav">
