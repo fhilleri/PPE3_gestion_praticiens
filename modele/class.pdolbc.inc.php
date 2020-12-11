@@ -98,7 +98,7 @@ class Pdolbc
 
 	/* Affiche le portefeuille du Responsabele */
 
-	public function getPorteFeuilleRes($matricule,$idspecialite,$idPraticien) {
+	public function getPorteFeuilleRes() {
 		$req = ("select visiteur.matricule, nom, reg_code
 		from portefeuille
 		inner join praticien

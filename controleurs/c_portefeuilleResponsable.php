@@ -10,7 +10,7 @@
 
 		
 
-				$leportefeuille = $pdo->getPorteFeuilleRes($matricule,$idspecialite,$idPraticien);
+				$leportefeuille = $pdo->getPorteFeuilleRes();
 				include("vues/v_portefeuilleResponsable.php");
 			break;
 			}
