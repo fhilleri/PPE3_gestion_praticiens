@@ -16,6 +16,8 @@
             $matricule = $relations['matricule'];
             $nom = $relations['nom'];
             $region = $relations['reg_code'];
+            $idspecialite = $relations['idspecialite'];
+            $idPraticien = $relations['idPraticien'];
            
             ?>
             <tr>

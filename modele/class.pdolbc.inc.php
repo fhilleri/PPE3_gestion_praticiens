@@ -99,7 +99,7 @@ class Pdolbc
 	/* Affiche le portefeuille du Responsabele */
 
 	public function getPorteFeuilleRes() {
-		$req = ("select visiteur.matricule, nom, reg_code
+		$req = ("select visiteur.matricule, nom, reg_code, idspecialite, idPraticien
 		from portefeuille
 		inner join praticien
 		on praticien.idpraticien = portefeuille.idpraticien
