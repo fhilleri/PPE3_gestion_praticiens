@@ -26,8 +26,8 @@
                 <td width=300><?php echo $region ?></td>
                 
                
-               	<td width=30><a href=index.php?uc=praticiens&ucp=portefeuilleResponsable&action=ajouterPortefeuille&matricule=<?php echo $matricule ?>=&idPraticien=<?php echo $idPraticien ?>=&idspecialite=<?php echo $idspecialite?>><img class=".bouton_image" src="./images/modification.png" title="Ajout"></a></td>
-                <td width=30><a href=index.php?uc=praticiens&ucp=portefeuilleResponsable&action=supprimerPortefeuille&matricule=<?php echo $matricule ?>=&idPraticien=<?php echo $idPraticien ?>=&idspecialite=<?php echo $idspecialite?>><img class=".bouton_image" src="./images/delete.png" title="Suppr"></a></td>
+               	<td width=30><a href=index.php?uc=praticiens&ucp=portefeuilleResponsable&action=ajouterPortefeuille&matricule=<?php echo $matricule ?>&idPraticien=<?php echo $idPraticien ?>&idspecialite=<?php echo $idspecialite?>><img class="bouton_image" src="./images/modification.png" title="Ajout"></a></td>
+                <td width=30><a href=index.php?uc=praticiens&ucp=portefeuilleResponsable&action=supprimerPortefeuille&matricule=<?php echo $matricule ?>&idPraticien=<?php echo $idPraticien ?>&idspecialite=<?php echo $idspecialite?>><img class="bouton_image" src="./images/delete.png" title="Suppr"></a></td>
             </tr>
             <?php 
         }

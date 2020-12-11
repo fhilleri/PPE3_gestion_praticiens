@@ -130,6 +130,7 @@ class Pdolbc
 	/* Supprimer le portefeuille */
 
 	public function getsuprrPortefeuille($matricule, $idspecialite, $idpraticien){
+		echo($matricule);
 		$req=('DELETE FROM portefeuille WHERE matricule = :matricule, 
 		idspecialite = :idspecialite, idpraticien= :idpraticien ');
 		$res = Pdolbc::$monPdo->prepare($req);
@@ -137,6 +138,7 @@ class Pdolbc
 		$res->bindValue(':idspecialite', $idspecialite, PDO::PARAM_INT);
 		$res->bindValue(':idpraticien', $idpraticien, PDO::PARAM_INT);
 		$res->execute();
+		var_dump($res->errorInfo());
 	}
 
 	
