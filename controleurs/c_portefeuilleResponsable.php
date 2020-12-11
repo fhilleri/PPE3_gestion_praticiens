@@ -1,22 +1,21 @@
 <?php
-	include("./vues/v_entete.php");
-	include("./vues/v_bandeau.php");
+
 	$action=$_REQUEST['action'];
 	
 	switch($action)
 	{
 		case 'afficherPortefeuille':
 			{
-
-		
-
+				include("./vues/v_entete.php");
+				include("./vues/v_bandeau.php");
 				$leportefeuille = $pdo->getPorteFeuilleRes();
 				include("vues/v_portefeuilleResponsable.php");
 			break;
 			}
 		case 'ajouterPortefeuille':
 			{
-	
+				include("./vues/v_entete.php");
+				include("./vues/v_bandeau.php");
 				include("vues/v_ajouterPortefeuille.php");
 			break; 
 			}
@@ -37,7 +36,6 @@
 				$idPraticien = $_REQUEST['idPraticien'];
 
 				$suppr = $pdo->getsuprrPortefeuille($matricule, $idspecialite, $idPraticien);
-				include("vues/v_portefeuilleResponsable.php");
 				header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
 			break;
             }
