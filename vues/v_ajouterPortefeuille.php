@@ -1,6 +1,6 @@
 <main>
     <h1>Ajout Portefeuille :</h1>
-	<form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerAjout" method="post">
+	<form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=ajouterPortefeuille" method="post">
 	<center>
 		<table>
 		<tbody>
