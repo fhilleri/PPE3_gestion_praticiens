@@ -13,5 +13,5 @@
         }
     }
 	
-	include("./vues/v_entete.php");	
+	include("./vues/pied.php");	
 ?>

@@ -1,7 +1,5 @@
 
-<!doctype html>
-<html>
-    <body>
+<main>
     <h1>PorteFeuille</h1>
     <form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille" method="post">
     <table >
@@ -35,5 +33,4 @@
 	</form>
     </div>
 	
-	</body>
-</html>
+</main>

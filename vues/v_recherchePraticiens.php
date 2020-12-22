@@ -1,15 +1,5 @@
+<main>
 <nav id="recherche">
-<!doctype html>
-<html>
-
-<head>
-	<title>Recherche de praticiens</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
-        
-</head>
-<body>
     <center>
     <form action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post" id="tableauVisiteur">
            
@@ -99,6 +89,5 @@
     </div>
     <script src="./js/map.js"></script>
     </div>
-</body>
-</html>
 </nav>
+</main>

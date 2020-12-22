@@ -6,6 +6,7 @@
 	{
 		case 'afficherPortefeuille':
 			{
+				$title = "Portefeuille";
 				include("./vues/v_entete.php");
 				include("./vues/v_bandeau.php");
 				$leportefeuille = $pdo->getPorteFeuilleRes();
@@ -14,6 +15,7 @@
 			}
 		case 'ajouterPortefeuille':
 			{
+				$title = "Ajouter portefeuille";
 				include("./vues/v_entete.php");
 				include("./vues/v_bandeau.php");
 				include("vues/v_ajouterPortefeuille.php");
@@ -34,6 +36,8 @@
 			$idspecialite = $_REQUEST['idspecialite'];
 			$idPraticien = $_REQUEST['idPraticien'];
 			$elementPortefeuille = $pdo->getElementPorteFeuille($matricule, $idspecialite, $idPraticien);
+
+			$title = 'Modifier portefeuille';
 			include("./vues/v_entete.php");
 			include("./vues/v_bandeau.php");
 			include("vues/v_modifierPortefeuille.php");
@@ -63,5 +67,5 @@
 			break;
             }
 	}
-	include("./vues/v_entete.php");	
+	include("./vues/pied.php");	
 ?>

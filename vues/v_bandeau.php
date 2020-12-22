@@ -17,7 +17,7 @@
             if (isset($_SESSION['typeprofilClient']))
             {
               $typeProfil = $_SESSION['typeprofilClient'];
-              if ($typeProfil == 'V') echo ('<a href="index.php?uc=praticiens&ucp=portefeuilleVisiteur&action=modification">Praticiens par visiteur</a>');
+              if ($typeProfil == 'V') echo ('<a href="index.php?uc=praticiens&ucp=portefeuilleVisiteur">Praticiens par visiteur</a>');
               else if ($typeProfil == 'R' || $typeProfil == 'S')
               {
                 echo ('<a href="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille">Gestion Portefeuille</a>

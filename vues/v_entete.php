@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="./css/cssConnexion.css">
     <link rel="stylesheet" href="./css/cssRecherche.css">
     <link rel="stylesheet" href="./css/cssSpecialite.css">
-    <title><?= $title ?></title>
-    <script> </script>
+    <title><?php if (isset($title)) echo $title ?></title>
+    <?php 
+        if (isset($entete)) echo $entete;
+    ?>
 </head>
 <body>
     
