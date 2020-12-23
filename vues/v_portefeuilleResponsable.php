@@ -32,7 +32,7 @@
             <?php 
         }
         ?>
-        <a class="bouton centered" href="index.php?uc=praticiens&ucp=specialite&action=ajouter">Ajouter une visite</a>
+       
 	</form>
     </div>
 	
