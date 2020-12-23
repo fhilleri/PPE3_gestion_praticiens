@@ -328,6 +328,15 @@ class Pdolbc
 		$res->bindValue(':idspecialite', $idSpecialite, PDO::PARAM_INT);
 		$res->execute();
 	}
+
+	public function getCountPraticienSpecialite($idSpecialite)
+	{
+		$req = "SELECT COUNT(*) as 'count' FROM praticien WHERE praticien.idspecialite = :idspecialite";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':idspecialite', $idSpecialite, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetch();
+	}
 }
 
 ?>

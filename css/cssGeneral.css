@@ -101,3 +101,13 @@ main {
 .bouton_image {
     height: 30px;
 }
+
+.erreur {
+    background-color: #ff7979;
+    border-style: solid;
+    border-width: 2px;
+    width: max-content;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}

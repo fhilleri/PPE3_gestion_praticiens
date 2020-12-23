@@ -1,6 +1,9 @@
 
 <main>
     <h1>PorteFeuille</h1>
+
+    <a class='bouton centered' href='index.php?uc=praticiens&ucp=portefeuilleResponsable&action=ajouterPortefeuille'>Ajouter une relation</a>
+
     <form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille" method="post">
     <table >
             <tr>
