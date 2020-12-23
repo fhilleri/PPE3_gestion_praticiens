@@ -38,9 +38,6 @@ switch($ucp)
     case "portefeuilleResponsable":
         if (checkPermission(['R', 'S'])) include("c_portefeuilleResponsable.php");
         break;
-    case "portefeuilleResponsable":
-        if (checkPermission(['R', 'S'])) include("controleurs/c_portefeuilleResponsable.php");
-        break;
     case "portefeuilleVisiteur" :
         if (checkPermission(['V'])) include("controleurs/c_portefeuilleVisiteur.php"); 
         break;
