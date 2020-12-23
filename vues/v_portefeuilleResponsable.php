@@ -1,9 +1,10 @@
 
-<!doctype html>
-<html>
-   <body>
-   <h1>PorteFeuille</h1>
-   	<form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille" method="post">
+<main>
+    <h1>PorteFeuille</h1>
+
+    <a class='bouton centered' href='index.php?uc=praticiens&ucp=portefeuilleResponsable&action=ajouterPortefeuille'>Ajouter une relation</a>
+
+    <form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille" method="post">
     <table >
             <tr>
             <td>Matricule visiteur :</td><td>Nom praticien :</td>
@@ -11,14 +12,14 @@
             </tr> 
         <?php
 
-	    foreach( $leportefeuille as $relations)
+        foreach( $leportefeuille as $relations)
         {
             $matricule = $relations['matricule'];
             $nom = $relations['nom'];
             $region = $relations['reg_code'];
             $idspecialite = $relations['idspecialite'];
             $idPraticien = $relations['idPraticien'];
-           
+        
             ?>
             <tr>
                 <td width=150><?php echo $matricule ?></a></td>
@@ -33,7 +34,6 @@
         ?>
         <a class="bouton centered" href="index.php?uc=praticiens&ucp=specialite&action=ajouter">Ajouter une visite</a>
 	</form>
- 	</div>
+    </div>
 	
-	</body>
-</html>
+</main>

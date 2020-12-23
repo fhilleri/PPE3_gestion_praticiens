@@ -34,7 +34,7 @@
 			$pdo->modifierPraticien($num, $specialite, $nom, $prenom, $note, $code, $ville, $rue, $longitude, $latitude);
 			
 			$typeprofil = $_SESSION['typeprofilClient'];
-			if ($typeprofil == 'V') header("location: index.php?uc=praticiens&ucp=portefeuilleVisiteur&action=modification");
+			if ($typeprofil == 'V') header("location: index.php?uc=praticiens&ucp=portefeuilleVisiteur");
 			else header("location: index.php?uc=praticiens&ucp=recherchePraticiens");
 
 			//soit ce code :

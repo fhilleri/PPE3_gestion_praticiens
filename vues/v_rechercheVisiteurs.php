@@ -1,16 +1,8 @@
+<main>
 <nav id="recherche">
-<!doctype html>
-<html>
-
-<head>
-	<title>Recherche des visiteur</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
-</head>
-<body>
     <center>
     <form action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post" id="tableauVisiteur">
-           
+        
         <p><H1><br>Recherche des visiteurs</H1><br>
             <div id="select">
 			<tr><td>Noms praticiens</td><td>
@@ -36,7 +28,7 @@
             
         </select>
             </div>
-       
+        
         <table border=3 cellspacing=1 >
             <tr>
             <th>Matricule </th>
@@ -69,6 +61,5 @@
     </form>
     </center>
     </div>
-</body>
-</html>
 </nav>
+</main>

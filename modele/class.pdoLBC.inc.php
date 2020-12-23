@@ -113,6 +113,28 @@ class Pdolbc
 		return $lesLignes;
 	}
 
+	/* Selectionne un élément du portefeuille du Responsabele */
+
+	public function getElementPorteFeuille($matricule, $idspecialite, $idPraticien) {
+		$req = ("SELECT visiteur.matricule, nom, reg_code, praticien.idspecialite, praticien.idPraticien
+		from portefeuille
+		inner join praticien
+		on praticien.idpraticien = portefeuille.idpraticien
+		inner join visiteur
+		on visiteur.matricule = portefeuille.matricule
+		inner join region
+		on region.sec_num = visiteur.sec_num
+		WHERE visiteur.matricule = :matricule AND praticien.idspecialite = :idspecialite
+		AND praticien.idPraticien = :idpraticien");
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule',$matricule, PDO::PARAM_STR);
+		$res->bindValue(':idspecialite', $idspecialite, PDO::PARAM_STR);   
+		$res->bindValue(':idpraticien', $idPraticien, PDO::PARAM_STR);
+		$res->execute();
+		$element = $res->fetch();
+		return $element;
+	}
+
 	/* Modifier le porte feuille */
 
 	public function getAjoutPortefeuille($matricule, $idspecialite, $idPraticien){
@@ -305,6 +327,15 @@ class Pdolbc
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->bindValue(':idspecialite', $idSpecialite, PDO::PARAM_INT);
 		$res->execute();
+	}
+
+	public function getCountPraticienSpecialite($idSpecialite)
+	{
+		$req = "SELECT COUNT(*) as 'count' FROM praticien WHERE praticien.idspecialite = :idspecialite";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':idspecialite', $idSpecialite, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetch();
 	}
 }
 

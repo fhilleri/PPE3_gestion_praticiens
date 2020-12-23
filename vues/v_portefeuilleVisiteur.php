@@ -1,14 +1,5 @@
 
-<!doctype html>
-<html>
-
-<head>
-	<title>Liste de vos Praticiens</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
-</head>
-<body>
+<main>
 
     <center>
     <form action="index.php?" method="post">
@@ -79,6 +70,5 @@
     </div>
     <script src="./js/map.js"></script>
     </div>
-</body>
-</html>
+</main>
 
