@@ -10,7 +10,7 @@
         }
     ?>
 
-    <table class="specialite centered">
+    <table class="tableau specialite centered">
         <thead>
             <tr>
                 <th colspan="3">Spécialités</th>

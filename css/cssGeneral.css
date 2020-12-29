@@ -1,53 +1,54 @@
-#tableauVisiteur {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#tableauVisiteur #td,
-#tableauVisiteur #th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-#tableauVisiteur tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-#tableauVisiteur tr:hover {
-    background-color: #ddd;
-}
-
-#tableauVisiteur th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #58c1e4;
-    color: white;
-}
-
 * {
     font-family: "Open Sans", sans-serif;
 }
 
-#tableauVisiteur input[type="submit"] {
-    border: none;
-    outline: none;
-    height: 40px;
-    background: #58c1e4;
-    color: #fff;
-    font-size: 18px;
-    border-radius: 20px;
-    width: 120px;
+html {
+    height: 100%;
+    width: 100%;
 }
 
-#tableauVisiteur input[type="submit"]:hover {
-    cursor: pointer;
-    background: #565656;
-    border-bottom-left-radius: 3pc;
-    border-bottom-right-radius: 3pc;
+body {
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
 }
+
+main {
+    margin-top: 55px;
+    padding: 0px 20px;
+}
+
+/*tableau*/
+
+.tableau {
+    border-collapse: collapse;
+    /*border-style: solid;
+    border-width: 2px;*/
+    box-shadow: 0px 0 5px 0px;
+}
+
+.tableau th {
+    border-width: 1px;
+    background-color: #58c1e4;
+    color: white;
+    padding: 10px;
+}
+
+.tableau td {
+    padding: 5px 15px;
+}
+
+.tableau tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tableau tr:hover {
+    background-color: #ddd;
+}
+
+
 
 .bouton {
     display: block;
@@ -70,32 +71,20 @@
     border-bottom-right-radius: 3pc;
 }
 
-html {
-    height: 100%;
-    width: 100%;
-}
 
-body {
-    max-height: 100%;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    width: 100%;
-}
-
-main {
-    margin-top: 55px;
-    padding: 0px 20px;
-}
 
 .map {
     height: 400px;
     width: 100%;
 }
 
-.centered {
+.centered, .centered *{
     margin-left: auto;
     margin-right: auto;
+}
+
+.text-align {
+    text-align: center;
 }
 
 .bouton_image {

@@ -1,7 +1,6 @@
 <main>
 <nav id="recherche">
-    <center>
-    <form action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post" id="tableauVisiteur">
+    <form class="centered text-align" action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post">
         
         <p><H1><br>Recherche des visiteurs</H1><br>
             <div id="select">
@@ -29,7 +28,7 @@
         </select>
             </div>
         
-        <table border=3 cellspacing=1 >
+        <table class="tableau" cellspacing=1 >
             <tr>
             <th>Matricule </th>
             <th>Secteur </th><th>Date de dernier visite </th>
@@ -44,9 +43,9 @@
         
             ?>
             <tr>
-                <td width=150><?php echo  $num ?></td>
-                <td width=200><?php echo $Region ?></td>
-                <td width=200><?php echo $date ?></td>
+                <td><?php echo  $num ?></td>
+                <td><?php echo $Region ?></td>
+                <td><?php echo $date ?></td>
                 <?php 
 
                 ?>
@@ -59,7 +58,6 @@
 
         <input class='bouton' type="Submit" value="Valider"></a></td> 
     </form>
-    </center>
     </div>
 </nav>
 </main>
