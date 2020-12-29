@@ -16,8 +16,8 @@
                 
                 ?>
                 <tr>
-                    <td width=150><?php echo $nom ?></a></td>
-                    <td width=150><?php echo $matriucle ?></td>
+                    <td><?php echo $nom ?></a></td>
+                    <td><?php echo $matriucle ?></td>
                 </tr>
                 <?php 
             }
