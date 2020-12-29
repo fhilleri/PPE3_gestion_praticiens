@@ -1,7 +1,7 @@
 <main>
 
    <p><h1>MODIFICATION DU PRATICIEN :</h1></p><BR/>
-	<form action="index.php?uc=praticiens&ucp=modifierPraticiens&action=confirmModifPraticien" method="post">
+	<form class="centered" action="index.php?uc=praticiens&ucp=modifierPraticiens&action=confirmModifPraticien" method="post">
    
 		<table>
 		<tbody>
@@ -19,7 +19,7 @@
 		</table>
 		
                 <br/>
-		<input type="submit" value="Valider">
+		<input class="bouton centered" type="submit" value="Valider">
 	</form>
  
 	

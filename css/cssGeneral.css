@@ -2,6 +2,14 @@
     font-family: "Open Sans", sans-serif;
 }
 
+body.onload * {
+    transition: none !important;
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+}
+
 html {
     height: 100%;
     width: 100%;
@@ -52,23 +60,30 @@ main {
 
 .bouton {
     display: block;
+    width: fit-content;
     border: none;
     outline: none;
+    cursor: pointer;
     text-decoration: none;
     padding: 10px;
     margin: 10px 0;
-    width: max-content;
     background: #58c1e4;
     color: #fff;
     font-size: 18px;
-    border-radius: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 2px 0px black;
+    transition: background-color 0.2s;
+}
+
+.bouton.inline {
+    display: inline-block;
+    width: initial;
 }
 
 .bouton:hover {
-    cursor: pointer;
-    background: #565656;
-    border-bottom-left-radius: 3pc;
-    border-bottom-right-radius: 3pc;
+    
+    background: rgb(0 175 205);
+    box-shadow: 0 0 5px 0px black;
 }
 
 
@@ -86,6 +101,10 @@ main {
 .text-align {
     text-align: center;
 }
+
+/*.text-align > * {
+    text-align: initial;
+}*/
 
 .bouton_image {
     height: 30px;

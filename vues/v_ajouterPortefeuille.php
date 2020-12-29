@@ -1,7 +1,6 @@
 <main>
     <h1>Ajout Portefeuille :</h1>
-	<form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerAjout" method="post">
-	<center>
+	<form class="centered" action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerAjout" method="post">
 		<table>
 		<tbody>
 
@@ -14,6 +13,6 @@
 					</table>
 		
                 <br/>
-		<input type="submit" value="Valider">
+		<input class="bouton centered" type="submit" value="Valider">
 	</form>
 </main>

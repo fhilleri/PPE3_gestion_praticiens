@@ -15,7 +15,7 @@
             </tr>
         </table>
 
-        <input type="submit" value="Connexion">
+        <input class="bouton centered" type="submit" value="Connexion">
     </form>
 </div>
 </nav>

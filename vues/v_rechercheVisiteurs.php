@@ -56,7 +56,7 @@
         </table>
         </br>
 
-        <input class='bouton' type="Submit" value="Valider"></a></td> 
+        <input class="bouton centered" type="Submit" value="Valider"></a></td> 
     </form>
     </div>
 </nav>

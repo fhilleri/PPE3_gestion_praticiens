@@ -44,7 +44,7 @@
         </br>
 
 
-        <input type="Submit" value="ACCUEIL">
+        <input class="bouton centered" type="Submit" value="ACCUEIL">
     </form>
     <h2>Map :</h2>
     <div id="map" class="map"></div>

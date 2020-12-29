@@ -1,12 +1,11 @@
 <main>
     <h1>Modifier Portefeuille :</h1>
-	<form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerModification" method="post">
+	<form class="centered" action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerModification" method="post">
 
 	<input hidden name="PnouveauMatricule" value="<?= $matricule ?>">
 	<input hidden name="PnouveauIdspecialite" value="<?= $idspecialite ?>">
 	<input hidden name="PnouveauIdPraticien" value="<?= $idPraticien ?>">
 
-	<center>
 		<table>
 		<tbody>
 
@@ -19,6 +18,6 @@
 					</table>
 		
                 <br/>
-		<input type="submit" value="Valider">
+		<input class="bouton centered" type="submit" value="Valider">
 	</form>
 </main>
