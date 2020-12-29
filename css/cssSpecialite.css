@@ -6,3 +6,7 @@ table.specialite tr img {
 table.specialite tr:hover img {
     visibility: visible;
 }
+
+.specialite.tableau td:not(:first-child) {
+    padding: 5px;
+}
