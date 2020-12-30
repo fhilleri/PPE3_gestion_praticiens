@@ -30,9 +30,7 @@
 
 		</tbody>
 		</table>
-					</table>
-		
-                <br/>
+
 		<input class="bouton centered" type="submit" value="Valider">
 	</form>
 </main>

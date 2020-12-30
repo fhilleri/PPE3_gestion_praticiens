@@ -41,7 +41,6 @@
 
         ?>
         </table>
-        </br>
 
 
         <input class="bouton centered" type="Submit" value="ACCUEIL">

@@ -2,7 +2,7 @@
 <nav id="recherche">
     <form class="centered text-align" action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post">
         
-        <p><H1><br>Recherche des visiteurs</H1><br>
+        <p><H1>Recherche des visiteurs</H1>
             <div id="select">
 			<tr><td>Noms praticiens</td><td>
                
@@ -54,7 +54,6 @@
 
         ?>
         </table>
-        </br>
 
         <input class="bouton centered" type="Submit" value="Valider"></a></td> 
     </form>
