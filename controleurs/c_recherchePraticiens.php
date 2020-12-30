@@ -12,7 +12,21 @@
 
        $Region = $pdo->getLesRegion();
        $Praticiens = $pdo->getLesVisiteur();
-       $lesPraticiens = $pdo->getPraticiens($numVisiteur,$numSecteur);
+       if( $numVisiteur==0 and $numSecteur!=0){
+       $lesPraticiens = $pdo->getPraticiensRegion($numSecteur);
+    }
+       if( $numVisiteur!=0 and $numSecteur!=0){
+        $lesPraticiens = $pdo->getPraticiens($numVisiteur,$numSecteur);
+    }
+    if( $numVisiteur!=0 and $numSecteur==0){
+        $lesPraticiens = $pdo->getPraticiensVisiteur($numVisiteur);
+    }
+    if( $numVisiteur==0 and $numSecteur==0){ 
+    $lesPraticiens = $pdo->getToutPraticiens();
+}
+  
+
+        
        include("vues/v_recherchePraticiens.php");	
            
             

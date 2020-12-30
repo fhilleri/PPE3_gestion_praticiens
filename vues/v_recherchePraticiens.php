@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title>Recherche de praticiens</title>
+	<title>Recherche des praticiens</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         
 </head>
@@ -15,18 +15,22 @@
         <div id="select">
 			<tr><td>Matricule visiteur</td><td>
 			<select name="numVisiteur">
-			<?php 
+         
+            <?php 
+             echo "<option value='" . $Praticiens[""] . "'>" .$Praticiens[""] ."</option>";
 			 foreach($Praticiens as $Praticiens)
 				{ 
 					echo "<option value='" . $Praticiens["matricule"] . "'>" .$Praticiens["matricule"] ."</option>";
-				}
+                }
            ?>
             </select>
             <tr><td>Region</td><td>
 			<select name="numSecteur">
-			<?php 
+            <?php 
+            echo "<option value='" . $Region[""] . "'>" .$Region[""] ."</option>";
 			 foreach($Region as $Region)
 				{ 
+                    
 					echo "<option value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
 				}
            ?>

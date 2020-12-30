@@ -191,6 +191,60 @@ class Pdolbc
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
+	public function getPraticiensRegion($numSecteur) {
+		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+		from praticien
+		inner join visite on praticien.idPraticien = visite.idPraticien 
+		inner join visiteur on visite.matricule = visiteur.matricule 
+		where visite.dateVisite = 
+	(SELECT p2.dateVisite FROM visite p2
+	 where praticien.idPraticien = p2.idpraticien and p2.dateVisite < now()  
+			GROUP by p2.dateVisite DESC LIMIT 1)
+	 and visiteur.sec_num=:numSecteur
+		group by visite.idPraticien";
+		$res = Pdolbc::$monPdo->prepare($req);
+	
+		$res->bindValue(':numSecteur', $numSecteur);
+		$res->execute();
+		
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+	
+	public function getPraticiensVisiteur($numVisiteur) {
+		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+		from praticien
+		inner join visite on praticien.idPraticien = visite.idPraticien 
+		inner join visiteur on visite.matricule = visiteur.matricule 
+		where visite.dateVisite = 
+	(SELECT p2.dateVisite FROM visite p2
+	 where praticien.idPraticien = p2.idpraticien and p2.dateVisite < now()  
+			GROUP by p2.dateVisite DESC LIMIT 1)
+		and visite.matricule =:numVisiteur 
+		group by visite.idPraticien";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':numVisiteur', $numVisiteur);
+	
+		$res->execute();
+		
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+	public function getToutPraticiens() {
+		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+		from praticien
+		inner join visite on praticien.idPraticien = visite.idPraticien 
+		inner join visiteur on visite.matricule = visiteur.matricule 
+		where visite.dateVisite = 
+	(SELECT p2.dateVisite FROM visite p2
+	 where praticien.idPraticien = p2.idpraticien and p2.dateVisite < now()  
+			GROUP by p2.dateVisite DESC LIMIT 1)
+		group by visite.idPraticien" ;
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->execute();
+		
+		$lesLignes = $res->fetchAll();
+	}
 
 	public function getVisiteur($numPraticien,$numSecteur) {
 		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
