@@ -81,7 +81,7 @@
         <?php
         if (isset($_SESSION["loginClient"]))
         {
-          echo '<a href="index.php?uc=praticiens&ucp=deconnexion">Déconnexion</a>';
+          echo '<a class="bouton-deconnexion" href="index.php?uc=praticiens&ucp=deconnexion"><span>Déconnexion</span><span>' . $_SESSION['nomClient'] . ' | ' . $_SESSION['fonctionClient'] . '</span></a>';
         }
         else echo '<a href="index.php?uc=praticiens&ucp=connexion">Connexion</a>';
         ?>

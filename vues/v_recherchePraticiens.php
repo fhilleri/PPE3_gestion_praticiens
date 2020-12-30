@@ -67,7 +67,6 @@
         <a class="bouton centered" href=index.php?uc=praticiens&ucp=modifierPraticiens&action=ajout id="ajout">Ajouter un praticien</a>
         <input class='bouton centered' type="Submit" value="Valider"></a></td> 
     </form>
-    <h2>Map :</h2>
     <div id="map" class="map"></div>
     <div id="mapMarkers" style="display:none">
         [

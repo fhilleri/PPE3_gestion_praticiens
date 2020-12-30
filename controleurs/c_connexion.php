@@ -23,6 +23,17 @@ switch ($action) {
 
             $_SESSION['loginClient'] = $profil["login"];
             $_SESSION['typeprofilClient'] = $profil["typeprofil"];
+            $_SESSION['nomClient'] = $profil["nom"];
+            
+            $fonctions = array(
+                'R' => 'Responsable R',
+                'D' => 'Responsable D',
+                'S' => 'Responsable S',
+                'V' => 'Visiteur',
+                'C' => 'Comptable'
+            );
+
+            $_SESSION['fonctionClient'] = $fonctions[$profil['typeprofil']];
 
             header("location: index.php?uc=praticiens&ucp=accueil");
         }

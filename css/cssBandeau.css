@@ -6,7 +6,7 @@
 
 #bandeau #menu * {
     font-weight: 600;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
 #bandeau #menu #nav {
@@ -113,4 +113,17 @@
 
 #bandeau #menu .subnav:hover .subnav-content {
     display: block;
+}
+
+#bandeau #menu a.bouton-deconnexion {
+    padding: 16.5px 16px;
+    transition: none;
+}
+
+#bandeau #menu .bouton-deconnexion span {
+    display: block;
+}
+
+#bandeau #menu .bouton-deconnexion span:last-child {
+    font-size: small;
 }
