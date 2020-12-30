@@ -1,0 +1,12 @@
+
+table.specialite tr img {
+    visibility: hidden;
+}
+
+table.specialite tr:hover img {
+    visibility: visible;
+}
+
+.specialite.tableau td:not(:first-child) {
+    padding: 5px;
+}

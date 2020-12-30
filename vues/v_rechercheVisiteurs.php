@@ -1,17 +1,8 @@
+<main>
 <nav id="recherche">
-<!doctype html>
-<html>
-
-<head>
-	<title>Recherche des visiteur</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <form class="centered text-align" action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post">
         
-</head>
-<body>
-    <center>
-    <form action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post" id="tableauVisiteur">
-           
-        <p><H1><br>Recherche des visiteurs</H1><br>
+        <p><H1>Recherche des visiteurs</H1>
             <div id="select">
 			<tr><td>Noms praticiens</td><td>
                
@@ -36,8 +27,8 @@
             
         </select>
             </div>
-       
-        <table border=3 cellspacing=1 >
+        
+        <table class="tableau" cellspacing=1 >
             <tr>
             <th>Matricule </th>
             <th>Secteur </th><th>Date de dernier visite </th>
@@ -52,9 +43,9 @@
         
             ?>
             <tr>
-                <td width=150><?php echo  $num ?></td>
-                <td width=200><?php echo $Region ?></td>
-                <td width=200><?php echo $date ?></td>
+                <td><?php echo  $num ?></td>
+                <td><?php echo $Region ?></td>
+                <td><?php echo $date ?></td>
                 <?php 
 
                 ?>
@@ -63,12 +54,9 @@
 
         ?>
         </table>
-        </br>
 
-        <input class='bouton' type="Submit" value="Valider"></a></td> 
+        <input class="bouton centered" type="Submit" value="Valider"></a></td> 
     </form>
-    </center>
     </div>
-</body>
-</html>
 </nav>
+</main>

@@ -1,5 +1,5 @@
-<nav id="connexion">
 <main>
+<nav id="connexion">
     <div id="loginbox">
         <img src="./images/avatar.png" id="avatar">
         <h1>Connexion</h1>
@@ -15,8 +15,8 @@
             </tr>
         </table>
 
-        <input type="submit" value="Connexion">
+        <input class="bouton centered" type="submit" value="Connexion">
     </form>
 </div>
-</main>
 </nav>
+</main>

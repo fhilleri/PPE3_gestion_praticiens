@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="./css/cssGeneral.css">
     <link rel="stylesheet" href="./css/cssConnexion.css">
     <link rel="stylesheet" href="./css/cssRecherche.css">
-    <title><?= $title ?></title>
-    <script> </script>
+    <link rel="stylesheet" href="./css/cssSpecialite.css">
+    <title><?php if (isset($title)) echo $title ?></title>
+    <?php 
+        if (isset($entete)) echo $entete;
+    ?>
 </head>
-<body>
+<body class="onload">
     
