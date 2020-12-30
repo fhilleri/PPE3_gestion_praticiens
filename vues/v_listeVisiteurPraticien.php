@@ -1,6 +1,6 @@
 <main>
     <h1>PorteFeuille praticien</h1>
-    <form action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=VisiteurParPraticien" method="post">
+    <form class="centered" action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=VisiteurParPraticien" method="post">
         <table >
                 <tr>
                 <td>Nom praticien :</td>
