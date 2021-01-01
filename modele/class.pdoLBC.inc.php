@@ -258,7 +258,7 @@ class Pdolbc
 		return $lesLignes;
 	}
 	public function getPraticiensRegion($numSecteur) {
-		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num, praticien.longitude, praticien.latitude
 		from praticien
 		inner join visite on praticien.idPraticien = visite.idPraticien 
 		inner join visiteur on visite.matricule = visiteur.matricule 
@@ -278,7 +278,7 @@ class Pdolbc
 	}
 	
 	public function getPraticiensVisiteur($numVisiteur) {
-		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num, praticien.longitude, praticien.latitude
 		from praticien
 		inner join visite on praticien.idPraticien = visite.idPraticien 
 		inner join visiteur on visite.matricule = visiteur.matricule 
@@ -297,7 +297,7 @@ class Pdolbc
 		return $lesLignes;
 	}
 	public function getToutPraticiens() {
-		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num
+		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num, praticien.longitude, praticien.latitude
 		from praticien
 		inner join visite on praticien.idPraticien = visite.idPraticien 
 		inner join visiteur on visite.matricule = visiteur.matricule 
