@@ -29,9 +29,10 @@
                 echo "<option $selected value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
             }
             ?>
+            </select>
 
+            <input class="bouton centered" type="Submit" value="Valider"></a></td> 
             
-        </select>
             </div>
         
         <table class="tableau" cellspacing=1 >
@@ -61,7 +62,7 @@
         ?>
         </table>
 
-        <input class="bouton centered" type="Submit" value="Valider"></a></td> 
+        
     </form>
     </div>
 </nav>
