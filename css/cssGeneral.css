@@ -24,8 +24,9 @@ body {
 }
 
 main {
-    margin-top: 86px;
-    padding: 0px 20px;
+    margin-top: 66px;
+    padding: 20px 20px;
+    overflow: hidden;
 }
 
 /*tableau*/

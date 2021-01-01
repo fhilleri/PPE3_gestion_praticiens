@@ -1,0 +1,18 @@
+.accueil-p {
+    margin: 20px;
+    overflow: hidden;
+}
+
+.accueil-p img {
+    height: 200px;
+}
+
+.accueil-p img.right {
+    float:right;
+    margin-left: 20px;
+}
+
+.accueil-p img.left {
+    float: left;
+    margin-right: 20px;
+}
