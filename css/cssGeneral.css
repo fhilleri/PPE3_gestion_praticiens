@@ -60,6 +60,8 @@ main {
 
 .bouton {
     display: block;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     border: none;
     outline: none;
@@ -115,6 +117,8 @@ main {
     background-color: #ff7979;
     border-style: solid;
     border-width: 2px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
     width: max-content;
     margin-top: 10px;
     margin-bottom: 10px;
