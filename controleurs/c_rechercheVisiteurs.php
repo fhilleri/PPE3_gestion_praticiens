@@ -4,14 +4,14 @@
     include("./vues/v_bandeau.php");
     
     if (!isset ($_REQUEST['idPraticien']) or !isset($_REQUEST['numSecteur'])){ 
-        $numPraticien =1;
-        $numSecteur=1;}
+        $numPraticien =0;
+        $numSecteur=0;}
     else{
         $numPraticien =$_REQUEST['idPraticien'];
         $numSecteur=$_REQUEST['numSecteur'];
     }
 
-    $Region = $pdo->getLesRegion();
+    $Regions = $pdo->getLesRegion();
     $Praticiens = $pdo->getLesPraticiens();
     $LesVisiteur = $pdo->getVisiteur($numPraticien,$numSecteur);
     include("vues/v_rechercheVisiteurs.php");	

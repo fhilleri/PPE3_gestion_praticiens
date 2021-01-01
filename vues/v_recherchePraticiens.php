@@ -17,7 +17,7 @@
 			<select name="numVisiteur">
          
             <?php 
-            $selected = ($numVisiteur == "" ? "selected" : "");
+            $selected = ($numVisiteur == "0" ? "selected" : "");
             echo "<option $selected value='0'>Tous</option>";
             foreach($Praticiens as $Praticien)
 				{ 
@@ -29,7 +29,7 @@
             <tr><td>Region</td><td>
 			<select name="numSecteur">
             <?php 
-            $selected = ($numSecteur == "" ? "selected" : "");
+            $selected = ($numSecteur == "0" ? "selected" : "");
             echo "<option $selected value='0'>Toutes</option>";
 			 foreach($Regions as $Region)
 
