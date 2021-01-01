@@ -17,22 +17,25 @@
 			<select name="numVisiteur">
          
             <?php 
-             echo "<option value='" . $Praticiens[""] . "'>" .$Praticiens[""] ."</option>";
-			 foreach($Praticiens as $Praticiens)
+            $selected = ($numVisiteur == "" ? "selected" : "");
+            echo "<option $selected value='0'>Tous</option>";
+            foreach($Praticiens as $Praticien)
 				{ 
-					echo "<option value='" . $Praticiens["matricule"] . "'>" .$Praticiens["matricule"] ."</option>";
+                    $selected = ($numVisiteur == $Praticien["matricule"] ? "selected" : "");
+					echo "<option $selected value='" . $Praticien["matricule"] . "'>" .$Praticien["matricule"] ."</option>";
                 }
            ?>
             </select>
             <tr><td>Region</td><td>
 			<select name="numSecteur">
             <?php 
-            echo "<option value='" . $Region[""] . "'>" .$Region[""] ."</option>";
-			 foreach($Region as $Region)
+            $selected = ($numSecteur == "" ? "selected" : "");
+            echo "<option $selected value='0'>Toutes</option>";
+			 foreach($Regions as $Region)
 
 				{ 
-                    
-					echo "<option value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
+                    $selected = ($numSecteur == $Region["sec_num"] ? "selected" : "");
+					echo "<option $selected value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
 				}
             ?>
         </select>
@@ -49,7 +52,7 @@
                 <th></th>
             </tr> 
         <?php
-        
+
         foreach((array)$lesPraticiens as $unPraticien)
         {
             $num = $unPraticien['idPraticien'];

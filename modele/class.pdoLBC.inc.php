@@ -310,6 +310,7 @@ class Pdolbc
 		$res->execute();
 		
 		$lesLignes = $res->fetchAll();
+		return $lesLignes;
 	}
 
 	public function getVisiteur($numPraticien,$numSecteur) {
