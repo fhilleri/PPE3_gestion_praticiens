@@ -16,9 +16,16 @@
     if( $numPraticien=="0" and $numSecteur=="0"){ 
         $LesVisiteur = $pdo->getToutVisiteur();
     }
-    else{
+    if( $numPraticien=="0" and $numSecteur!="0"){
+        $LesVisiteur = $pdo->getVisiteurRegion($numSecteur);
+    }
+    if( $numPraticien!="0" and $numSecteur!="0"){
         $LesVisiteur = $pdo->getVisiteur($numPraticien,$numSecteur);
     }
+    if( $numPraticien!="0" and $numSecteur=="0"){
+        $LesVisiteur = $pdo->getVisiteurPraticiens($numPraticien);
+    }
+ 
     
    
    
