@@ -332,6 +332,42 @@ class Pdolbc
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
+	public function getVisiteurRegion($numSecteur) {
+		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
+		from visiteur
+		inner join visite on visiteur.matricule = visite.matricule 
+		inner join praticien on visite.idPraticien = praticien.idPraticien
+		where visite.dateVisite = (SELECT p2.dateVisite FROM visite p2
+		where visiteur.matricule = p2.matricule and p2.dateVisite < now()
+		ORDER by p2.dateVisite DESC
+	    LIMIT 1)
+		and visiteur.sec_num=:numSecteur";
+
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':numSecteur', $numSecteur);
+		$res->execute();
+
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+	public function getVisiteurPraticiens($numPraticien) {
+		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
+		from visiteur
+		inner join visite on visiteur.matricule = visite.matricule 
+		inner join praticien on visite.idPraticien = praticien.idPraticien
+		where visite.dateVisite = (SELECT p2.dateVisite FROM visite p2
+		where visiteur.matricule = p2.matricule and p2.dateVisite < now()
+		ORDER by p2.dateVisite DESC
+	    LIMIT 1)
+		and visite.idPraticien =:numPraticien ";
+
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':numPraticien', $numPraticien);
+		$res->execute();
+
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
 	public function getToutVisiteur() {
 		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
 		from visiteur
