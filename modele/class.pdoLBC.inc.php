@@ -5,7 +5,7 @@ class Pdolbc
       	private static $serveur='mysql:host=localhost';
       	private static $bdd='dbname=lbc';   		
       	private static $user='root' ;    		
-      	private static $mdp='' ;	
+      	private static $mdp='root' ;	
 		private static $monPdo;
 		private static $monPdolbc = null;
 			
@@ -14,7 +14,7 @@ class Pdolbc
 		try{
 			if ($_SERVER['SERVER_NAME'] == 'localhost')
 			{
-				Pdolbc::$monPdo= new PDO ('mysql:host=localhost;dbname=lbc', 'root','');
+				Pdolbc::$monPdo= new PDO ('mysql:host=localhost;dbname=lbc', 'root','root');
 				Pdolbc::$monPdo->query("SET CHARACTER SET utf8");
 			}
 			else
@@ -327,6 +327,21 @@ class Pdolbc
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->bindValue(':numPraticien', $numPraticien);
 		$res->bindValue(':numSecteur', $numSecteur);
+		$res->execute();
+
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}
+	public function getToutVisiteur() {
+		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
+		from visiteur
+		inner join visite on visiteur.matricule = visite.matricule 
+		inner join praticien on visite.idPraticien = praticien.idPraticien
+		where visite.dateVisite = (SELECT p2.dateVisite FROM visite p2
+		where visite.matricule = p2.matricule and p2.dateVisite < now()
+		ORDER by p2.dateVisite DESC
+	    LIMIT 1)";
+		$res = Pdolbc::$monPdo->prepare($req);
 		$res->execute();
 
 		$lesLignes = $res->fetchAll();

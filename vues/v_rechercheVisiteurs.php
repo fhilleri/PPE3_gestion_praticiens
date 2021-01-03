@@ -53,13 +53,11 @@
                 <td><?php echo  $num ?></td>
                 <td><?php echo $Region ?></td>
                 <td><?php echo $date ?></td>
-                <?php 
-
-                ?>
-            <?php 
+            </tr>
+             <?php     
         } 
-
-        ?>
+         ?>
+        
         </table>
 
         

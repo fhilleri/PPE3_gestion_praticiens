@@ -10,11 +10,19 @@
         $numPraticien =$_REQUEST['idPraticien'];
         $numSecteur=$_REQUEST['numSecteur'];
     }
-
+   
     $Regions = $pdo->getLesRegion();
     $Praticiens = $pdo->getLesPraticiens();
-    $LesVisiteur = $pdo->getVisiteur($numPraticien,$numSecteur);
-    include("vues/v_rechercheVisiteurs.php");	
+    if( $numPraticien=="0" and $numSecteur=="0"){ 
+        $LesVisiteur = $pdo->getToutVisiteur();
+    }
+    else{
+        $LesVisiteur = $pdo->getVisiteur($numPraticien,$numSecteur);
+    }
+    
+   
+   
+ include("vues/v_rechercheVisiteurs.php");	
     
 ?>  
 
