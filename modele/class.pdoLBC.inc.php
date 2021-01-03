@@ -5,7 +5,7 @@ class Pdolbc
       	private static $serveur='mysql:host=localhost';
       	private static $bdd='dbname=lbc';   		
       	private static $user='root' ;    		
-      	private static $mdp='root' ;	
+      	private static $mdp='' ;	
 		private static $monPdo;
 		private static $monPdolbc = null;
 			
@@ -14,7 +14,7 @@ class Pdolbc
 		try{
 			if ($_SERVER['SERVER_NAME'] == 'localhost')
 			{
-				Pdolbc::$monPdo= new PDO ('mysql:host=localhost;dbname=lbc', 'root','root');
+				Pdolbc::$monPdo= new PDO ('mysql:host=localhost;dbname=lbc', 'root','');
 				Pdolbc::$monPdo->query("SET CHARACTER SET utf8");
 			}
 			else

@@ -3,6 +3,41 @@
 
     <p><H1>Liste de vos praticiens</H1>
 
+    <!--form class="centered text-align" action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post">
+
+        
+        <div id="select">
+			Matricule visiteur
+			<select name="numVisiteur">
+
+                <?php /*
+                $selected = ($numVisiteur == "0" ? "selected" : "");
+                echo "<option $selected value='0'>Tous</option>";
+                foreach($Praticiens as $Praticien)
+                    { 
+                        $selected = ($numVisiteur == $Praticien["matricule"] ? "selected" : "");
+                        echo "<option $selected value='" . $Praticien["matricule"] . "'>" .$Praticien["matricule"] ."</option>";
+                    }*/
+                ?>
+            </select>
+            Region
+			<select name="numSecteur">
+                <?php /*
+                $selected = ($numSecteur == "0" ? "selected" : "");
+                echo "<option $selected value='0'>Toutes</option>";
+                foreach($Regions as $Region)
+
+                    { 
+                        $selected = ($numSecteur == $Region["sec_num"] ? "selected" : "");
+                        echo "<option $selected value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
+                    }*/
+                ?>
+            </select>
+        </div>
+    
+        <input class='bouton centered' type="Submit" value="Valider">
+    </form -->
+
     <table class="tableau">
         <tr>
         <th>Nom </th><th>Prénom </th>

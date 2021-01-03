@@ -11,79 +11,79 @@
     <form class="centered text-align" action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post">
 
         
-        <p><H1>Recherche de praticiens</H1>
+        <h1>Recherche de praticiens</h1>
         <div id="select">
-			<tr><td>Matricule visiteur</td><td>
+			Matricule visiteur
 			<select name="numVisiteur">
-         
-            <?php 
-            $selected = ($numVisiteur == "0" ? "selected" : "");
-            echo "<option $selected value='0'>Tous</option>";
-            foreach($Praticiens as $Praticien)
-				{ 
-                    $selected = ($numVisiteur == $Praticien["matricule"] ? "selected" : "");
-					echo "<option $selected value='" . $Praticien["matricule"] . "'>" .$Praticien["matricule"] ."</option>";
-                }
-           ?>
-            </select>
-            <tr><td>Region</td><td>
-			<select name="numSecteur">
-            <?php 
-            $selected = ($numSecteur == "0" ? "selected" : "");
-            echo "<option $selected value='0'>Toutes</option>";
-			 foreach($Regions as $Region)
 
-				{ 
-                    $selected = ($numSecteur == $Region["sec_num"] ? "selected" : "");
-					echo "<option $selected value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
-				}
-            ?>
-        </select>
-    </div>
-    
-    <input class='bouton centered' type="Submit" value="Valider">
-        
-
-        <table class="tableau">
-            <tr>
-                <th>Nom </th><th>Prénom </th>
-                <th>Spécialité </th><th>Notoriété </th>
-                <th>Ville </th><th>Date de dernier visite </th>
-                <th></th>
-            </tr> 
-        <?php
-
-        foreach((array)$lesPraticiens as $unPraticien)
-        {
-            $num = $unPraticien['idPraticien'];
-            $nom = $unPraticien['nom'];
-            $prenom = $unPraticien['prenom'];
-            $specialite = $unPraticien['idspecialite'];
-            $notoriete = $unPraticien['note'];
-            $ville = $unPraticien['ville'];
-            $date = $unPraticien['dateVisite'];
-        
-            ?>
-            <tr>
-                <td><?php echo $nom ?></td>
-                <td><?php echo $prenom ?></td>
-                <td><?php echo $specialite ?></td>
-                <td><?php echo $notoriete?></td>
-                <td><?php echo $ville ?></td>
-                <td><?php echo $date ?></td>
                 <?php 
-
+                $selected = ($numVisiteur == "0" ? "selected" : "");
+                echo "<option $selected value='0'>Tous</option>";
+                foreach($Praticiens as $Praticien)
+                    { 
+                        $selected = ($numVisiteur == $Praticien["matricule"] ? "selected" : "");
+                        echo "<option $selected value='" . $Praticien["matricule"] . "'>" .$Praticien["matricule"] ."</option>";
+                    }
                 ?>
-                <td><a href=index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?php echo $num ?>&idSpecialite=<?php echo $specialite ?> ><img class="bouton_image" src="./images/modification.png" title="Modif"></a></td>
-            </tr>
-            <?php 
-        } 
+            </select>
+            Region
+			<select name="numSecteur">
+                <?php 
+                $selected = ($numSecteur == "0" ? "selected" : "");
+                echo "<option $selected value='0'>Toutes</option>";
+                foreach($Regions as $Region)
 
-        ?>
-        </table>
-        
-        <a class="bouton centered" href=index.php?uc=praticiens&ucp=modifierPraticiens&action=ajout id="ajout">Ajouter un praticien</a>
+                    { 
+                        $selected = ($numSecteur == $Region["sec_num"] ? "selected" : "");
+                        echo "<option $selected value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
+                    }
+                ?>
+            </select>
+        </div>
+    
+        <input class='bouton centered' type="Submit" value="Valider">
     </form>
+    
+
+    <table class="tableau centered">
+        <tr>
+            <th>Nom </th><th>Prénom </th>
+            <th>Spécialité </th><th>Notoriété </th>
+            <th>Ville </th><th>Date de dernier visite </th>
+            <th></th>
+        </tr> 
+    <?php
+
+    foreach((array)$lesPraticiens as $unPraticien)
+    {
+        $num = $unPraticien['idPraticien'];
+        $nom = $unPraticien['nom'];
+        $prenom = $unPraticien['prenom'];
+        $specialite = $unPraticien['idspecialite'];
+        $notoriete = $unPraticien['note'];
+        $ville = $unPraticien['ville'];
+        $date = $unPraticien['dateVisite'];
+    
+        ?>
+        <tr>
+            <td><?php echo $nom ?></td>
+            <td><?php echo $prenom ?></td>
+            <td><?php echo $specialite ?></td>
+            <td><?php echo $notoriete?></td>
+            <td><?php echo $ville ?></td>
+            <td><?php echo $date ?></td>
+            <?php 
+
+            ?>
+            <td><a href=index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?php echo $num ?>&idSpecialite=<?php echo $specialite ?> ><img class="bouton_image" src="./images/modification.png" title="Modif"></a></td>
+        </tr>
+        <?php 
+    } 
+
+    ?>
+    </table>
+    
+    <a class="bouton centered" href=index.php?uc=praticiens&ucp=modifierPraticiens&action=ajout id="ajout">Ajouter un praticien</a>
     <div id="map" class="map"></div>
     <div id="mapMarkers" style="display:none">
         [
