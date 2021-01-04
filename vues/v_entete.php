@@ -13,5 +13,5 @@
         if (isset($entete)) echo $entete;
     ?>
 </head>
-<body>
+<body class="onload">
     

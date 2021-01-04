@@ -1,56 +1,81 @@
 
-<main>
+<main class="centered text-align">
 
-    <center>
-    <form action="index.php?" method="post">
-        <br>
-        <br>
-        <p><H1>Liste de vos praticiens</H1>
+    <p><H1>Liste de vos praticiens</H1>
 
-        <table border=3 cellspacing=1 id="tableauVisiteur">
-            <tr>
-            <th>Nom </th><th>Prénom </th>
-            <th>Spécialité </th><th>Notoriété </th>
-            <th>Ville </th>
-            <th></th>
-            <th></th>
-            </tr> 
-        <?php
+    <!--form class="centered text-align" action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post">
+
         
-        foreach((array)$lesPraticiens as $unPraticien)
-        {
-            $num = $unPraticien['idPraticien'];
-            $nom = $unPraticien['nom'];
-            $prenom = $unPraticien['prenom'];
-            $specialite = $unPraticien['idspecialite'];
-            $notoriete = $unPraticien['note'];
-            $ville = $unPraticien['ville'];
-        
-            ?>
-            <tr>
-                <td width=150><?php echo $nom ?></td>
-                <td width=150><?php echo $prenom ?></td>
-                <td width=300><?php echo $specialite ?></td>
-                <td width=100><?php echo $notoriete?></td>
-                <td width=200><?php echo $ville ?></td>
-                <?php 
+        <div id="select">
+			Matricule visiteur
+			<select name="numVisiteur">
 
+                <?php /*
+                $selected = ($numVisiteur == "0" ? "selected" : "");
+                echo "<option $selected value='0'>Tous</option>";
+                foreach($Praticiens as $Praticien)
+                    { 
+                        $selected = ($numVisiteur == $Praticien["matricule"] ? "selected" : "");
+                        echo "<option $selected value='" . $Praticien["matricule"] . "'>" .$Praticien["matricule"] ."</option>";
+                    }*/
                 ?>
-				<td width=30><a href="index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?= $num ?>&idSpecialite=<?= $specialite ?>"><img src="images/modification.png" weight="50px" height="50px" title="Modif"></a></td>
-                <td width=30><a href="index.php?uc=praticiens&ucp=afficherPortefeuille&action=affichagePortefeuille&num=<?php echo $num ?>"><img src="images/portefeuille.jpg" weight="50px" height="50px" title="Portefeuille"></a></td>
-            </tr>
-            <?php 
-        } 
+            </select>
+            Region
+			<select name="numSecteur">
+                <?php /*
+                $selected = ($numSecteur == "0" ? "selected" : "");
+                echo "<option $selected value='0'>Toutes</option>";
+                foreach($Regions as $Region)
 
+                    { 
+                        $selected = ($numSecteur == $Region["sec_num"] ? "selected" : "");
+                        echo "<option $selected value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
+                    }*/
+                ?>
+            </select>
+        </div>
+    
+        <input class='bouton centered' type="Submit" value="Valider">
+    </form -->
+
+    <table class="tableau">
+        <tr>
+        <th>Nom </th><th>Prénom </th>
+        <th>Spécialité </th><th>Notoriété </th>
+        <th>Ville </th>
+        <th></th>
+        <th></th>
+        </tr> 
+    <?php
+    
+    foreach((array)$lesPraticiens as $unPraticien)
+    {
+        $num = $unPraticien['idPraticien'];
+        $nom = $unPraticien['nom'];
+        $prenom = $unPraticien['prenom'];
+        $specialite = $unPraticien['idspecialite'];
+        $notoriete = $unPraticien['note'];
+        $ville = $unPraticien['ville'];
+    
         ?>
-        </table>
-        </br>
+        <tr>
+            <td><?php echo $nom ?></td>
+            <td><?php echo $prenom ?></td>
+            <td><?php echo $specialite ?></td>
+            <td><?php echo $notoriete?></td>
+            <td><?php echo $ville ?></td>
+            <?php 
 
+            ?>
+            <td><a href="index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?= $num ?>&idSpecialite=<?= $specialite ?>"><img class="bouton_image" src="images/modification.png" title="Modifier"></a></td>
+            <td><a href="index.php?uc=praticiens&ucp=afficherPortefeuille&action=affichagePortefeuille&num=<?php echo $num ?>"><img class="bouton_image" src="images/portefeuille.png" title="Portefeuille"></a></td>
+        </tr>
+        <?php 
+    } 
 
-        <input type="Submit" value="ACCUEIL">
-    </form>
-    </center>
-    <h2>Map :</h2>
+    ?>
+    </table>
+
     <div id="map" class="map"></div>
     <div id="mapMarkers" style="display:none">
         [

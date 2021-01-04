@@ -1,6 +1,9 @@
 <main>
 
-    <a class="bouton centered" href="index.php?uc=praticiens&ucp=specialite&action=ajouter">Ajouter une spécialité</a>
+    <div class="text-align">
+
+        <a class="bouton centered" href="index.php?uc=praticiens&ucp=specialite&action=ajouter">Ajouter une spécialité</a>
+    </div>
 
     <?php
         if (isset($_SESSION["error"])) 
@@ -10,7 +13,7 @@
         }
     ?>
 
-    <table class="specialite centered">
+    <table class="tableau specialite centered">
         <thead>
             <tr>
                 <th colspan="3">Spécialités</th>

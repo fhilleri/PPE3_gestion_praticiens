@@ -1,73 +1,13 @@
-#tableauVisiteur {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#tableauVisiteur #td,
-#tableauVisiteur #th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-#tableauVisiteur tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-#tableauVisiteur tr:hover {
-    background-color: #ddd;
-}
-
-#tableauVisiteur th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #58c1e4;
-    color: white;
-}
-
 * {
     font-family: "Open Sans", sans-serif;
 }
 
-#tableauVisiteur input[type="submit"] {
-    border: none;
-    outline: none;
-    height: 40px;
-    background: #58c1e4;
-    color: #fff;
-    font-size: 18px;
-    border-radius: 20px;
-    width: 120px;
-}
-
-#tableauVisiteur input[type="submit"]:hover {
-    cursor: pointer;
-    background: #565656;
-    border-bottom-left-radius: 3pc;
-    border-bottom-right-radius: 3pc;
-}
-
-.bouton {
-    display: block;
-    border: none;
-    outline: none;
-    text-decoration: none;
-    padding: 10px;
-    margin: 10px 0;
-    width: max-content;
-    background: #58c1e4;
-    color: #fff;
-    font-size: 18px;
-    border-radius: 20px;
-}
-
-.bouton:hover {
-    cursor: pointer;
-    background: #565656;
-    border-bottom-left-radius: 3pc;
-    border-bottom-right-radius: 3pc;
+body.onload * {
+    transition: none !important;
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
 }
 
 html {
@@ -84,19 +24,91 @@ body {
 }
 
 main {
-    margin-top: 55px;
-    padding: 0px 20px;
+    margin-top: 66px;
+    padding: 20px 50px;
+    overflow: hidden;
 }
+
+/*tableau*/
+
+.tableau {
+    border-collapse: collapse;
+    /*border-style: solid;
+    border-width: 2px;*/
+    box-shadow: 0px 0 5px 0px;
+}
+
+.tableau th {
+    border-width: 1px;
+    background-color: #58c1e4;
+    color: white;
+    padding: 10px;
+}
+
+.tableau td {
+    padding: 5px 15px;
+}
+
+.tableau tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tableau tr:hover {
+    background-color: #ddd;
+}
+
+
+
+.bouton {
+    display: block;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px 0;
+    background: #58c1e4;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 15px;
+    box-shadow: 0 0 2px 0px black;
+    transition: background-color 0.2s;
+}
+
+.bouton.inline {
+    display: inline-block;
+    width: initial;
+}
+
+.bouton:hover {
+    
+    background: rgb(0 175 205);
+    box-shadow: 0 0 5px 0px black;
+}
+
+
 
 .map {
     height: 400px;
     width: 100%;
+    padding: 20px 0px;
 }
 
-.centered {
+.centered, .centered *{
     margin-left: auto;
     margin-right: auto;
 }
+
+.text-align {
+    text-align: center;
+}
+
+/*.text-align > * {
+    text-align: initial;
+}*/
 
 .bouton_image {
     height: 30px;
@@ -106,6 +118,8 @@ main {
     background-color: #ff7979;
     border-style: solid;
     border-width: 2px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
     width: max-content;
     margin-top: 10px;
     margin-bottom: 10px;

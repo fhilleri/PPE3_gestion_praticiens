@@ -1,39 +1,46 @@
 <main>
 <nav id="recherche">
-    <center>
-    <form action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post" id="tableauVisiteur">
+    <form class="centered text-align" action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post">
         
-        <p><H1><br>Recherche des visiteurs</H1><br>
-            <div id="select">
-			<tr><td>Noms praticiens</td><td>
-               
-			<select name="idPraticien">
+        <h1>Recherche des visiteurs</h1>
+        <div id="select">
+            Noms praticiens
             
-			<?php 
-			 foreach($Praticiens as $Praticiens)
-				{ 
-					echo "<option value='" . $Praticiens["idPraticien"] . "'>" .$Praticiens["nom"] ."</option>";
-				}
-           ?>
+            <select name="idPraticien">
+            
+                <?php 
+                $selected = ($numPraticien == "0" ? "selected" : "");
+                echo "<option $selected value='0'>Tous</option>";
+                foreach($Praticiens as $Praticiens)
+                { 
+                    $selected = ($numPraticien == $Praticiens["idPraticien"] ? "selected" : "");
+                    echo "<option $selected value='" . $Praticiens["idPraticien"] . "'>" .$Praticiens["nom"] ."</option>";
+                }
+                ?>
             </select>
-            <tr><td>Region</td><td>
-			<select name="numSecteur">
-			<?php 
-			 foreach($Region as $Region)
-				{ 
-					echo "<option value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
-				}
-           ?>
+            Region
+            <select name="numSecteur">
+                <?php 
+                $selected = ($numSecteur == "0" ? "selected" : "");
+                echo "<option $selected value='0'>Toutes</option>";
+                foreach($Regions as $Region)
+                { 
+                    $selected = ($numSecteur == $Region["sec_num"] ? "selected" : "");
+                    echo "<option $selected value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
+                }
+                ?>
+            </select>
 
+            <input class="bouton centered" type="Submit" value="Valider"></a></td> 
             
-        </select>
-            </div>
+        </div>
+    </form>
         
-        <table border=3 cellspacing=1 >
-            <tr>
-            <th>Matricule </th>
-            <th>Secteur </th><th>Date de dernier visite </th>
-            </tr> 
+    <table class="tableau centered">
+        <tr>
+        <th>Matricule </th>
+        <th>Secteur </th><th>Date de dernier visite </th>
+        </tr> 
         <?php
         
         foreach((array)$LesVisiteur as $unVisiteur)
@@ -44,22 +51,13 @@
         
             ?>
             <tr>
-                <td width=150><?php echo  $num ?></td>
-                <td width=200><?php echo $Region ?></td>
-                <td width=200><?php echo $date ?></td>
+                <td><?php echo  $num ?></td>
+                <td><?php echo $Region ?></td>
+                <td><?php echo $date ?></td>
                 <?php 
-
-                ?>
-            <?php 
         } 
 
         ?>
-        </table>
-        </br>
-
-        <input class='bouton' type="Submit" value="Valider"></a></td> 
-    </form>
-    </center>
-    </div>
+    </table>
 </nav>
 </main>

@@ -1,7 +1,6 @@
 <main>
     <h1>Ajout du praticient :</h1>
-	<form action="index.php?uc=praticiens&ucp=modifierPraticiens&action=confirmAjout" method="post">
-	<center>
+	<form class="centered" action="index.php?uc=praticiens&ucp=modifierPraticiens&action=confirmAjout" method="post">
 		<table>
 		<tbody>
 			<tr><td>Specialité</td><td>
@@ -31,9 +30,7 @@
 
 		</tbody>
 		</table>
-					</table>
-		
-                <br/>
-		<input type="submit" value="Valider">
+
+		<input class="bouton centered" type="submit" value="Valider">
 	</form>
 </main>
