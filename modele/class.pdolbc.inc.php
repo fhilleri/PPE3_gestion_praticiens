@@ -135,6 +135,8 @@ class Pdolbc
 		return $element;
 	}
 
+
+
 	/* Modifier le porte feuille */
 
 	public function getAjoutPortefeuille($matricule, $idspecialite, $idPraticien){
@@ -443,6 +445,16 @@ class Pdolbc
 		$res->execute();
 		return $res->fetch();
 	}
+
+	public function getverifreg($regionT, $regionA){
+		$req = ("SELECT affecter.reg_code, travailler.reg_code FROM affecter inner join travailler on affecter.reg_code = travailler.reg_code WHERE travailler.reg_code = :regionT, affcter.reg_code= :regionA");
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':regionT', $regionT, PDO::PARAM_INT);
+		$res->bindValue(':regionA', $regionA, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetch();
+	}
 }
+
 
 ?>
