@@ -137,8 +137,6 @@ class Pdolbc
 
 
 
-	/* Modifier le porte feuille */
-
 	public function getAjoutPortefeuille($matricule, $idspecialite, $idPraticien){
 		$req=("INSERT INTO portefeuille (matricule, idspecialite, idpraticien)
 		VALUES (:matricule, :idspecialite, :idpraticien )");
@@ -417,6 +415,7 @@ class Pdolbc
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->bindValue(':idspecialite', $idSpecialite);
 		$res->bindValue(':nomspecialite', $nomSpecialite);
+
 		$res->execute();
 	}
 
@@ -446,14 +445,24 @@ class Pdolbc
 		return $res->fetch();
 	}
 
-	public function getverifreg($regionT, $regionA){
-		$req = ("SELECT affecter.reg_code, travailler.reg_code FROM affecter inner join travailler on affecter.reg_code = travailler.reg_code WHERE travailler.reg_code = :regionT, affcter.reg_code= :regionA");
+	public function getregionvisiteur($matricule){
+		$req = ("SELECT reg_code from travailler where matricule = :matricule order by dateaffect limit 1");
 		$res = Pdolbc::$monPdo->prepare($req);
-		$res->bindValue(':regionT', $regionT, PDO::PARAM_INT);
-		$res->bindValue(':regionA', $regionA, PDO::PARAM_INT);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
 		$res->execute();
 		return $res->fetch();
 	}
+
+	public function getregionpraticien($idspecialite, $idPraticien){
+		$req = ("SELECT reg_code from affecter where idpraticien = :idpraticien and idspecialite = :idspecialite
+		 order by dateArrivee DESC limit 1");
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':idpraticien', $idPraticien, PDO::PARAM_INT);
+		$res->bindValue(':idspecialite', $idspecialite, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetch();
+	}
+	
 }
 
 

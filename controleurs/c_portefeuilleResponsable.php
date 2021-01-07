@@ -27,19 +27,22 @@
 
 		case 'confirmerAjout':
 			{
+				$matricule = $_REQUEST['Pmatricule'];
+				$idspecialite = $_REQUEST['Pidspecialite'];
+				$idPraticien = $_REQUEST['PidPraticien'];
+		
+				
+				$regionPraticien = $pdo->getregionpraticien($idspecialite, $idPraticien);
+				$regionVisiteur = $pdo->getregionvisiteur($matricule);
+		
+				
 
-				$regionA = $_REQUEST['regionA'];
-				$regionT = $_REQUEST['regionT'];
-				$pdo->getverifreg($regionA, $regionT);
-	
-				if($regionA = $regionT){
-					$matricule = $_REQUEST['Pmatricule'];
-					$idspecialite = $_REQUEST['Pidspecialite'];
-					$idPraticien = $_REQUEST['PidPraticien'];
+				if($regionPraticien["reg_code"] == $regionVisiteur["reg_code"]){
 					
 					$ajoutP = $pdo->getAjoutPortefeuille($matricule, $idspecialite, $idPraticien);
 					header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
 				}else{
+					header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
 					echo("La région n'est pas la même pour le praticien et le visiteur.");
 				}
 				break;
@@ -60,16 +63,15 @@
 			}
 		case 'confirmerModification' :
 			{
-				$regionA = $_REQUEST['regionA'];
-				$regionT = $_REQUEST['regionT'];
-				$pdo->getverifreg($regionA, $regionT);
+				$matricule = $_REQUEST['PnouveauMatricule'];
+				$idspecialite = $_REQUEST['PnouveauIdspecialite'];
+				$idPraticien = $_REQUEST['PnouveauIdPraticien'];
+				$regionPraticien = $pdo->getregionpraticien($idspecialite, $idPraticien);
+				$regionVisiteur = $pdo->getregionvisiteur($matricule);
 
-				if($regionA = $regionT){
+				if($regionPraticien["reg_code"] == $regionVisiteur["reg_code"]){
 
-					$matricule = $_REQUEST['PnouveauMatricule'];
-					$idspecialite = $_REQUEST['PnouveauIdspecialite'];
-					$idPraticien = $_REQUEST['PnouveauIdPraticien'];
-		
+				
 					$nouveauMatricule = $_REQUEST['Pmatricule'];
 					$nouveauIdspecialite = $_REQUEST['Pidspecialite'];
 					$nouveauIdPraticien = $_REQUEST['PidPraticien'];
@@ -80,7 +82,8 @@
 					header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
 					
 				}else{
-					echo("La région n'est pas la même pour le praticien et le visiteur.");
+					header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
+					echo("La région n'est pas la même pour le praticien et le visiteur."); 
 				}
 				break;
 			}
