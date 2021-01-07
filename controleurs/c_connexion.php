@@ -24,6 +24,7 @@ switch ($action) {
             $_SESSION['loginClient'] = $profil["login"];
             $_SESSION['typeprofilClient'] = $profil["typeprofil"];
             $_SESSION['nomClient'] = $profil["nom"];
+            $_SESSION['valeur'] = $profil["valeur"];
             
             $fonctions = array(
                 'R' => 'Responsable R',

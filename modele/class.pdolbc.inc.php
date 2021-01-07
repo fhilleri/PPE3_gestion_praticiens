@@ -445,6 +445,59 @@ class Pdolbc
 		$res->execute();
 		return $res->fetch();
 	}
+
+	public function getPortefeuilleVisiteur($matricule)
+	{
+		$req = "SELECT *
+		FROM portefeuille
+		INNER JOIN praticien on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		INNER JOIN specialite on praticien.idspecialite = specialite.idspecialite
+		WHERE portefeuille.matricule = :matricule";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetchAll();
+	}
+
+	public function getSpecialitesPortefeuilleVisiteur($matricule)
+	{
+		$req = "SELECT specialite.idspecialite, specialite.nomspecialite
+		FROM portefeuille
+		INNER JOIN praticien on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		INNER JOIN specialite on praticien.idspecialite = specialite.idspecialite
+		WHERE portefeuille.matricule = :matricule
+		GROUP BY praticien.idspecialite";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetchAll();
+	}
+
+	public function getNotesPortefeuilleVisiteur($matricule)
+	{
+		$req = "SELECT praticien.note
+		FROM portefeuille
+		INNER JOIN praticien on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		WHERE portefeuille.matricule = :matricule
+		GROUP BY praticien.note";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetchAll();
+	}
+
+	public function getVillesPortefeuilleVisiteur($matricule)
+	{
+		$req = "SELECT praticien.ville
+		FROM portefeuille
+		INNER JOIN praticien on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		WHERE portefeuille.matricule = :matricule
+		GROUP BY praticien.ville";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetchAll();
+	}
 }
 
 ?>

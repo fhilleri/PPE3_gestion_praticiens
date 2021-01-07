@@ -5,19 +5,59 @@
 
     <div>
         <table class="tableau filtre-box">
-            <form class="text-align" action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post">
+            <form class="text-align" action="index.php?uc=praticiens&ucp=portefeuilleVisiteur" method="post">
                 <tr><th>Filtres</th></tr>
                 <tr><td>
                     <h4>Specialités</h4>
                     
-                    <div>
-                        <input type="checkbox" name="specialites">
-                        <label>test</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="id" name="specialites">
-                        <label for="id">test</label>
-                    </div>
+                    <?php
+
+                        foreach ($filtres["specialites"] as $specialite) {
+                            if (in_array($specialite["idspecialite"], $filtresRequete["specialites"])) $checked = "checked";
+                            else $checked = "";
+                            ?>
+                                <div>
+                                    <input type="checkbox" value="<?= $specialite["idspecialite"] ?>" name="specialites[]" id="filtre-specialite-<?= $specialite["idspecialite"] ?>" <?= $checked ?>>
+                                    <label for="filtre-specialite-<?= $specialite["idspecialite"] ?>"><?= $specialite["nomspecialite"] ?></label>
+                                </div>
+                            <?php
+                        }
+
+                    ?>
+
+                    <h4>Notes</h4>
+                    
+                    <?php
+
+                        foreach ($filtres["notes"] as $note) {
+                            if (in_array($note["note"], $filtresRequete["notes"])) $checked = "checked";
+                            else $checked = "";
+                            ?>
+                                <div>
+                                    <input type="checkbox" value="<?= $note["note"] ?>" name="notes[]" id="filtre-note-<?= $note["note"] ?>" <?= $checked ?>>
+                                    <label for="filtre-note-<?= $note["note"] ?>"><?= $note["note"] ?></label>
+                                </div>
+                            <?php
+                        }
+
+                    ?>
+
+                    <h4>Villes</h4>
+                    
+                    <?php
+
+                        foreach ($filtres["villes"] as $ville) {
+                            if (in_array($ville["ville"], $filtresRequete["villes"])) $checked = "checked";
+                            else $checked = "";
+                            ?>
+                                <div>
+                                    <input type="checkbox" value="<?= $ville["ville"] ?>" name="villes[]" id="filtre-ville-<?= $ville["ville"] ?>" <?= $checked ?>>
+                                    <label for="filtre-ville-<?= $ville["ville"] ?>"><?= $ville["ville"] ?></label>
+                                </div>
+                            <?php
+                        }
+
+                    ?>
 
                     <input class='bouton centered' type="Submit" value="Valider">
                 </td></tr>
