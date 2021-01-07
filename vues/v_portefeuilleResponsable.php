@@ -1,6 +1,6 @@
 
 <main>
-    <h1>PorteFeuille</h1>
+    <h2>PorteFeuille</h2>
 
     <div class="text-align">
         <a class='bouton centered' href='index.php?uc=praticiens&ucp=portefeuilleResponsable&action=ajouterPortefeuille'>Ajouter une relation</a>

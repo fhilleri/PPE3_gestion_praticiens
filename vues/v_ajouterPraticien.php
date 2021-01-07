@@ -1,5 +1,5 @@
 <main>
-    <h1>Ajout du praticient :</h1>
+    <h2>Ajout du praticient :</h2>
 	<form class="centered" action="index.php?uc=praticiens&ucp=modifierPraticiens&action=confirmAjout" method="post">
 		<table>
 		<tbody>

@@ -11,7 +11,7 @@
     <form class="centered text-align" action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post">
 
         
-        <h1>Recherche de praticiens</h1>
+        <h2>Recherche de praticiens</h2>
         <div id="select">
 			Matricule visiteur
 			<select name="numVisiteur">

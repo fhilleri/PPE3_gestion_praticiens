@@ -1,7 +1,7 @@
 
 <main class="centered text-align">
 
-    <p><H1>Liste de vos praticiens</H1>
+    <p><h2>Liste de vos praticiens</h2>
 
     <!--form class="centered text-align" action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post">
 
@@ -68,7 +68,7 @@
 
             ?>
             <td><a href="index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?= $num ?>&idSpecialite=<?= $specialite ?>"><img class="bouton_image" src="images/modification.png" title="Modifier"></a></td>
-            <td><a href="index.php?uc=praticiens&ucp=afficherPortefeuille&action=affichagePortefeuille&num=<?php echo $num ?>"><img class="bouton_image" src="images/portefeuille.png" title="Portefeuille"></a></td>
+            <td><a href="index.php?uc=praticiens&ucp=listeVisiteurPraticien&idSpecialite=<?= $specialite ?>&idPraticien=<?= $num ?>"><img class="bouton_image" src="images/portefeuille.png" title="Portefeuille"></a></td>
         </tr>
         <?php 
     } 

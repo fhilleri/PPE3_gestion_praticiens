@@ -165,15 +165,15 @@ class Pdolbc
 	
 	/* praticien par visiteur */
 
-	public function getPraticiensV($id)
+	public function getPraticiensV($idPraticien, $idSpecialite)
 	{
-		$req = ("select visiteur.matricule, nom, 
-		from portefeuille
-		inner join praticien
-		on praticien.idpraticien = portefeuille.idpraticien
-		inner join visiteur
-		on visiteur.matricule = portefeuille.matricule");
+		$req = ("SELECT portefeuille.matricule
+		FROM portefeuille
+		WHERE portefeuille.idPraticien = :idpraticien AND portefeuille.idspecialite = :idspecialite");
 		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':idpraticien', $idPraticien);
+		$res->bindValue(':idspecialite', $idSpecialite);
+		$res->execute();
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}

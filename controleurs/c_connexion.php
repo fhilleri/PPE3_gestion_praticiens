@@ -47,6 +47,7 @@ switch ($action) {
     default:
         
         $title = "Connexion";
+        $entete = '<link rel="stylesheet" href="./css/cssConnexion.css">';
         include("./vues/v_entete.php");
         include("./vues/v_bandeau.php");
         

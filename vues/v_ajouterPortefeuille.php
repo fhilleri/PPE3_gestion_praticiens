@@ -1,5 +1,5 @@
 <main>
-    <h1>Ajout Portefeuille :</h1>
+    <h2>Ajout Portefeuille :</h2>
 	<form class="centered" action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerAjout" method="post">
 		<table>
 			<tbody>

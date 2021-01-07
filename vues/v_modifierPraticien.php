@@ -1,6 +1,6 @@
 <main>
 
-   <p><h1>MODIFICATION DU PRATICIEN :</h1></p><BR/>
+   <p><h2>MODIFICATION DU PRATICIEN :</h2></p><BR/>
 	<form class="centered" action="index.php?uc=praticiens&ucp=modifierPraticiens&action=confirmModifPraticien" method="post">
    
 		<table>
