@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once("modele/class.pdolbc.inc.php");
+require_once("./modele/class.pdoLBC.inc.php");
 
 if(!isset($_REQUEST['uc']))
-     $uc = 'accueil';
+	$uc = 'accueil';
 else
 	$uc = $_REQUEST['uc'];
 
