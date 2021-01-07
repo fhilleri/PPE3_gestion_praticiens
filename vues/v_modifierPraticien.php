@@ -1,8 +1,8 @@
 <main>
 
-   <p><h2>MODIFICATION DU PRATICIEN :</h2></p><BR/>
+	<h2 class="text-align">Modification du praticien</h2>
 	<form class="centered" action="index.php?uc=praticiens&ucp=modifierPraticiens&action=confirmModifPraticien" method="post">
-   
+
 		<table>
 			<tbody>
 				<tr><td>Nom</td><td><input name="TNom" value= <?php echo $praticien['nom'] ?> size=20></td></tr>
@@ -20,6 +20,4 @@
 		
 		<input class="bouton centered" type="submit" value="Valider">
 	</form>
- 
-	
 </main>

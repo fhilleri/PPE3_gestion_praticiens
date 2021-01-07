@@ -1,6 +1,6 @@
 <main>
-    <h2>Modifier Portefeuille :</h2>
-		<form class="centered" action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerModification" method="post">
+    <h2 class="text-align">Modifier Portefeuille :</h2>
+	<form class="centered" action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerModification" method="post">
 
 		<input hidden name="PnouveauMatricule" value="<?= $matricule ?>">
 		<input hidden name="PnouveauIdspecialite" value="<?= $idspecialite ?>">

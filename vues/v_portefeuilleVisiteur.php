@@ -1,7 +1,7 @@
 
 <main class="centered text-align">
 
-    <p><h2>Liste de vos praticiens</h2>
+    <h2 class="text-align">Liste de vos praticiens</h2>
 
     <!--form class="centered text-align" action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post">
 

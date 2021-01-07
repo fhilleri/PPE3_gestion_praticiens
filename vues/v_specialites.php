@@ -1,9 +1,8 @@
 <main>
 
-    <div class="text-align">
+    <h2 class="text-align">Affichage des spécialités</h2>
 
-        <a class="bouton centered" href="index.php?uc=praticiens&ucp=specialite&action=ajouter">Ajouter une spécialité</a>
-    </div>
+    <a class="bouton centered" href="index.php?uc=praticiens&ucp=specialite&action=ajouter">Ajouter une spécialité</a>
 
     <?php
         if (isset($_SESSION["error"])) 
