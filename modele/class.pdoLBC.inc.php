@@ -79,7 +79,9 @@ class Pdolbc
 
 	public function getLesPraticiens()
 	{
-		$req = "select * from praticien";
+		$req = "SELECT * 
+		FROM praticien
+		INNER JOIN specialite on praticien.idspecialite = specialite.idspecialite";
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;

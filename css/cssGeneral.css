@@ -125,3 +125,7 @@ main {
     margin-bottom: 10px;
     padding: 5px;
 }
+
+.filtre-box {
+    float: left;
+}
