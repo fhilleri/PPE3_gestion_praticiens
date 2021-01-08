@@ -84,6 +84,7 @@
             $nom = $unPraticien['nom'];
             $prenom = $unPraticien['prenom'];
             $specialite = $unPraticien['nomspecialite'];
+            $idspecialite = $unPraticien['idspecialite'];
             $notoriete = $unPraticien['note'];
             $ville = $unPraticien['ville'];
         
@@ -97,8 +98,8 @@
                 <?php 
 
                 ?>
-                <td><a href="index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?= $num ?>&idSpecialite=<?= $specialite ?>"><img class="bouton_image" src="images/modification.png" title="Modifier"></a></td>
-                <td><a href="index.php?uc=praticiens&ucp=listeVisiteurPraticien&idSpecialite=<?= $specialite ?>&idPraticien=<?= $num ?>"><img class="bouton_image" src="images/portefeuille.png" title="Portefeuille"></a></td>
+                <td><a href="index.php?uc=praticiens&ucp=modifierPraticiens&action=modificationPraticien&idPraticien=<?= $num ?>&idSpecialite=<?= $idspecialite ?>"><img class="bouton_image" src="images/modification.png" title="Modifier"></a></td>
+                <td><a href="index.php?uc=praticiens&ucp=listeVisiteurPraticien&idSpecialite=<?= $idspecialite ?>&idPraticien=<?= $num ?>"><img class="bouton_image" src="images/portefeuille.png" title="Portefeuille"></a></td>
             </tr>
             <?php 
         } 
