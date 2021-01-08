@@ -3,9 +3,10 @@
 
     <h2 class="text-align">Liste de vos praticiens</h2>
 
-    <div>
-        <table class="tableau filtre-box">
+    <div class="filter-tables">
+        <table class="tableau filter-box">
             <form class="text-align" action="index.php?uc=praticiens&ucp=portefeuilleVisiteur" method="post">
+                <input hidden type="text" name="filters-defined">
                 <tr><th>Filtres</th></tr>
                 <tr><td>
                     <h4>Specialités</h4>
@@ -13,7 +14,7 @@
                     <?php
 
                         foreach ($filtres["specialites"] as $specialite) {
-                            if (in_array($specialite["idspecialite"], $filtresRequete["specialites"])) $checked = "checked";
+                            if ($filtresRequete == null || in_array($specialite["idspecialite"], $filtresRequete["specialites"])) $checked = "checked";
                             else $checked = "";
                             ?>
                                 <div>
@@ -30,7 +31,7 @@
                     <?php
 
                         foreach ($filtres["notes"] as $note) {
-                            if (in_array($note["note"], $filtresRequete["notes"])) $checked = "checked";
+                            if ($filtresRequete == null || in_array($note["note"], $filtresRequete["notes"])) $checked = "checked";
                             else $checked = "";
                             ?>
                                 <div>
@@ -47,7 +48,7 @@
                     <?php
 
                         foreach ($filtres["villes"] as $ville) {
-                            if (in_array($ville["ville"], $filtresRequete["villes"])) $checked = "checked";
+                            if ($filtresRequete == null || in_array($ville["ville"], $filtresRequete["villes"])) $checked = "checked";
                             else $checked = "";
                             ?>
                                 <div>
@@ -59,7 +60,10 @@
 
                     ?>
 
-                    <input class='bouton centered' type="Submit" value="Valider">
+                    <div class="centered fit-content">
+                        <input class='bouton inline' type="Submit" value="Valider">
+                        <a class="bouton inline" href="index.php?uc=praticiens&ucp=portefeuilleVisiteur">Effacer</a>
+                    </div>
                 </td></tr>
             </form>
         </table>
