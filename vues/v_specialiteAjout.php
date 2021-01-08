@@ -1,6 +1,6 @@
 <main>
 
-    <h1>Ajouter une spécialité</h1>
+    <h2 class="text-align">Ajouter une spécialité</h2>
 
     <form class="centered" action="index.php?uc=praticiens&ucp=specialite&action=comfirmAjouter" method="post">
         <table>

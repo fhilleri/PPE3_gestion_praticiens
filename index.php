@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("./modele/class.pdoLBC.inc.php");
+require_once("./modele/class.pdolbc.inc.php");
 
 if(!isset($_REQUEST['uc']))
 	$uc = 'accueil';

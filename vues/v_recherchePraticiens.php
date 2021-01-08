@@ -1,17 +1,10 @@
 <main>
 <nav id="recherche">
 
-<!doctype html>
-<html>
-
-<head>
-	<title>Recherche des praticiens</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
     <form class="centered text-align" action="index.php?uc=praticiens&ucp=recherchePraticiens" method="post">
 
-        
-        <h1>Recherche de praticiens</h1>
+        <h2 class="text-align">Recherche de praticiens</h2>
+
         <div id="select">
 			Matricule visiteur
 			<select name="numVisiteur">

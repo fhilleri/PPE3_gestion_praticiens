@@ -79,7 +79,9 @@ class Pdolbc
 
 	public function getLesPraticiens()
 	{
-		$req = "select * from praticien";
+		$req = "SELECT * 
+		FROM praticien
+		INNER JOIN specialite on praticien.idspecialite = specialite.idspecialite";
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
@@ -99,14 +101,12 @@ class Pdolbc
 	/* Affiche le portefeuille du Responsabele */
 
 	public function getPorteFeuilleRes() {
-		$req = ("select visiteur.matricule, nom, reg_code, praticien.idspecialite, praticien.idPraticien
-		from portefeuille
+		$req = ("SELECT visiteur.matricule, CONCAT(praticien.prenom, ' ', praticien.prenom) as nom, praticien.idspecialite, praticien.idPraticien
+		FROM portefeuille
 		inner join praticien
-		on praticien.idpraticien = portefeuille.idpraticien
-		inner join visiteur
-		on visiteur.matricule = portefeuille.matricule
-		inner join region
-		on region.sec_num = visiteur.sec_num");
+		on praticien.idpraticien = portefeuille.idpraticien AND praticien.idspecialite = portefeuille.idspecialite
+		inner join visiteur 
+		on visiteur.matricule = portefeuille.matricule");
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->execute();
 		$lesLignes = $res->fetchAll();
@@ -165,15 +165,15 @@ class Pdolbc
 	
 	/* praticien par visiteur */
 
-	public function getPraticiensV($id)
+	public function getPraticiensV($idPraticien, $idSpecialite)
 	{
-		$req = ("select visiteur.matricule, nom, 
-		from portefeuille
-		inner join praticien
-		on praticien.idpraticien = portefeuille.idpraticien
-		inner join visiteur
-		on visiteur.matricule = portefeuille.matricule");
+		$req = ("SELECT portefeuille.matricule
+		FROM portefeuille
+		WHERE portefeuille.idPraticien = :idpraticien AND portefeuille.idspecialite = :idspecialite");
 		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':idpraticien', $idPraticien);
+		$res->bindValue(':idspecialite', $idSpecialite);
+		$res->execute();
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
@@ -463,6 +463,75 @@ class Pdolbc
 		return $res->fetch();
 	}
 	
+	public function getSpecialitesPortefeuilleVisiteur($matricule)
+	{
+		$req = "SELECT specialite.idspecialite, specialite.nomspecialite
+		FROM portefeuille
+		INNER JOIN praticien on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		INNER JOIN specialite on praticien.idspecialite = specialite.idspecialite
+		WHERE portefeuille.matricule = :matricule
+		GROUP BY praticien.idspecialite";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetchAll();
+	}
+
+	public function getNotesPortefeuilleVisiteur($matricule)
+	{
+		$req = "SELECT praticien.note
+		FROM portefeuille
+		INNER JOIN praticien on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		WHERE portefeuille.matricule = :matricule
+		GROUP BY praticien.note";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetchAll();
+	}
+
+	public function getVillesPortefeuilleVisiteur($matricule)
+	{
+		$req = "SELECT praticien.ville
+		FROM portefeuille
+		INNER JOIN praticien on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		WHERE portefeuille.matricule = :matricule
+		GROUP BY praticien.ville";
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetchAll();
+	}
+
+	public function getPortefeuilleVisiteur($matricule, $filtres)
+	{
+		if ($filtres == null) $filtresStr = "";
+		else
+		{
+			$filtresStr = " AND praticien.idspecialite IN (";
+			foreach ($filtres["specialites"] as $index => $specialite) {
+				$filtresStr .= $specialite . (($index < count($filtres["specialites"]) -1) ? ", " : "");
+			}
+			$filtresStr .= ") AND praticien.note IN (";
+			foreach ($filtres["notes"] as $index => $note) {
+				$filtresStr .= $note . ($index < count($filtres["notes"]) -1 ? ", " : "");
+			}
+			$filtresStr .= ") AND praticien.ville IN (";
+			foreach ($filtres["villes"] as $index => $ville) {
+				$filtresStr .= "'" . $ville . "'" . ($index < count($filtres["villes"]) -1 ? ", " : "");
+			}
+			$filtresStr .= ")";
+		}
+		$req = "SELECT *
+		FROM portefeuille
+		INNER JOIN praticien on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		INNER JOIN specialite on praticien.idspecialite = specialite.idspecialite
+		WHERE portefeuille.matricule = :matricule" . $filtresStr;
+		$res = Pdolbc::$monPdo->prepare($req);
+		$res->bindValue(':matricule', $matricule, PDO::PARAM_INT);
+		$res->execute();
+		return $res->fetchAll();
+	}
 }
 
 

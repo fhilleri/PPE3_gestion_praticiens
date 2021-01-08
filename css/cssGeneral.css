@@ -83,6 +83,10 @@ main {
     width: initial;
 }
 
+.bouton.inline + .bouton.inline {
+    margin-left: 20px;
+}
+
 .bouton:hover {
     
     background: rgb(0 175 205);
@@ -106,6 +110,12 @@ main {
     text-align: center;
 }
 
+.fit-content {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+}
+
 /*.text-align > * {
     text-align: initial;
 }*/
@@ -124,4 +134,29 @@ main {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 5px;
+}
+
+.filter-box {
+    float: left;
+    text-align: left;
+}
+
+.filter-box h4 {
+    margin: 10px 0px;
+}
+
+.filter-tables {
+    overflow: hidden;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    padding: 5px;
+}
+
+.filter-tables .tableau {
+    margin: 0px;
+}
+
+.filter-tables .tableau.filter-box {
+    margin-right: 20px;
 }

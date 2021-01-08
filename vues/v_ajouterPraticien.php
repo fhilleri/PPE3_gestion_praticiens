@@ -1,5 +1,5 @@
 <main>
-    <h1>Ajout du praticient :</h1>
+    <h2 class="text-align">Ajout du praticient :</h2>
 	<form class="centered" action="index.php?uc=praticiens&ucp=modifierPraticiens&action=confirmAjout" method="post">
 		<table>
 		<tbody>
@@ -18,14 +18,14 @@
 					?>
 				</select>
 			</td></tr>
-			<tr><td>Note</td><td><input name="TNote" size=20></td></tr>
-			<tr><td>Nom</td><td><input name="TNom" size=20></td></tr>
-			<tr><td>Prenom </td><td><input name="TPrenom" size=20></td></tr>	
-			<tr><td>Rue</td><td><input name="TRue" size=50></td></tr>	
-			<tr><td>Code postal</td><td><input name="TCodePostal" size=5></td></tr>	
-			<tr><td>Ville</td><td><input name="TVille" size=50></td></tr>	
-			<tr><td>Longitude</td><td><input name="TLongitude" size=20></td></tr>		
-            <tr><td>Latitude</td><td><input name="TLatitude" size=20></td></tr>		
+			<tr><td>Nom</td><td><input required type="text" name="TNom" maxlength=20></td></tr>
+			<tr><td>Prenom </td><td><input required type="text" name="TPrenom" maxlength=20></td></tr>	
+			<tr><td>Note</td><td><input required type="number" name="TNote" maxlength=20></td></tr>
+			<tr><td>Code postal</td><td><input required type="text" name="TCodePostal" maxlength=5></td></tr>	
+			<tr><td>Ville</td><td><input required type="text" name="TVille" maxlength=50></td></tr>	
+			<tr><td>Rue</td><td><input required type="text" name="TRue" maxlength=50></td></tr>	
+			<tr><td>Longitude</td><td><input required type="text" name="TLongitude" maxlength=20></td></tr>		
+            <tr><td>Latitude</td><td><input required type="text" name="TLatitude" maxlength=20></td></tr>		
 			<input type = hidden name="TNum">
 
 		</tbody>

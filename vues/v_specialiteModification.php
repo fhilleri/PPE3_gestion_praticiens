@@ -1,6 +1,6 @@
 <main>
 
-    <h1>Modifier une spécialité</h1>
+    <h2 class="text-align">Modifier une spécialité</h2>
 
     <form class="centered" action="index.php?uc=praticiens&ucp=specialite&action=comfirmModifier" method="post">
         <input hidden name="Fid" value="<?= $specialite["idspecialite"] ?>">

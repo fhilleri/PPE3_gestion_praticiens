@@ -1,5 +1,5 @@
 <?php
-    $title = "Recherche";
+    $title = "Recherche des praticiens";
     $entete = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>';
     include("./vues/v_entete.php");

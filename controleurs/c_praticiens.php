@@ -53,6 +53,9 @@ switch($ucp)
     case "rechercheVisiteurs" :
         if (checkPermission(['R', 'S'])) include("controleurs/c_rechercheVisiteurs.php"); 
         break;
+    case "listeVisiteurPraticien" :
+        if (checkPermission(['V'])) include("controleurs/c_listeVisiteurPraticien.php"); 
+        break;
     
 }
 

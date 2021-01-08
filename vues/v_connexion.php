@@ -2,7 +2,7 @@
 <nav id="connexion">
     <div id="loginbox">
         <img src="./images/avatar.png" id="avatar">
-        <h1>Connexion</h1>
+        <h2>Connexion</h2>
         <form method="POST" action="index.php?uc=praticiens&ucp=connexion&action=validerConnexion">
         <table>
             <tr>

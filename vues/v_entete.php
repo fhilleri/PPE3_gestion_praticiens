@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/cssBandeau.css">
     <link rel="stylesheet" href="./css/cssGeneral.css">
-    <link rel="stylesheet" href="./css/cssConnexion.css">
     <link rel="stylesheet" href="./css/cssRecherche.css">
     <link rel="stylesheet" href="./css/cssSpecialite.css">
     <link rel="shortcut icon" href="./images/lbc_logo_carre.png">

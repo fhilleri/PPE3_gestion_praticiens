@@ -2,7 +2,7 @@
 <nav id="recherche">
     <form class="centered text-align" action="index.php?uc=praticiens&ucp=rechercheVisiteurs" method="post">
         
-        <h1>Recherche des visiteurs</h1>
+        <h2 class="text-align">Recherche des visiteurs</h2>
         <div id="select">
             Noms praticiens
             

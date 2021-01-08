@@ -1,27 +1,21 @@
 <main>
-    <h1>PorteFeuille praticien</h1>
-    <form class="centered" action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=VisiteurParPraticien" method="post">
-        <table >
-                <tr>
-                <td>Nom praticien :</td>
-                <td>Matricule visiteur :</td>
-                </tr> 
-            <?php
+    <h2 class="text-align">Liste des visiteurs attribués au praticien <?= $praticien["prenom"] . " " . $praticien["nom"] ?></h2>
+    <table class="tableau centered text-align">
+            <tr>
+            <th>Matricule visiteur</th>
+            </tr> 
+        <?php
 
-            foreach( $Ppraticien as $vistieurP)
-            {
-                $nom = $vistieurP['nom'];
-                $matricule = $vistieurP['matricule'];
-                
-                
-                ?>
-                <tr>
-                    <td><?php echo $nom ?></a></td>
-                    <td><?php echo $matriucle ?></td>
-                </tr>
-                <?php 
-            }
+        foreach($visiteurs as $visiteur)
+        {
+            $matricule = $visiteur['matricule'];                
+            
             ?>
-        </table>
-    </form>
+            <tr>
+                <td><?= $matricule ?></a></td>
+            </tr>
+            <?php 
+        }
+        ?>
+    </table>
 </main>
