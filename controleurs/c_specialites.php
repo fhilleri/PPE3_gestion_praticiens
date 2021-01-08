@@ -50,7 +50,7 @@ switch($action)
         $idSpecialite = $_REQUEST["idSpecialite"];
 
         $nombrePraticienSpecialite = $pdo->getCountPraticienSpecialite($idSpecialite)['count'];
-        if ($nombrePraticienSpecialite > 0) $_SESSION["error"] = "Impossible de supprimer cette spécialité car elle est attribuée à " . strval($nombrePraticienSpecialite) . " praticiens";
+        if ($nombrePraticienSpecialite > 0) $_SESSION["error"]["specialite"] = "Impossible de supprimer cette spécialité car elle est attribuée à " . strval($nombrePraticienSpecialite) . " praticiens";
         else $pdo->supprimerSpecialite($idSpecialite);
         header("location: index.php?uc=praticiens&ucp=specialite");
     break;

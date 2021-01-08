@@ -42,8 +42,8 @@
 					$ajoutP = $pdo->getAjoutPortefeuille($matricule, $idspecialite, $idPraticien);
 					header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
 				}else{
+					$_SESSION["error"]["portefeuilleResponsable"] = "La région n'est pas la même pour le praticien et le visiteur.";
 					header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
-					echo("La région n'est pas la même pour le praticien et le visiteur.");
 				}
 				break;
 			}
@@ -82,8 +82,8 @@
 					header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
 					
 				}else{
+					$_SESSION["error"]["portefeuilleResponsable"] = "La région n'est pas la même pour le praticien et le visiteur.";
 					header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
-					echo("La région n'est pas la même pour le praticien et le visiteur."); 
 				}
 				break;
 			}

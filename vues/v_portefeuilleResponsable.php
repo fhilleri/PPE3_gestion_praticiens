@@ -2,6 +2,14 @@
 <main>
     <h2 class="text-align">Gestion de votre portefeuille</h2>
 
+    <?php
+        if (isset($_SESSION["error"]) && isset($_SESSION["error"]["portefeuilleResponsable"])) 
+        {
+            echo '<div class="erreur centered">' . $_SESSION["error"]["portefeuilleResponsable"] . '</div>';
+            unset($_SESSION["error"]["portefeuilleResponsable"]);
+        }
+    ?>
+
     <div class="text-align">
         <a class='bouton centered' href='index.php?uc=praticiens&ucp=portefeuilleResponsable&action=ajouterPortefeuille'>Ajouter une relation</a>
     </div>

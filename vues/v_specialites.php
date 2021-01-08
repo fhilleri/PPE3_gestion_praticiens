@@ -5,10 +5,10 @@
     <a class="bouton centered" href="index.php?uc=praticiens&ucp=specialite&action=ajouter">Ajouter une spécialité</a>
 
     <?php
-        if (isset($_SESSION["error"])) 
+        if (isset($_SESSION["error"]) && isset($_SESSION["error"]["specialite"])) 
         {
-            echo '<div class="erreur centered">' . $_SESSION["error"] . '</div>';
-            unset($_SESSION["error"]);
+            echo '<div class="erreur centered">' . $_SESSION["error"]["specialite"] . '</div>';
+            unset($_SESSION["error"]["specialite"]);
         }
     ?>
 
