@@ -101,7 +101,7 @@ class Pdolbc
 	/* Affiche le portefeuille du Responsabele */
 
 	public function getPorteFeuilleRes() {
-		$req = ("SELECT visiteur.matricule, CONCAT(praticien.prenom, ' ', praticien.prenom) as nom, praticien.idspecialite, praticien.idPraticien
+		$req = ("SELECT visiteur.matricule, CONCAT(praticien.prenom, ' ', praticien.nom) as nom, praticien.idspecialite, praticien.idPraticien
 		FROM portefeuille
 		inner join praticien
 		on praticien.idpraticien = portefeuille.idpraticien AND praticien.idspecialite = portefeuille.idspecialite
