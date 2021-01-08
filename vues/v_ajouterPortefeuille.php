@@ -1,5 +1,5 @@
 <main>
-    <h2 class="text-align">Ajout Portefeuille :</h2>
+    <h2 class="text-align">Ajouter une relation dans le portefeuille :</h2>
 	<form class="centered" action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerAjout" method="post">
 		<table>
 			<tbody>

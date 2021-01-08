@@ -1,6 +1,6 @@
 
 <main>
-    <h2 class="text-align">Gestion de votre portefeuille</h2>
+    <h2 class="text-align">Gestion du portefeuille</h2>
 
     <?php
         if (isset($_SESSION["error"]) && isset($_SESSION["error"]["portefeuilleResponsable"])) 

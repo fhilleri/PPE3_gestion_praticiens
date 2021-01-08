@@ -1,5 +1,5 @@
 <main>
-    <h2 class="text-align">Modifier Portefeuille :</h2>
+    <h2 class="text-align">Modifier une relation du portefeuille :</h2>
 	<form class="centered" action="index.php?uc=praticiens&ucp=portefeuilleResponsable&action=confirmerModification" method="post">
 
 		<input hidden name="PnouveauMatricule" value="<?= $matricule ?>">
