@@ -101,14 +101,12 @@ class Pdolbc
 	/* Affiche le portefeuille du Responsabele */
 
 	public function getPorteFeuilleRes() {
-		$req = ("select visiteur.matricule, nom, reg_code, praticien.idspecialite, praticien.idPraticien
-		from portefeuille
+		$req = ("SELECT visiteur.matricule, CONCAT(praticien.prenom, ' ', praticien.prenom) as nom, praticien.idspecialite, praticien.idPraticien
+		FROM portefeuille
 		inner join praticien
-		on praticien.idpraticien = portefeuille.idpraticien
-		inner join visiteur
-		on visiteur.matricule = portefeuille.matricule
-		inner join region
-		on region.sec_num = visiteur.sec_num");
+		on praticien.idpraticien = portefeuille.idpraticien AND praticien.idspecialite = portefeuille.idspecialite
+		inner join visiteur 
+		on visiteur.matricule = portefeuille.matricule");
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->execute();
 		$lesLignes = $res->fetchAll();

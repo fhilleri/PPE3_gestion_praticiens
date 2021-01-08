@@ -11,7 +11,6 @@
             <tr>
                 <th>Matricule visiteur</th>
                 <th>Nom praticien</th>
-                <th>Région</th>
                 <th></th>
                 <th></th>
             </tr> 
@@ -21,7 +20,6 @@
         {
             $matricule = $relations['matricule'];
             $nom = $relations['nom'];
-            $region = $relations['reg_code'];
             $idspecialite = $relations['idspecialite'];
             $idPraticien = $relations['idPraticien'];
         
@@ -29,7 +27,6 @@
             <tr>
                 <td><?php echo $matricule ?></a></td>
                 <td><?php echo $nom ?></td>
-                <td><?php echo $region ?></td>
                 
 
                 <td><a href=index.php?uc=praticiens&ucp=portefeuilleResponsable&action=modification&matricule=<?php echo $matricule ?>&idPraticien=<?php echo $idPraticien ?>&idspecialite=<?php echo $idspecialite?>><img class="bouton_image" src="./images/modification.png" title="Ajout"></a></td>
