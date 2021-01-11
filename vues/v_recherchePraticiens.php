@@ -38,7 +38,7 @@
     </form>
     
 
-    <table class="tableau centered">
+    <table class="tableau centered text-align">
         <tr>
             <th>Nom </th><th>Prénom </th>
             <th>Spécialité </th><th>Notoriété </th>

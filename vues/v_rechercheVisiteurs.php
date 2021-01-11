@@ -36,7 +36,7 @@
         </div>
     </form>
         
-    <table class="tableau centered">
+    <table class="tableau centered text-align">
         <tr>
         <th>Matricule </th>
         <th>Secteur </th><th>Date de dernier visite </th>

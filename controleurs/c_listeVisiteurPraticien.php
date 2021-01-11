@@ -14,5 +14,5 @@
     }
 
 	
-	include("./vues/pied.php");	
+	include("./vues/v_pied.php");	
 ?>

@@ -53,7 +53,7 @@ switch ($action) {
         include("./vues/v_bandeau.php");
         
         include("./vues/v_connexion.php");
-        include("./vues/pied.php");
+        include("./vues/v_pied.php");
         break;
 }
 
