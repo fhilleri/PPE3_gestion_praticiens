@@ -313,35 +313,26 @@ class Pdolbc
 		return $lesLignes;
 	}
 
-	public function getVisiteur($numPraticien,$numSecteur) {
-		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
-		from visiteur
-		inner join visite on visiteur.matricule = visite.matricule 
-		inner join praticien on visite.idPraticien = praticien.idPraticien
-		where visite.dateVisite = (SELECT p2.dateVisite FROM visite p2
-		where visiteur.matricule = p2.matricule and p2.dateVisite < now()
-		ORDER by p2.dateVisite DESC
-	    LIMIT 1)
-		and visite.idPraticien =:numPraticien and visiteur.sec_num=:numSecteur";
+	public function getVisiteur($idSpecialite, $idPraticien, $numSecteur) {
+		$req = "SELECT DISTINCT visiteur.matricule, visiteur.sec_num, (SELECT dateVisite FROM visite WHERE visite.matricule = visiteur.matricule ORDER BY visite.dateVisite DESC LIMIT 1) as dateVisite
+		FROM visiteur
+		LEFT JOIN portefeuille on visiteur.matricule = portefeuille.matricule
+		WHERE visiteur.sec_num = :numSecteur AND portefeuille.idspecialite = :idSpecialite AND portefeuille.idPraticien = :idPraticien";
 
 		$res = Pdolbc::$monPdo->prepare($req);
-		$res->bindValue(':numPraticien', $numPraticien);
+		$res->bindValue(':idSpecialite', $idSpecialite);
+		$res->bindValue(':idPraticien', $idPraticien);
 		$res->bindValue(':numSecteur', $numSecteur);
 		$res->execute();
 
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
-	public function getVisiteurRegion($numSecteur) {
-		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
-		from visiteur
-		inner join visite on visiteur.matricule = visite.matricule 
-		inner join praticien on visite.idPraticien = praticien.idPraticien
-		where visite.dateVisite = (SELECT p2.dateVisite FROM visite p2
-		where visiteur.matricule = p2.matricule and p2.dateVisite < now()
-		ORDER by p2.dateVisite DESC
-	    LIMIT 1)
-		and visiteur.sec_num=:numSecteur";
+	public function getVisiteurSecteur($numSecteur) {
+		$req = "SELECT DISTINCT visiteur.matricule, visiteur.sec_num, (SELECT dateVisite FROM visite WHERE visite.matricule = visiteur.matricule ORDER BY visite.dateVisite DESC LIMIT 1) as dateVisite
+		FROM visiteur
+		LEFT JOIN portefeuille on visiteur.matricule = portefeuille.matricule
+		WHERE visiteur.sec_num = :numSecteur";
 
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->bindValue(':numSecteur', $numSecteur);
@@ -350,33 +341,24 @@ class Pdolbc
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
-	public function getVisiteurPraticiens($numPraticien) {
-		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
-		from visiteur
-		inner join visite on visiteur.matricule = visite.matricule 
-		inner join praticien on visite.idPraticien = praticien.idPraticien
-		where visite.dateVisite = (SELECT p2.dateVisite FROM visite p2
-		where visiteur.matricule = p2.matricule and p2.dateVisite < now()
-		ORDER by p2.dateVisite DESC
-	    LIMIT 1)
-		and visite.idPraticien =:numPraticien ";
+	public function getVisiteurPraticiens($idSpecialite, $idPraticien) {
+		$req = "SELECT DISTINCT visiteur.matricule, visiteur.sec_num, (SELECT dateVisite FROM visite WHERE visite.matricule = visiteur.matricule AND visite.idSpecialite = :idSpecialite AND visite.idPraticien = :idPraticien ORDER BY visite.dateVisite DESC LIMIT 1) as dateVisite
+		FROM visiteur
+		LEFT JOIN portefeuille on visiteur.matricule = portefeuille.matricule
+		WHERE portefeuille.idspecialite = :idSpecialite AND portefeuille.idPraticien = :idPraticien";
 
 		$res = Pdolbc::$monPdo->prepare($req);
-		$res->bindValue(':numPraticien', $numPraticien);
+		$res->bindValue(':idSpecialite', $idSpecialite);
+		$res->bindValue(':idPraticien', $idPraticien);
 		$res->execute();
 
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
 	public function getToutVisiteur() {
-		$req = "SELECT visiteur.matricule,visite.dateVisite,visiteur.sec_num
-		from visiteur
-		inner join visite on visiteur.matricule = visite.matricule 
-		inner join praticien on visite.idPraticien = praticien.idPraticien
-		where visite.dateVisite = (SELECT p2.dateVisite FROM visite p2
-		where visite.matricule = p2.matricule and p2.dateVisite < now()
-		ORDER by p2.dateVisite DESC
-	    LIMIT 1)";
+		$req = "SELECT DISTINCT visiteur.matricule, visiteur.sec_num, (SELECT dateVisite FROM visite WHERE visite.matricule = visiteur.matricule ORDER BY visite.dateVisite DESC LIMIT 1) as dateVisite
+		FROM visiteur
+		LEFT JOIN portefeuille on visiteur.matricule = portefeuille.matricule";
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->execute();
 

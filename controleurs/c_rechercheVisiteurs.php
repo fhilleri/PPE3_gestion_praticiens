@@ -3,27 +3,30 @@
     include("./vues/v_entete.php");
     include("./vues/v_bandeau.php");
     
-    if (!isset ($_REQUEST['idPraticien']) or !isset($_REQUEST['numSecteur'])){ 
-        $numPraticien =0;
+    if (!isset ($_REQUEST['praticien']) or !isset($_REQUEST['numSecteur'])){ 
+        $idSpecialite =0;
+        $idPraticien =0;
         $numSecteur=0;}
     else{
-        $numPraticien =$_REQUEST['idPraticien'];
+        $splitedPraticien = explode(";", $_REQUEST['praticien']);
+        $idSpecialite = $splitedPraticien[0];
+        $idPraticien = $splitedPraticien[1];
         $numSecteur=$_REQUEST['numSecteur'];
     }
    
     $Secteurs = $pdo->getLesSecteur();
     $Praticiens = $pdo->getLesPraticiens();
-    if( $numPraticien=="0" and $numSecteur=="0"){ 
+    if( $idPraticien=="0" and $numSecteur=="0"){ 
         $LesVisiteur = $pdo->getToutVisiteur();
     }
-    if( $numPraticien=="0" and $numSecteur!="0"){
-        $LesVisiteur = $pdo->getVisiteurRegion($numSecteur);
+    if( $idPraticien=="0" and $numSecteur!="0"){
+        $LesVisiteur = $pdo->getVisiteurSecteur($numSecteur);
     }
-    if( $numPraticien!="0" and $numSecteur!="0"){
-        $LesVisiteur = $pdo->getVisiteur($numPraticien,$numSecteur);
+    if( $idPraticien!="0" and $numSecteur!="0"){
+        $LesVisiteur = $pdo->getVisiteur($idSpecialite, $idPraticien,$numSecteur);
     }
-    if( $numPraticien!="0" and $numSecteur=="0"){
-        $LesVisiteur = $pdo->getVisiteurPraticiens($numPraticien);
+    if( $idPraticien!="0" and $numSecteur=="0"){
+        $LesVisiteur = $pdo->getVisiteurPraticiens($idSpecialite, $idPraticien);
     }
  
     

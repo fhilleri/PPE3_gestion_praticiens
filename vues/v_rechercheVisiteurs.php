@@ -6,15 +6,15 @@
         <div id="select">
             Noms praticiens
             
-            <select name="idPraticien">
+            <select name="praticien">
             
                 <?php 
-                $selected = ($numPraticien == "0" ? "selected" : "");
-                echo "<option $selected value='0'>Tous</option>";
+                $selected = ($idPraticien == "0" ? "selected" : "");
+                echo "<option $selected value='0;0'>Tous</option>";
                 foreach($Praticiens as $Praticiens)
                 { 
-                    $selected = ($numPraticien == $Praticiens["idPraticien"] ? "selected" : "");
-                    echo "<option $selected value='" . $Praticiens["idPraticien"] . "'>" .$Praticiens["nom"] ."</option>";
+                    $selected = ($idPraticien == $Praticiens["idPraticien"] && $idSpecialite == $Praticiens["idspecialite"] ? "selected" : "");
+                    echo "<option $selected value='" . $Praticiens["idspecialite"] . ";" . $Praticiens["idPraticien"] . "'>" .$Praticiens["nom"] ."</option>";
                 }
                 ?>
             </select>
