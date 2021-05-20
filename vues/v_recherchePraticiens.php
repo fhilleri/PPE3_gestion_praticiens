@@ -52,7 +52,8 @@
         $num = $unPraticien['idPraticien'];
         $nom = $unPraticien['nom'];
         $prenom = $unPraticien['prenom'];
-        $specialite = $unPraticien['nomspecialite'];
+        $specialite = $unPraticien['idspecialite'];
+        $nomSpecialite = $unPraticien['nomspecialite'];
         $notoriete = $unPraticien['note'];
         $ville = $unPraticien['ville'];
         $date = $unPraticien['dateVisite'];
@@ -61,7 +62,7 @@
         <tr>
             <td><?php echo $nom ?></td>
             <td><?php echo $prenom ?></td>
-            <td><?php echo $specialite ?></td>
+            <td><?php echo $nomSpecialite ?></td>
             <td><?php echo $notoriete?></td>
             <td><?php echo $ville ?></td>
             <td><?php echo $date ?></td>
