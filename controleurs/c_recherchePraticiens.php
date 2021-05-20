@@ -16,7 +16,7 @@
     $Secteurs = $pdo->getLesSecteur();
     $Praticiens = $pdo->getLesVisiteur();
     if( $numVisiteur=="0" and $numSecteur!="0"){
-        $lesPraticiens = $pdo->getPraticiensRegion($numSecteur);
+        $lesPraticiens = $pdo->getPraticiensSecteur($numSecteur);
     }
     if( $numVisiteur!="0" and $numSecteur!="0"){
         $lesPraticiens = $pdo->getPraticiens($numVisiteur,$numSecteur);

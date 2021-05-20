@@ -52,7 +52,7 @@
         $num = $unPraticien['idPraticien'];
         $nom = $unPraticien['nom'];
         $prenom = $unPraticien['prenom'];
-        $specialite = $unPraticien['idspecialite'];
+        $specialite = $unPraticien['nomspecialite'];
         $notoriete = $unPraticien['note'];
         $ville = $unPraticien['ville'];
         $date = $unPraticien['dateVisite'];

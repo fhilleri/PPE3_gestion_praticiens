@@ -239,16 +239,13 @@ class Pdolbc
 
 
 	public function getPraticiens($numVisiteur,$numSecteur) {
-		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num, praticien.longitude, praticien.latitude
-		from praticien
-		inner join visite on praticien.idPraticien = visite.idPraticien 
-		inner join visiteur on visite.matricule = visiteur.matricule 
-		where visite.dateVisite = 
-	(SELECT p2.dateVisite FROM visite p2
-	 where praticien.idPraticien = p2.idpraticien and p2.dateVisite < now()  
-			GROUP by p2.dateVisite DESC LIMIT 1)
-		and visite.matricule =:numVisiteur and visiteur.sec_num=:numSecteur
-		group by visite.idPraticien";
+		$req = "SELECT DISTINCT praticien.idspecialite, praticien.idPraticien, praticien.prenom, praticien.nom, specialite.nomspecialite, portefeuille.matricule, praticien.note, praticien.ville, praticien.latitude, praticien.longitude, 
+		(SELECT visite.dateVisite FROM visite WHERE visite.idspecialite = praticien.idspecialite AND visite.idPraticien = praticien.idPraticien) as dateVisite
+		FROM praticien
+		LEFT JOIN portefeuille on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		INNER JOIN specialite on specialite.idspecialite = praticien.idspecialite
+		WHERE portefeuille.matricule = :numVisiteur AND
+		(SELECT secteur.sec_num FROM affecter INNER JOIN region on region.reg_code = affecter.reg_code INNER JOIN secteur on secteur.sec_num = region.sec_num WHERE affecter.idspecialite = praticien.idspecialite AND affecter.idPraticien = praticien.idPraticien ORDER BY affecter.dateArrivee DESC) = :numSecteur";
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->bindValue(':numVisiteur', $numVisiteur);
 		$res->bindValue(':numSecteur', $numSecteur);
@@ -257,17 +254,14 @@ class Pdolbc
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
-	public function getPraticiensRegion($numSecteur) {
-		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num, praticien.longitude, praticien.latitude
-		from praticien
-		inner join visite on praticien.idPraticien = visite.idPraticien 
-		inner join visiteur on visite.matricule = visiteur.matricule 
-		where visite.dateVisite = 
-	(SELECT p2.dateVisite FROM visite p2
-	 where praticien.idPraticien = p2.idpraticien and p2.dateVisite < now()  
-			GROUP by p2.dateVisite DESC LIMIT 1)
-	 and visiteur.sec_num=:numSecteur
-		group by visite.idPraticien";
+	public function getPraticiensSecteur($numSecteur) {
+		$req = "SELECT DISTINCT praticien.idspecialite, praticien.idPraticien, praticien.prenom, praticien.nom, specialite.nomspecialite, portefeuille.matricule, praticien.note, praticien.ville, praticien.latitude, praticien.longitude,
+		(SELECT visite.dateVisite FROM visite WHERE visite.idspecialite = praticien.idspecialite AND visite.idPraticien = praticien.idPraticien) as dateVisite
+		FROM praticien
+		LEFT JOIN portefeuille on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		INNER JOIN specialite on specialite.idspecialite = praticien.idspecialite
+		WHERE
+		(SELECT secteur.sec_num FROM affecter INNER JOIN region on region.reg_code = affecter.reg_code INNER JOIN secteur on secteur.sec_num = region.sec_num WHERE affecter.idspecialite = praticien.idspecialite AND affecter.idPraticien = praticien.idPraticien ORDER BY affecter.dateArrivee DESC) = :numSecteur";
 		$res = Pdolbc::$monPdo->prepare($req);
 	
 		$res->bindValue(':numSecteur', $numSecteur);
@@ -278,16 +272,11 @@ class Pdolbc
 	}
 	
 	public function getPraticiensVisiteur($numVisiteur) {
-		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num, praticien.longitude, praticien.latitude
-		from praticien
-		inner join visite on praticien.idPraticien = visite.idPraticien 
-		inner join visiteur on visite.matricule = visiteur.matricule 
-		where visite.dateVisite = 
-	(SELECT p2.dateVisite FROM visite p2
-	 where praticien.idPraticien = p2.idpraticien and p2.dateVisite < now()  
-			GROUP by p2.dateVisite DESC LIMIT 1)
-		and visite.matricule =:numVisiteur 
-		group by visite.idPraticien";
+		$req = "SELECT DISTINCT praticien.idspecialite, praticien.idPraticien, praticien.prenom, praticien.nom, specialite.nomspecialite, portefeuille.matricule, praticien.note, praticien.ville, praticien.latitude, praticien.longitude, (SELECT visite.dateVisite FROM visite WHERE visite.idspecialite = praticien.idspecialite AND visite.idPraticien = praticien.idPraticien) as dateVisite
+		FROM praticien
+		LEFT JOIN portefeuille on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		INNER JOIN specialite on specialite.idspecialite = praticien.idspecialite
+		WHERE portefeuille.matricule = :numVisiteur";
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->bindValue(':numVisiteur', $numVisiteur);
 	
@@ -297,15 +286,10 @@ class Pdolbc
 		return $lesLignes;
 	}
 	public function getToutPraticiens() {
-		$req = "SELECT praticien.idPraticien,praticien.nom,praticien.prenom,praticien.idspecialite,	praticien.note,praticien.ville,visite.dateVisite,visite.matricule,visiteur.sec_num, praticien.longitude, praticien.latitude
-		from praticien
-		inner join visite on praticien.idPraticien = visite.idPraticien 
-		inner join visiteur on visite.matricule = visiteur.matricule 
-		where visite.dateVisite = 
-	(SELECT p2.dateVisite FROM visite p2
-	 where praticien.idPraticien = p2.idpraticien and p2.dateVisite < now()  
-			GROUP by p2.dateVisite DESC LIMIT 1)
-		group by visite.idPraticien" ;
+		$req = "SELECT DISTINCT praticien.idspecialite, praticien.idPraticien, praticien.prenom, praticien.nom, specialite.nomspecialite, portefeuille.matricule, praticien.note, praticien.ville, praticien.latitude, praticien.longitude, (SELECT visite.dateVisite FROM visite WHERE visite.idspecialite = praticien.idspecialite AND visite.idPraticien = praticien.idPraticien) as dateVisite
+		FROM praticien
+		LEFT JOIN portefeuille on portefeuille.idspecialite = praticien.idspecialite AND portefeuille.idPraticien = praticien.idPraticien
+		INNER JOIN specialite on specialite.idspecialite = praticien.idspecialite" ;
 		$res = Pdolbc::$monPdo->prepare($req);
 		$res->execute();
 		
