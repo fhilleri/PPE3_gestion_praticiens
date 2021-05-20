@@ -392,9 +392,9 @@ class Pdolbc
 		return $lesLignes;
 	}	
 
-	public function getLesRegion()
+	public function getLesSecteur()
 	{
-		$req = "select * from region";
+		$req = "select * from secteur";
 		$res = Pdolbc::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;

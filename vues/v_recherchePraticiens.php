@@ -19,16 +19,16 @@
                     }
                 ?>
             </select>
-            Region
+            Secteur
 			<select name="numSecteur">
                 <?php 
                 $selected = ($numSecteur == "0" ? "selected" : "");
                 echo "<option $selected value='0'>Toutes</option>";
-                foreach($Regions as $Region)
+                foreach($Secteurs as $Secteur)
 
                     { 
-                        $selected = ($numSecteur == $Region["sec_num"] ? "selected" : "");
-                        echo "<option $selected value='" . $Region["sec_num"] . "'>" .$Region["reg_code"] ."</option>";
+                        $selected = ($numSecteur  == $Secteur["sec_num"] ? "selected" : "");
+                        echo "<option $selected value='" . $Secteur["sec_num"] . "'>".$Secteur["sec_num"]."</option>";
                     }
                 ?>
             </select>
