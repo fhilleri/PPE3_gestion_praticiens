@@ -10,9 +10,23 @@
 			<tbody>
 
 				<tr><td>Matricule</td><td><input value="<?= $elementPortefeuille["matricule"] ?>" name="Pmatricule" size=20></td></tr>
-				<tr><td>Idpsecialite</td><td><input value="<?= $elementPortefeuille["idspecialite"] ?>" name="Pidspecialite" size=20></td></tr>
-				<tr><td>Idpraticien </td><td><input value="<?= $elementPortefeuille["idPraticien"] ?>" name="PidPraticien" size=20></td></tr>	
-				
+				<tr><td> praticien</td><td><select name="praticien">
+				<?php
+
+				var_dump($elementPortefeuille);
+			
+				foreach ($listeP as $praticien) {
+					var_dump($praticien);
+					if($elementPortefeuille["idspecialite"] == $praticien["idspecialite"] && $elementPortefeuille["idPraticien"] == $praticien["idpraticien"]){  
+					$selected = "selected";
+					}else{
+						$selected = "";
+					}
+					echo("<option ".$selected."value='".$praticien["idspecialite"].";".$praticien["idpraticien"]."'>".$praticien["prenom"].$praticien["nom"]."</option>");
+					
+				}				
+				?>
+				</select></td></tr>	
 			</tbody>
 		</table>
 
