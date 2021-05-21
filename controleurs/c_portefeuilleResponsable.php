@@ -21,6 +21,7 @@
 				$title = "Ajouter portefeuille";
 
 				$listeP = $pdo->getListePortefeuille();
+				$listeM = $pdo->getListePortefeuilleM();
 				
 				include("./vues/v_entete.php");
 				include("./vues/v_bandeau.php");
@@ -30,7 +31,7 @@
 
 		case 'confirmerAjout':
 			{
-				$matricule = $_REQUEST['Pmatricule'];
+				$matricule = $_REQUEST['matricule'];
 				$praticien = explode(";",$_REQUEST['praticien']); 
 
 				$idspecialite = $praticien[0];
@@ -60,6 +61,7 @@
 				$idPraticien = $_REQUEST['idPraticien'];
 				$elementPortefeuille = $pdo->getElementPorteFeuille($matricule, $idspecialite, $idPraticien);
 				$listeP = $pdo->getListePortefeuille();
+				$listeM = $pdo->getListePortefeuilleM();
 				
 				$title = 'Modifier portefeuille';
 				include("./vues/v_entete.php");
@@ -78,7 +80,7 @@
 				if($regionPraticien["reg_code"] == $regionVisiteur["reg_code"]){
 
 				
-					$nouveauMatricule = $_REQUEST['Pmatricule'];
+					$nouveauMatricule = $_REQUEST['matricule'];
 					$nouveauPraticien = explode(";",$_REQUEST['praticien']); 
 
 					$nouveauIdspecialite = $nouveauPraticien[0];

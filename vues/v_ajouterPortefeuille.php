@@ -4,12 +4,21 @@
 		<table>
 			<tbody>
 
-				<tr><td>Matricule</td><td><input name="Pmatricule" size=20></td></tr>	
+					
 				<tr><td> praticien</td><td><select name="praticien">
 				<?php
 
 				foreach ($listeP as $praticien) {
 					echo("<option value='".$praticien["idspecialite"].";".$praticien["idpraticien"]."'>".$praticien["prenom"].$praticien["nom"]."</option>");
+					
+				}				
+				?>
+				</select></td></tr>	
+				<tr><td> matricule</td><td><select name="matricule">
+				<?php
+
+				foreach ($listeM as $matricule) {
+					echo("<option value='".$matricule["matricule"]."'>".$matricule["matricule"]."</option>");
 					
 				}				
 				?>
