@@ -19,6 +19,10 @@
 		case 'ajouterPortefeuille':
 			{
 				$title = "Ajouter portefeuille";
+
+				$listeP = $pdo->getListePortefeuille();
+				$listeM = $pdo->getListePortefeuilleM();
+				
 				include("./vues/v_entete.php");
 				include("./vues/v_bandeau.php");
 				include("vues/v_ajouterPortefeuille.php");
@@ -27,9 +31,11 @@
 
 		case 'confirmerAjout':
 			{
-				$matricule = $_REQUEST['Pmatricule'];
-				$idspecialite = $_REQUEST['Pidspecialite'];
-				$idPraticien = $_REQUEST['PidPraticien'];
+				$matricule = $_REQUEST['matricule'];
+				$praticien = explode(";",$_REQUEST['praticien']); 
+
+				$idspecialite = $praticien[0];
+				$idPraticien = $praticien[1];
 		
 				
 				$regionPraticien = $pdo->getregionpraticien($idspecialite, $idPraticien);
@@ -54,7 +60,9 @@
 				$idspecialite = $_REQUEST['idspecialite'];
 				$idPraticien = $_REQUEST['idPraticien'];
 				$elementPortefeuille = $pdo->getElementPorteFeuille($matricule, $idspecialite, $idPraticien);
-
+				$listeP = $pdo->getListePortefeuille();
+				$listeM = $pdo->getListePortefeuilleM();
+				
 				$title = 'Modifier portefeuille';
 				include("./vues/v_entete.php");
 				include("./vues/v_bandeau.php");
@@ -72,9 +80,11 @@
 				if($regionPraticien["reg_code"] == $regionVisiteur["reg_code"]){
 
 				
-					$nouveauMatricule = $_REQUEST['Pmatricule'];
-					$nouveauIdspecialite = $_REQUEST['Pidspecialite'];
-					$nouveauIdPraticien = $_REQUEST['PidPraticien'];
+					$nouveauMatricule = $_REQUEST['matricule'];
+					$nouveauPraticien = explode(";",$_REQUEST['praticien']); 
+
+					$nouveauIdspecialite = $nouveauPraticien[0];
+					$nouveauIdPraticien = $nouveauPraticien[1];
 		
 					$pdo->getsuprrPortefeuille($matricule, $idspecialite, $idPraticien);
 					$pdo->getAjoutPortefeuille($nouveauMatricule, $nouveauIdspecialite, $nouveauIdPraticien);
@@ -96,7 +106,8 @@
 				$suppr = $pdo->getsuprrPortefeuille($matricule, $idspecialite, $idPraticien);
 				header("location: index.php?uc=praticiens&ucp=portefeuilleResponsable&action=afficherPortefeuille");
 			break;
-            }
+			}
+
 	}
 	include("./vues/v_pied.php");	
 ?>

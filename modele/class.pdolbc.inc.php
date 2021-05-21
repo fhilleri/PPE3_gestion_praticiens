@@ -149,6 +149,26 @@ class Pdolbc
 		
 	}
 
+	/* liste déroulante praticien*/
+		public function getListePortefeuille(){
+			$req=("SELECT nom, prenom, idpraticien, idspecialite FROM praticien");
+			$res = Pdolbc::$monPdo->prepare($req);
+			
+			$res->execute();
+			return $res->fetchAll();
+		}
+
+
+		/* liste déroulante matricule */
+		public function getListePortefeuilleM(){
+			$req=("SELECT * FROM visiteur");
+			$res = Pdolbc::$monPdo->prepare($req);
+			
+			$res->execute();
+			return $res->fetchAll();
+		}
+
+
 	/* Supprimer le portefeuille */
 
 	public function getsuprrPortefeuille($matricule, $idspecialite, $idpraticien){
